@@ -1,0 +1,22 @@
+version: 'escribir_version_python_here'
+
+services:
+  web_service:
+    build: 
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - write_here
+    ports:
+      - write_the_port_here
+    env_file:
+      - write_here
+    depends_on:
+      - db_service
+  db_service:
+    image: image_for_db
+    volumes:
+      - write_here
+    environment:
+      - USER=write_your_user_here
+      - PASSWORD=write_your_pass_here
+      - DB=write_name_of_db_here
