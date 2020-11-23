@@ -1,0 +1,43 @@
+{% extends 'ecad_app/base.html' %}
+{% load static %}
+{% load i18n %}
+
+
+{% block title %} {% trans 'str_About' %} | ECAD{% endblock %}
+
+
+
+{% block about %}
+<div class="container">
+    <div class="my-3 py-5">    
+        <div class="card col-lg-12">
+            <div class="card-body px-2">
+                <div class="mx-0 mx-sm-2 mx-lg-3">
+                    <div class="row d-flex justify-content-center justify-content-md-start justify-content-lg-start">
+                        <div class="col-lg-7 text-center text-lg-left my-5">
+                            <h3 class="font-weight-bold text-uppercase"> {% trans 'str_about_title' %} <b> ECAD</b> </h3>
+                            <h5 class="my-5 pr-0 pr-md-3 pr-lg-5 text-left">{% trans 'str_about_pitch' %}<br><br>{% trans 'str_about_pitch2' %}</h5>
+
+                            <div class="row d-flex justify-content-center justify-content-lg-start">
+                                <div class="col">
+                                    <a href="{% url 'tags' %}" class="btn btn-primary btn-xl text-uppercase mr-0 mr-md-2 mr-lg-2 my-2"> <i class="material-icons align-top">label</i>{% trans 'str_exploreTags' %}</a>
+                                    <a href="{% url 'categories' %}" class="btn btn-primary btn-xl text-uppercase my-2"> <i class="material-icons align-top">category</i>{% trans 'str_exploreCategories '%}</a>    
+                                </div>
+                            </div>        
+                        </div>
+    
+                        <div class="col-lg-5 text-center text-lg-left my-5 pt-5 pt-lg-0">
+                            <h3 class="font-weight-bold text-uppercase"> {% trans 'str_about_MTTeam_title' %} </h3>
+                            <h6 class="text-muted mb-5">{% trans 'str_about_MTTeam_subtitle' %}<b>&nbspECAD</b></h6>
+                           
+
+                            
+                            <a href="{% url 'authors' %}" class="btn btn-primary btn-xl text-uppercase my-3 mt-4"> {% trans 'str_about_meetEditors' %} </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

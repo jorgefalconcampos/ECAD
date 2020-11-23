@@ -1,0 +1,37 @@
+// Global VARIABLES only (not styles), fit for both site & blog
+
+// Importing variables; this file will be like a link between all the variable files for each site
+
+// Importing admin/dashboard variable
+@import "./variables/admin-vars";
+
+// Importing blog variables
+@import "./variables/blog-vars";
+
+
+
+
+// General variables, fit for both admin & post
+
+
+$ecad-dark-blue: #00689E;
+$ecad-main-blue: #009CEE;
+$ecad-dark-gray: #767676;
+$ecad-dark2-gray: #5A5A5A;
+
+$ecad-lighter-gray: #c2c2c2;
+$ecad-light-gray: #BEBEBE;
+$ecad-steel: #647C7D;
+$ecad-brown: #855446;
+$ecad-black: #1B1B1B;
+$ecad-platinum: #EBEBEB;
+
+$generalvar: rgb(6, 43, 129);
+$variablegralparaadmin: slateblue;
+
+$variablegralparablog: brown;
+
+
+
+
+

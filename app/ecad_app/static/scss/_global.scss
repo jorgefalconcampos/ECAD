@@ -1,0 +1,152 @@
+// Global STYLES (not variables), fit for both site & blog
+
+
+body {    
+    font-size: 0.75rem;
+    font-weight: 400;
+	line-height: 1.5;
+	color: #212529;
+	background-color: whitesmoke;
+}
+
+
+h1,h2,h3,h4{font-weight: 500;}
+
+
+.opacity-50 {
+	filter: blur(2px);
+	-webkit-filter: blur(2px);	
+}
+
+
+.par{
+	font-weight: 500;
+	font-size: 13px;
+	text-transform: none;
+	letter-spacing: 0em;
+}
+
+.txtarea-maxh-400{
+	min-height: 73px;
+	max-height: 400px;
+}
+
+
+.txtarea-maxh-200{
+	min-height: 73px;
+	max-height: 200px;
+}
+
+.txtarea-maxh-s{
+	min-height: 100px;
+	max-height: 175px;
+}
+
+.search-title{
+	h1,h2,h3,h4,h5,h6{
+		text-transform: uppercase !important;
+	}
+}
+
+.bg-platinum{
+	background-color: $ecad-platinum;
+}
+  
+.top-navigation-bar { 
+    width: 100%;
+    background-color: $ecad-lighter-gray;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1.15em;
+    font-weight: 500;
+
+    .collapsable-menu{
+        text-transform: none;
+        letter-spacing: 0px;
+    }
+}
+
+
+
+.grad-1 {
+	background: #DA22FF;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #9733EE, #DA22FF);  /* Chrome 10-25, Safari 5.1-6 */
+	background: -webkit-gradient(linear, left top, right top, from(#9733EE), to(#DA22FF));
+	background: -webkit-linear-gradient(left, #9733EE, #DA22FF);
+	background: -o-linear-gradient(left, #9733EE, #DA22FF);
+	background: linear-gradient(to right, #9733EE, #DA22FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	-webkit-box-shadow: 0 0 20px violet;
+          box-shadow: 0 0 20px violet;
+}
+
+.grad-3 {
+	background: #2b5876;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #4e4376, #2b5876);  /* Chrome 10-25, Safari 5.1-6 */
+	background: -webkit-gradient(linear, left top, right top, from(#4e4376), to(#2b5876));
+	background: -webkit-linear-gradient(left, #4e4376, #2b5876);
+	background: -o-linear-gradient(left, #4e4376, #2b5876);
+	background: linear-gradient(to right, #44bd26, #6fd112) ; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	-webkit-box-shadow: 0 0 20px darkblue;
+	        box-shadow: 0 0 20px darkblue;
+}
+
+.grad-4 {
+	background: #4776E6;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #8E54E9, #4776E6);  /* Chrome 10-25, Safari 5.1-6 */
+	background: -webkit-gradient(linear, left top, right top, from(#8E54E9), to(#4776E6));
+	background: -webkit-linear-gradient(left, #8E54E9, rgb(40, 102, 245));
+	background: -o-linear-gradient(left, #8E54E9, #4776E6);
+	background: linear-gradient(to right, rgb(55, 139, 235), rgb(95, 71, 230)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	-webkit-box-shadow: 0 0 20px lightblue;
+	        box-shadow: 0 0 20px lightblue;
+}
+
+.grad-5 {
+	background: #2b5876;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #fa3, #fa3380);  /* Chrome 10-25, Safari 5.1-6 */
+	background: -webkit-gradient(linear, left top, right top, from(#fa3), to(#fa3380));
+	background: -webkit-linear-gradient(left, #fa3, #fa3380);
+	background: -o-linear-gradient(left, #fa3, #fa3380);
+	background: linear-gradient(to right, #fa3, #fa3380); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	-webkit-box-shadow: 0 0 20px #fa3380;
+	        box-shadow: 0 0 20px #fa3380;
+}
+
+.grad-6 {
+	background: #F2994A;  /* fallback for old browsers */	
+	background: -webkit-linear-gradient(to right, $ecad-light-gray, $ecad-steel);  /* Chrome 10-25, Safari 5.1-6 */
+	background: -webkit-gradient(linear, left top, right top, from($ecad-light-gray), to($ecad-steel));
+	background: -webkit-linear-gradient(left, $ecad-light-gray, $ecad-steel);
+	background: -o-linear-gradient(left, $ecad-light-gray, $ecad-steel);
+	background: linear-gradient(to right, $ecad-light-gray, $ecad-steel); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	-webkit-box-shadow: 0 0 20px lightyellow;
+	        box-shadow: 0 0 20px lightyellow;
+}
+
+.inline-items{
+	display: inline-block;
+}
+
+.sp-pb{
+	margin: 0 2px 2px 0;
+}
+
+.sp-pb-bgr{
+	margin: 0 0 3px 0px;
+}
+
+.list-group-item.active {
+	background-color: #6c757d !important;
+	border-color: #6c757d; 
+}
+
+
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-20 { font-size: 20px; }
+.material-icons.md-22 { font-size: 22px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-30 { font-size: 30px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+

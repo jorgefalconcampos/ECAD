@@ -1,0 +1,84 @@
+{% load i18n %}
+{% load static %}
+
+{% url 'index' as index_url %}
+{% url 'about' as about_url %}
+{% url 'categories' as categories_url %}
+{% url 'search' as search_url %}
+
+
+<nav class="top-navigation-bar navbar navbar-expand-lg navbar-light static-top">
+    <div class="container">
+      <a href="{% url 'base' %}" class="navbar-brand">
+        <img src="{% static 'img/ecad.png' %}" width="95" alt="ECAD logo" class="d-inline-block align-middle mr-2 shadow-sm">
+         <!-- <span class="font-weight-bold">Enseñanza Continua A Distancia</span> -->
+      </a>
+
+      <button type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+         
+      <div class="collapse navbar-collapse text-center" id="navbar">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == index_url %}active{%endif%}" href="{% url 'base' %}"> {% trans 'str_Home'  %} <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == categories_url %}active{%endif%}" href="{% url 'categories' %}"> {% trans 'str_Categories' %} </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == about_url %}active{%endif%}" href="{% url 'about' %}"> {% trans 'str_About' %} </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contactModal" data-toggle="modal"> {% trans 'str_Contact' %} </a>
+          </li>
+          <li class="nav-item dropdown mx-0 text-center {% if request.path == search_url %}active{%endif%}">
+            <a class="nav-link dropdown-toggle" id="searchDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="material-icons align-middle md-22">search</i>
+            </a>
+            
+            <div class="dropdown-menu dropdown-menu-right bg-platinum" aria-labelledby="searchDropdown" style="min-width:max-content;">
+              <div class="dropdown-header text-center p-1 py-2">
+                <h5 class="py-1 font-weight-bold">{% trans 'str_searchInBlog' %}</h5>
+                <form method="GET" action="{% url 'search' %}" class="mt-2 mb-1 rounded" >
+                  <label class="bg-platinum py-1 text-center par" for="{{searchForm.q.id_for_label}}">{{searchForm.q.label}} </label>
+                  <div class="bg-white mx-auto p-2 rounded">
+                    <div class="input-group">
+                      <!-- In base -->
+                      {{searchForm.q}} 
+                      <div class="input-group-append rounded">
+                        <button class="btn btn-primary rounded d-block d-sm-none" type="submit"><i class="fas fa-search"></i></button>
+                        <button class="btn btn-primary rounded d-none d-sm-block" type="submit"><i class="fas fa-search mr-2"></i>{% trans 'str_search' %}</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <hr class="my-1 py-1">
+              <div class="text-center">
+                <a href="{% url 'categories' %}" class="py-1">{% trans 'str_seeAllCatgories' %}</a> 
+              </div>
+            </div>
+          </li>
+
+          {% if user.is_authenticated %}
+          <li class="nav-item dropdown mx-0 mx-lg-3 border rounded">
+            <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="material-icons align-top">person</i> 
+            </a>
+
+            <div class="collapsable-menu dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown" style="min-width:max-content;">
+                <h4 class="container py-2"> {% trans 'str_loggedInAs' %}:&nbsp<b>{{request.user.get_full_name|default:request.user}}</b> </h4>
+                <div class="dropdown-divider"></div>      
+                <a class="dropdown-item" href="{% url 'dashboard' %}"> <i class="material-icons align-top">dashboard</i> {% trans 'str_Dashboard'  %} </a>
+                <a class="dropdown-item" href="{% url 'post_new' %}"> <i class="material-icons align-top">add_box</i>  {% trans 'str_NewPost'  %} </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'logout' %}"> <i class="material-icons align-top">exit_to_app</i> {% trans 'str_dashboard_logout' %} </a>
+            </div>
+          </li>
+          {% endif %}                  
+        </ul>
+      </div>
+
+    </div>
+</nav>

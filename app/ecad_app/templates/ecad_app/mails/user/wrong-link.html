@@ -1,0 +1,71 @@
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %} 
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Error tratando de activar la cuenta</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">  
+  <link rel="shortcut icon" type="image/png" href="{% static 'favicon/ecad-icon-neg.ico' %}"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+
+<body>
+   
+
+    <div class="mx-4 py-4 mt-3">
+        <div class="card shadow border-danger rounded">
+            <div class="row mx-3 my-5">
+                <div class="col-lg-7 text-center">
+                    <div class="alert alert-danger">
+    
+                        <h2 class="font-weight-bold"> {% trans 'EmailActivationFailed_title' %} </h2>
+                    </div>
+                    
+
+                    <div class="container py-4">
+                        <div class="row">
+                            <div class="col">
+                                <div class="center py-5 h4"> {% trans 'EmailActivationFailed_msg' %} </div>                              
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="pt-2 pb-5  justify-content-center">
+
+                        {% if user.is_active and user.Author.activated_account %}
+                            <p class="lead"> {% trans 'Account_AlreadyActivated' %} </p>
+                        {% else %}
+                            <a href="{% url 'signup' %}" class="py-1 my-1 btn btn-primary btn"> {% trans 'EmailActivationFailed_newLink' %} </a>
+                        {% endif %}
+    
+                    </div>
+                </div>   
+                <div class="col-lg-5 text-center mt-3">                
+                    <img class="" src="{% static 'img/clip-wrong.png' %}" alt="" height="380px">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+</body>
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/0b5e6aae1f.js" crossorigin="anonymous"></script>
+
+<script> $(document).ready(function(){ $('[data-toggle="tooltip"]').tooltip(); }); </script>
+
+</html>

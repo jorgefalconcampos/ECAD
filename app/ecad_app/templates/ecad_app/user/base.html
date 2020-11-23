@@ -1,0 +1,419 @@
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> {% trans 'str_dashboard' %} </title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">  
+  <link rel="stylesheet" href="{% static 'css/bootstrap-select.css' %}">  
+  <link rel="shortcut icon" type="image/png" href="{% static 'favicon/ecad-icon-neg.ico' %}"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
+</head>
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a href="{% url 'dashboard' %}" class="navbar-brand d-flex d-inline">
+            <img src="{% static 'img/ecad-neg.png' %}" alt="ECAD" width="105" alt="ECAD" class="d-inline-block align-middle">
+            <span class="ml-1 my-auto d-none d-sm-block"><span class="text-uppercase font-weight-bold"></span> <sup class="h6">ADMIN</sup></span>
+            <!-- <span class="ml-1 my-auto d-block d-sm-none" >LV<span class="text-uppercase font-weight-bold">R</span> <sup class="h6">ADMIN</sup></span> -->
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse text-center" id="navbar">
+            <ul class="navbar-nav ml-auto topnav">
+                <li class="nav-item py-1 py-lg-1"> <a href="{% url 'index' %}" target="_blank" class="mx-1"> <span> <button type="button" class="btn btn-light"> <i class="material-icons align-top">web</i> {% trans 'str_dashboard_goToPage' %} </button> </span> </a> </li>
+                <li class="nav-item py-1 py-lg-1"> <a href="{% url 'post_new' %}" class="mx-1"> <span> <button type="button" class="btn btn-light px-4 px-lg-3"> <i class="material-icons align-top">add_box</i> {% trans 'str_NewPost'  %} </button> </span> </a> </li>
+                
+                <li class="nav-item dropdown my-1 px-0 px-lg-1 pt-1">
+                    <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="material-icons align-top">person</i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown" style="min-width:max-content;">
+                        <div class="dropdown-header py-0"> <h5 class="py-2"> {% trans 'str_Hello' %} {{ request.user.first_name|default:request.user }}! 👋 </h5> </div>  
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'profile' %}"> <i class="material-icons align-top">person</i> {% trans 'str_dashboard_profile' %} </a>
+                        <a class="dropdown-item" href="{% url 'settings' %}"> <i class="material-icons align-top">settings</i> {% trans 'str_dashboard_settings' %} </a>
+                        <a class="dropdown-item" href="#" type="button" data-toggle="modal" data-target="#problemModal"> <i class="material-icons align-top">warning</i> {% trans 'str_dashboard_reportProblem' %} </a>
+                        {% if request.user.is_superuser %}
+                        <a class="dropdown-item" href="{{ HTTP_HOST }}/admin"> <i class="material-icons align-top">admin_panel_settings</i> {% trans 'str_dashboard_DjangoAdmin' %} </a>
+                        {% endif %}
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'logout' %}"> <i class="material-icons align-top">exit_to_app</i> {% trans 'str_dashboard_logout' %} </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+
+<div class="modal fade" id="problemModal" tabindex="-1" role="dialog" aria-labelledby="contactModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header px-lg-5">
+                <h5 class="modal-title" id="prblm_form_title">{% trans 'str_ContactWithUs' %} {% trans 'str_techSupport' %}</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body px-lg-5">
+                <form id="problem_frm" action="">     
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-sm-12 pt-2"">
+                                    <div class="form-group">
+                                        <div class="container"> <div class="row"> <h6 class="ml-1"> {% trans 'str_user' %} </h6> </div> </div>
+                                        <div class="input-group">
+                                            <input placeholder="{{request.user}}" name="username" class="form-control" type="text" readonly disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 pt-1">
+                                    <div class="form-group">
+                                        <div class="container"> <div class="row"> <h6 class="ml-1"> {% trans 'str_dashboard_reportProblem_date' %} </h6> </div> </div>
+                                        <div class="input-group">
+                                            <input placeholder="{% now 'SHORT_DATETIME_FORMAT' %}" name="today_date" class="form-control field left" type="text" readonly disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 pt-1">
+                            <div class="form-group">
+                                <div class="container"> <div class="row"> <h6 class="ml-1"> {% trans 'str_dashboard_reportProblem_label' %} </h6> </div> </div>
+                                <div class="input-group">
+                                    <textarea id="prblm_form" rows="4" class="form-control" style="max-height: 112px; min-height: 112px;" type="text" placeholder="{% trans 'str_dashboard_DescribeProblem_placeholder' %}"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-end px-sm-0 px-md-0 px-lg-0">
+                        <p id="prblm_form_success" style="display:none" class="mt-2 mr-2 small h6 font-weight-bold text-success"> <i class="fas fa-check mr-1"></i>{% trans 'str_msgSent' %}</p>
+                        <p id="prblm_form_error" style="display:none" class="mt-2 mr-2 small h6 font-weight-bold text-danger"> <i class="fas fa-exclamation-circle mr-1"></i>{% trans 'str_sendProblem_error' %}</p>
+                        <button class="btn btn-outline-secondary" type="button" data-dismiss="modal">{% trans 'str_cancel' %}</button>
+                        <button id="prblm_form_send" type="submit" class="btn btn-primary">{% trans 'str_send' %}</button>
+                        <button id="contact_frm_sending" class="btn btn-primary px-3" style="display: none;">
+                            <div class="sp-pb spinner-grow spinner-grow-sm" role="status"><span class="sr-only"></span></div>
+                            {% trans 'str_sending' %}
+                        </button> 
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="helpModal" tabindex="-1" role="dialog" aria-labelledby="helpModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="d-flex d-inline">
+                    <i style="font-size: 30px;" class="material-icons">help</i>
+                    <h4 class="ml-3 modal-title">{% trans 'str_ECAD_Help' %}</h4>
+                </span>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            <div class="modal-body px-lg-5">
+
+            <div class="row">
+                <div class="col-8">
+                    <div class="row">
+                        <div class="col-sm-12 pt-2"">
+                            <div id="accordion">
+                                <div class="card">
+                                    <div class="card-header" id="show_permissions">
+                                        <h3 class="card-title mb-0">
+                                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapse_perms" aria-expanded="true" aria-controls="collapseTwo">
+                                                <i class="material-icons align-top">keyboard_arrow_down</i> {% trans 'str_show' %} 
+                                            </button>
+                                        </h3>
+                                    </div>
+                                    <div id="collapse_perms" class="collapse" aria-labelledby="show_permissions" data-parent="#accordion">
+                                        <div class="py-2 px-2 container">
+                                            <button type="button" class="btn btn-secondary btn-block"><i class="material-icons align-top">warning</i> Ayuda 1</button>
+                                            <button type="button" class="btn btn-secondary btn-block"><i class="material-icons align-top">warning</i> Ayuda 2</button>
+                                            <button type="button" class="btn btn-secondary btn-block"><i class="material-icons align-top">warning</i> Ayuda 3</button>
+                                            <button type="button" class="btn btn-secondary btn-block"><i class="material-icons align-top">warning</i> Ayuda 4</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>   
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 pt-1">
+                    <a href="{% url 'rules' %}" target="_blank" class="py-2 btn btn-secondary btn-block"><i class="material-icons align-top mr-1">rule</i>{% trans 'str_RedactionRules' %}</a>
+                    <a href="{% url 'tutorial' %}" target="_blank" class="py-2 btn btn-secondary btn-block"><i class="material-icons align-top mr-1">extension</i>Tutorial</a>
+                    <a href="" target="_blank" class="py-2 btn btn-secondary btn-block"><i class="material-icons align-top mr-1">privacy_tip</i>{% trans 'str_PrivacyPolicy' %}</a>
+                    <a href="" class="py-2 btn btn-danger btn-block"  data-dismiss="modal" data-toggle="modal" data-target="#problemModal"><i class="material-icons align-top mr-1">warning</i>{% trans 'str_dashboard_reportProblem' %}</a>
+                </div>
+            </div>
+
+            <!-- <button type="button" class="my-3 btn btn-danger btn-block" data-dismiss="modal" data-toggle="modal" data-target="#problemModal" ><i class="material-icons align-top">warning</i> level button</button> -->
+
+            <div class="modal-footer mt-3 justify-content-end px-sm-0 px-md-0 px-lg-0">
+                <button class="btn btn-outline-secondary" type="button" data-dismiss="modal">{% trans 'Close' %}</button>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade pt-5 mt-5" id="postActionsModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-gray-400">
+                <span class="d-flex d-inline">
+                    <i style="font-size: 30px;" class="material-icons">error</i>
+                    <h4 class="ml-3 modal-title">{% trans 'str_dashboard_confirmAction' %}</h4>
+                </span>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 pt-2">
+                            <div class="container"> 
+                                <h6 id="post_action_label" class="ml-1"></h6>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer mr-2 justify-content-end">                
+                <button id="send_newsletter_cancel" data-dismiss="modal" class="btn border-secondary" type="button">{% trans 'str_cancel' %}</button> 
+                <form id="post_action_frm"> 
+                    <button id="modal_post_action_confirm" type="submit"> </button> 
+                    <button id="send_newsletter_sending" class="btn btn-success px-3" style="display: none;">
+                        <div class="sp-pb spinner-grow spinner-grow-sm" role="status"><span class="sr-only"></span></div>
+                        {% trans 'str_sending' %}...
+                    </button> 
+                </form>
+                <div id="sending_newsletter_loadingProgressBar" style="display: none;" class="container px-0 py-2">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                    </div>
+                </div>  
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div id="toastForm" class="toast mr-2 mb-2 shadow" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="true" data-delay="3000" style="position: fixed; bottom: 0; right:0;  z-index:1111;">
+    <div id="msg_header" class="toast-header text-white">
+        <i id="msg_icon" class=""></i> 
+        <b id="msg_title" class="mr-auto">Title</b>
+        <button id="msg_hide" type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+    </div>
+    <div id="msg_txt" class="toast-body">Msg text</div>
+</div>
+
+
+<body class="sb-nav-fixed">
+    <div class="row" id="body-row" >
+        <div id="sidebar-container" class="sidebar-expanded d-none d-md-block"><!-- d-* hiddens the Sidebar in smaller devices. Its itens can be kept on the Navbar 'Menu' --> 
+            <ul class="list-group">
+                <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+                    <small> {% trans 'str_dashboard_QuickActions' %} </small>
+                </li>
+                <!-- /END Separator -->
+                <!-- Menu with submenu -->
+                <a href="#submenu1" data-toggle="collapse" aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <i class="material-icons md-18 mr-2">dashboard</i> 
+                        <span class="menu-collapsed"> {% trans 'str_Dashboard'  %} </span>
+                        <span class="submenu-icon ml-auto"></span>                    
+                    </div>
+                </a>
+                <!-- Submenu content -->
+                <div id='submenu1' class="collapse sidebar-submenu">
+                    
+                    <a href="{% url 'dashboard' %}" class="list-group-item list-group-item-action bg-dark text-white">
+                        <span class="menu-collapsed"> {% trans 'str_Home'  %} </span>
+                    </a>
+                    
+                    <a href="{% url 'post_new' %}" class="list-group-item list-group-item-action bg-dark text-white">
+                        <span class="menu-collapsed"> {% trans 'str_NewPost'  %} </span>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                        <span class="menu-collapsed"> {% trans 'str_dashboard_activity' %} </span>
+                    </a>
+                </div>
+                <a href="#submenu2" data-toggle="collapse" aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <i class="material-icons md-18 mr-2">person</i> 
+                        <span class="menu-collapsed"> {% trans 'str_dashboard_profile' %} </span>
+                        <span class="submenu-icon ml-auto"></span>
+                    </div>
+                </a>
+                <!-- Submenu content -->
+                <div id='submenu2' class="collapse sidebar-submenu">
+                    <a href="{% url 'settings' %}#account" class="list-group-item list-group-item-action bg-dark text-white">
+                        <span class="menu-collapsed"> {% trans 'str_dashboard_settings' %} </span> 
+                    </a>
+                    <a href="{% url 'settings' %}#password" class="list-group-item list-group-item-action bg-dark text-white">
+                        <span class="menu-collapsed"> {% trans 'str_pass' %} </span>
+                    </a>
+                </div>
+  
+                <!-- Separator with title -->
+                <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+                    <small> {% trans 'str_dashboard_Addons' %} </small>
+                </li>
+                <!-- /END Separator -->
+
+                <a href="{% url 'moderate' %}" class="bg-dark list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <i class="material-icons md-18 mr-2">fact_check</i> 
+                        <span class="menu-collapsed">{% trans 'str_moderatePosts' %}</span>
+                    </div>
+                </a>
+
+                <a href="{% url 'moderate_comments' %}" class="bg-dark list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <i class="material-icons md-18 mr-2">mark_chat_read</i> 
+                        <span class="menu-collapsed">{% trans 'str_dashboard_moderateComments' %}</span>
+                    </div>
+                </a>
+                
+                <!-- Separator without title -->
+                <li class="list-group-item sidebar-separator menu-collapsed"></li>            
+                <!-- /END Separator -->
+
+                <a href="#" class="bg-dark list-group-item list-group-item-action" data-toggle="modal" data-target="#helpModal">
+                    <div class="py-1 d-flex w-100 justify-content-start align-items-center">
+                        <i class="material-icons md-22 mr-2">help</i> 
+                        <span class="menu-collapsed"> {% trans 'str_dashboard_help' %} </span>                          
+                    </div>
+                </a>
+                <a href="#" data-toggle="sidebar-colapse" class="bg-dark list-group-item list-group-item-action d-flex align-items-center">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <span id="collapse-icon" class="fa fa-2x mr-3"></span>
+                        <span id="collapse-text" class="menu-collapsed"> {% trans 'str_dashboard_sidenavHide' %} </span>
+                    </div>
+                </a>
+                <!-- Logo -->
+                
+                <div class="last-sidebar-separator">
+                    
+                </div>
+                
+                <li class=" list-group-item logo-separator d-flex justify-content-center">
+                    <img src="{% static 'Blog/assets/img/isoK_squared.png' %}" width="50" height="50" alt="">
+                </li>
+            </ul><!-- List Group END-->
+        </div><!-- sidebar-container END -->
+        
+        <div class="col">
+            {% block dashboard %}
+            {% endblock %}
+                
+            <!-- Content imported from "user/signup.html" with the block of code "signup" -->
+            <div class="container">
+                {% block signup %}
+                {% endblock %}
+            </div>
+
+             <!-- Content imported from "user/new_category.html" with the block of code "new_category" -->
+             <div class="container">
+                {% block new_category %}
+                {% endblock %}
+            </div>
+
+            <!-- Content imported from "user/moderate" with the block of code "moderate" -->
+            <div>
+                {% block moderate_posts %}
+                {% endblock %}
+            </div>
+
+
+            <!-- Content imported from "user/moderate_comments" with the block of code "moderate_comments" -->
+            <div>
+                {% block moderate_comments %}
+                {% endblock %}
+            </div>
+            
+            <!-- Content imported from "user/post_list.html" with the block of code "post_list"  -->
+            <div>
+                {% block post_list %}
+                {% endblock %}
+            </div>
+            
+            <!-- Content imported from "user/post_edit.html" with the block of code "profile" -->
+            <div class="container">
+                {% block post_edit %}
+                {% endblock %}
+            </div>
+
+            <!-- Content imported from "user/profile.html" with the block of code "profile" -->
+            <div class="container">
+                {% block profile %}
+                {% endblock %}
+            </div>
+
+
+            <div class="container">
+                {% block settings %}
+                {% endblock %}
+            </div>
+
+    
+
+            <!-- Content imported from "user/calendar.html" with the block of code "calendar" -->
+            <div>{% block calendar %}{% endblock %}</div>
+
+             <!-- Content imported from "user/notifications.html" with the block of code "notifications" -->
+             <div>{% block notifications %}{% endblock %}</div>
+
+            <!-- Content imported from "user/tasks.html" with the block of code "tasks" -->
+            <div>{% block tasks %}{% endblock %}</div>
+
+        </div><!-- Main Col END -->
+    </div><!-- body-row END --> 
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script type="application/javascript" src="{% static 'js/bootstrap-select.js' %}"></script>
+<script type="application/javascript" src="{% static 'js/bootstrap-filestyle.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/sidenav.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/tagsinput.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/admin-front.js' %}"></script>
+<script src="https://kit.fontawesome.com/0b5e6aae1f.js" crossorigin="anonymous"></script>
+</body>
+
+
+<footer class="py-2 bg-dark">
+  <div class="container">
+
+    <div class="py-2 footer-copyright text-center">
+      ECAD {% now 'Y' %}
+      <div class="mt-3">
+        <a href="{% url 'index' %}" class="border rounded py-1 px-1"> <b> {% trans 'str_dashboard_goToPage' %} </b> </a>
+      </div>
+    </div>
+  </div> <!-- End container -->
+</footer>
+
+
+
+
+</html>

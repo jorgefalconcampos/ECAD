@@ -1,0 +1,296 @@
+.main-bg-header {
+    border-radius: 5px;
+    background-color: #E1E2E0;
+    margin: 5px 15px 5px 15px; }
+  
+  
+  .title-header{
+    font-weight: 700;
+    max-width: 800px;
+    overflow: hidden;
+    text-overflow: clip;
+  }
+  
+  
+  .subtitle-header{
+    font-weight: 600;
+  }
+  
+  
+  .date {
+    margin: 0em 0em 0em 0em;
+    font-size: 0.75em;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: left;
+    background-color: whitesmoke
+  }
+  
+  
+  
+  .comment{
+    border-radius: 10px;
+    border: 2px solid rgb(212, 212, 212);
+    p{
+      padding: 10px 0 0 0px;
+      font-weight: 600;
+      font-size: 14px;
+      span{
+        color: rgb(163, 163, 163);
+        font-size: 13px;
+      }
+  
+  
+  
+    }
+  
+    .comment-body{
+      border-bottom-left-radius: 8px 8px;
+      border-bottom-right-radius: 8px 8px;
+      margin-top: -5px;
+      padding: 5px 10px 1px 10px;
+      background-color: rgb(243, 243, 243);
+      p {
+        padding: 7px 0 0 0;
+        font-size: 15px;
+        font-weight: 500;
+      }
+    }
+  }
+  
+  .cmt{
+    border-radius: 10px;
+    border: 2px solid rgb(212, 212, 212);
+    // padding: 10px 15px 5px 15px;
+    padding-top: 10px;
+  
+    p{
+      padding: 10px 0 0 0px;
+      // font-weight: 600;
+      // font-size: 14px;
+      span{
+        // color: rgb(163, 163, 163);
+        font-size: 13px;
+      }
+    }
+  
+  
+    .cmt-body{
+      border-bottom-left-radius: 8px 8px;
+      border-bottom-right-radius: 8px 8px;
+      margin-top: 15px;
+      padding: 10px 20px 10px 20px;
+      font-size: 14px;
+  
+      background-color: rgb(243, 243, 243);
+      p {
+        padding: 7px 0 0 0;
+        font-weight: 500;
+      }
+    }
+  
+  
+  }
+  
+  // Img in the top of post's list (index)
+  .img-header{
+    border-radius: 2px;
+    width: 100%;
+    max-height: 300px;
+    -webkit-box-shadow: 3px 3px 13px -3px rgba(166,166,166,0.78);
+    -moz-box-shadow: 3px 3px 13px -3px rgba(166,166,166,0.78);
+    box-shadow: 3px 3px 13px -3px rgba(166,166,166,0.78);
+  }
+  
+  
+  
+  .author-d-profile {
+    border-radius: 5px;
+    background-color: rgba(75, 73, 73, 0.089);
+  }
+  .author-d-name { font-weight: 650;}
+  
+  
+  // Title in the look of post's list, not inside a particular post
+  .img-post{ max-height: 175px; }
+  
+  
+  .img-post-small{ max-height: 75px; }
+  .img-post-small-related{ max-height: 100px; }
+  
+  
+  .img-related{ max-height: 75px; }
+  
+  // Title in the look of post's list, not inside a particular post
+  .post-title{
+    font-weight: 650;
+    font-size: 140%;
+    // text-transform: uppercase;
+    *a{
+  
+     color: black;
+    }
+  }
+  
+  .post-subtitle{
+    font-weight: 510;
+    // color: red;
+  }
+  
+  .post-preview{
+    font-size: 13px;
+  }
+  
+  // Author in the look of post's list, not inside a particular post
+  .post-author{
+    font-size: 14px; }
+  
+  // Body of a post, inside a particular post
+  .post-body{
+    padding: 20px 0px 20px 0px;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  
+  // Author picture detail, inside a particular post
+  .author {
+    img {
+      -webkit-transition: box-shadow 0.1 ease;
+      -moz-transition: box-shadow 0.1s ease;
+      transition: box-shadow 0.1s ease;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 50%;
+      // width: 8em; height: 8em;
+      z-index: 999;
+      padding: 5px 5px 5px 5px;
+      &:hover { box-shadow: 0 0 0 3px $ecad-steel; }
+    }
+  }
+  
+  // Author info detail
+  .detailsAuthor{
+    margin: 0px 0px 0px 0px;
+    h5,h6 {
+      text-transform: uppercase;
+    }
+  }
+  
+  .highlight{
+    background-color: rgb(245, 245, 0);
+  }
+  
+  .social-circle li a {
+    display: inline-block;
+    position: relative;
+    margin: 0 auto 0 auto;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    font-size: 15px;
+  }
+  
+  // Image detail
+  .img-detail {
+    height: 300px;
+    width: 900px;
+    object-fit: cover;
+  }
+  
+  
+  
+  .post-category{
+    position: absolute;
+    top:1em;
+    background: $ecad-steel;
+    padding: 10px 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    // overflow-wrap: break-word;
+    max-width: 230px;
+    word-wrap: break-word;
+  }
+  
+  
+  .text-preview{
+    color: $ecad-light-gray !important;
+  }
+  
+  
+  
+  
+  .img-zoom{
+    overflow: hidden;
+  
+    img {
+      transition: transform .35s, filter 0.5s ease-in-out;
+      filter: grayscale(55%);
+    }
+  
+    img:hover {
+      filter: grayscale(0);
+      transform: scale(1.25);
+    }
+  
+  }
+  
+  
+  
+  .bottom {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+  
+  
+  
+  .footer-copyright{
+    color: $ecad-dark-gray;
+  }
+  
+  
+  
+  .misc-hero-title{
+    font-size: 4rem;
+  }
+  
+  
+  
+  .cookiealert {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    margin: 0 !important;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    border-radius: 0;
+    transform: translateY(100%);
+    transition: all 500ms ease-out;
+    color: #ecf0f1;
+    background: #111113d0;
+  }
+  
+  
+  .cookiealert.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0%);
+    transition-delay: 1000ms;
+  }
+  
+  .cookiealert a {
+    text-decoration: underline
+  }
+  
+  .cookiealert .acceptcookies {
+    margin-left: 10px;
+    vertical-align: baseline;
+  }
+  

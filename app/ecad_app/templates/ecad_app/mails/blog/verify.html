@@ -1,0 +1,260 @@
+{% load static %}
+{% load i18n %}
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% if action == 'confirmed' %}
+  <title>{% trans 'str_confirmEmail_success' %}</title>
+  {% endif %}
+  {% if action == 'already_confirmed' %}
+  <title>{% trans 'str_confirmEmail_alreadyConfirmed' %}</title>
+  {% endif %}
+  {% if action == 'denied' %}
+  <title>{% trans 'str_confirmEmail_error' %}</title>
+  {% endif %}
+  {% if action == 'deleted' %}
+  <title>{% trans 'str_confirmEmail_byebye' %}</title>
+  {% endif %}
+  {% if action == 'already_deleted' %}
+  <title>{% trans 'str_confirmEmail_notFound' %}</title>
+  {% endif %}
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">  
+  <link rel="stylesheet" href="{% static 'css/bootstrap-select.css' %}">  
+  <link rel="shortcut icon" type="image/png" href="{% static 'favicon/ecad.ico' %}"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+
+<body>
+
+{% if action == 'confirmed' %}
+<div class="mx-4 py-4 mt-3">
+    <div class="card shadow border-success rounded">
+        <div class="row mx-3 my-5">
+            <div class="col-lg-7 text-center">
+                <div class="alert alert-success">
+                    <h2 class="font-weight-bold">{% trans 'str_confirmEmail_confirmed'%} 👏</h2> 
+                </div>                
+                <div class="py-3">
+                    <div class="row">
+                        <div class="col">
+                            <div class="center py-5 h4">{% trans 'str_confirmEmail_msg1' %} <b>{{email}}</b> {% trans 'str_confirmEmail_msg2' %} 🎉🎉🎉</div>
+                            <div class="mt-5 center h5">{% trans 'str_readLatestHistories' %}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-1 pb-5  justify-content-center">
+                    <a href="{% url 'index' %}" class="py-1 my-1 btn btn-primary btn-lg">{% trans 'str_goHome' %}</a>
+                </div>
+            </div>   
+            <div class="col-lg-5 text-center mt-3">                
+                <img class="" src="{% static 'img/clip-done.png' %}" width="340px">
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+{% if action == 'already_confirmed' %}
+<div class="mx-4 py-4 mt-3">
+    <div class="card shadow border-success rounded">
+        <div class="row mx-3 my-5">
+            <div class="col-lg-7 text-center">
+                <div class="alert alert-success">
+                    <h2 class="font-weight-bold">{% trans 'str_confirmEmail_alreadyConfirmed'%} </h2> 
+                </div>                
+                <div class="py-3">
+                    <div class="row">
+                        <div class="col">
+                            <div class="center py-5 h4">{% trans 'str_confirmEmail_already_msg1' %} <b>{{email}}</b> {% trans 'str_confirmEmail_already_msg2' %} 😉</div>
+                            <div class="mt-5 center h5">{% trans 'str_readLatestHistories' %}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-1 pb-5  justify-content-center">
+                    <a href="{% url 'index' %}" class="py-1 my-1 btn btn-primary btn-lg">{% trans 'str_goHome' %}</a>
+                </div>
+            </div>   
+            <div class="col-lg-5 text-center mt-3">                
+                <img class="" src="{% static 'img/clip-done.png' %}" width="340px">
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+{% if action == 'denied'%}
+<div class="mx-4 py-4 mt-3">
+    <div class="card shadow border-danger rounded">
+        <div class="row mx-3 my-5">
+            <div class="col-lg-7 text-center">
+                <div class="alert alert-danger">
+                    <h2 class="font-weight-bold"> {% trans 'str_confirmEmail_unexpected' %} ... 😵 </h2> 
+                </div>                
+                <div class="py-3">
+                    <div class="row">
+                        <div class="col">
+                            <div class="center py-5 h4">
+                                {% trans 'str_confirmEmail_errorTryn2Confirm' %} <b> juanito@ee.com </b>
+                                <h6 class="mt-3">{% trans 'str_confirmEmail_tryAgain' %}</h6>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="mt-3 center h5">
+
+                               <!-- <div class="mx-0 mx-sm-4 mx-md-4 mx-lg-5 px-0 px-sm-4 px-sm-4 px-lg-5">
+                                   <form id="subscribe_frm" method="POST" class="form-group">
+                                    {% csrf_token %}
+                                    <h5 id="subscribe_success" style="display:none" class="my-3 h5 font-weight-bold text-success"> <i class="fas fa-check mr-2"></i>Listo, enviamos un mensaje a tu email para que verifiques tu suscripción</h5> 
+                                    <h5 id="subscribe_error" style="display: none;" class="my-3 h5 font-weight-bold text-danger"> <i class="fas fa-exclamation-circle mr-1"></i>Ocurrió un error al enviar el email, intenta de nuevo más tarde</h5>
+                                    <h5 id="subscribe_already_error" style="display: none;" class="my-3 h5 font-weight-bold text-danger"> <i class="fas fa-exclamation-circle mr-1"></i>Parece que este email ya está registrado en el newsletter</h5>
+                                    <div class="bg-gray-500 input-group p-2 rounded align-items-center">
+                                      {{subscribeForm.s_email}}
+                                      <div class="input-group-append">
+                                        <button class="btn btn-light" type="submit" aria-label="Suscríbete al newsletter">
+                                          <div id="subscribe_sending" class="sp-pb-bgr spinner-grow spinner-grow-sm" style="display: none;" role="status"><span class="sr-only"></span></div>
+                                          <i id="subscribe_send" class="fas fa-paper-plane"></i>
+                                        </button>
+                                      </div>
+                                    </div>
+                                  </form>
+                               </div> -->
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="pt-1 pb-5  justify-content-center">
+                    <a href="{% url 'index' %}" class="py-1 my-1 btn btn-dark btn-lg"> Ir a inicio </a>
+                </div> -->
+            </div>   
+            <div class="col-lg-5 text-center mt-3">                
+                <img class="" src="{% static 'img/clip-ohno.png' %}" width="340px">
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% if action == 'deleted' %}
+<div class="mx-4 py-4 mt-3">
+    <div class="card shadow border-dark rounded">
+        <div class="row mx-3 my-5">
+            <div class="col-lg-7 text-center">
+                <div class="alert alert-dark">
+                    <h2 class="font-weight-bold"> {% trans 'str_confirmEmail_comeBackSoon' %} </h2> 
+                </div>                
+                <div class="py-3">
+                    <div class="row">
+                        <div class="col">
+                            <div class="center py-5 h4">
+                                {% trans 'str_yourEmail' %} <b> {{email}} </b> {% trans 'str_confirmEmail_outNewsletter' %}
+                            </div>
+                            <div class="mt-3 center h5">
+
+                                <p>{% trans 'str_confirmEmail_subscribeAgain' %}:</p>
+                                    <div class="mx-0 mx-sm-4 mx-md-4 mx-lg-5 px-0 px-sm-4 px-sm-4 px-lg-5">
+                                   <form id="subscribe_frm" method="POST" class="form-group">
+                                    {% csrf_token %}
+                                    <h5 id="subscribe_success" style="display:none" class="my-3 h5 font-weight-bold text-success"> <i class="fas fa-check mr-2"></i>Listo, enviamos un mensaje a tu email para que verifiques tu suscripción</h5> 
+                                    <h5 id="subscribe_error" style="display: none;" class="my-3 h5 font-weight-bold text-danger"> <i class="fas fa-exclamation-circle mr-1"></i>Ocurrió un error al enviar el email, intenta de nuevo más tarde</h5>
+                                    <h5 id="subscribe_already_error" style="display: none;" class="my-3 h5 font-weight-bold text-danger"> <i class="fas fa-exclamation-circle mr-1"></i>Parece que este email ya está registrado en el newsletter</h5>
+                                    <div class="bg-gray-500 input-group p-2 rounded align-items-center">
+                                      {{subscribeForm.s_email}}
+                                      <div class="input-group-append">
+                                        <button class="btn btn-light" type="submit" aria-label="Suscríbete al newsletter">
+                                          <div id="subscribe_sending" class="sp-pb-bgr spinner-grow spinner-grow-sm" style="display: none;" role="status"><span class="sr-only"></span></div>
+                                          <i id="subscribe_send" class="fas fa-paper-plane"></i>
+                                        </button>
+                                      </div>
+                                    </div>
+                                  </form>
+                               </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-4 pb-5  justify-content-center">
+                    <a href="{% url 'index' %}" class="py-1 my-1 btn btn-dark btn-lg">{% trans 'str_goHome' %}</a>
+                </div>
+            </div>   
+            <div class="col-lg-5 text-center mt-3">                
+                <img class="" src="{% static 'img/clip-unsubscribed.png' %}" width="340px">
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% if action == 'already_deleted'%}
+<div class="mx-4 py-4 mt-3">
+    <div class="card shadow border-danger rounded">
+        <div class="row mx-3 my-5">
+            <div class="col-lg-7 text-center">
+                <div class="alert alert-danger">
+                    <h2 class="font-weight-bold">{% trans 'str_confirmEmail_notFoundGivenEmail' %}</h2> 
+                </div>                
+                <div class="py-3">
+                    <div class="row">
+                        <div class="col">
+                            <div class="center py-5 h4">
+                                {% trans 'str_confirmEmail_alreadyDeleted' %}
+                            </div>
+                            <div>
+                            </div>
+                            <div class="mt-3 center h5">
+                                <p>{% trans 'str_confirmEmail_subscribeAgain' %}:</p>
+
+                               <div class="mx-0 mx-sm-4 mx-md-4 mx-lg-5 px-0 px-sm-4 px-sm-4 px-lg-5">
+                                   <form id="subscribe_frm" method="POST" class="form-group">
+                                    {% csrf_token %}
+                                    <h5 id="subscribe_success" style="display:none" class="my-3 h5 font-weight-bold text-success"> <i class="fas fa-check mr-2"></i>Listo, enviamos un mensaje a tu email para que verifiques tu suscripción</h5> 
+                                    <h5 id="subscribe_error" style="display: none;" class="my-3 h5 font-weight-bold text-danger"> <i class="fas fa-exclamation-circle mr-1"></i>Ocurrió un error al enviar el email, intenta de nuevo más tarde</h5>
+                                    <h5 id="subscribe_already_error" style="display: none;" class="my-3 h5 font-weight-bold text-danger"> <i class="fas fa-exclamation-circle mr-1"></i>Parece que este email ya está registrado en el newsletter</h5>
+                                    <div class="bg-gray-500 input-group p-2 rounded align-items-center">
+                                      {{subscribeForm.s_email}}
+                                      <div class="input-group-append">
+                                        <button class="btn btn-light" type="submit" aria-label="Suscríbete al newsletter">
+                                          <div id="subscribe_sending" class="sp-pb-bgr spinner-grow spinner-grow-sm" style="display: none;" role="status"><span class="sr-only"></span></div>
+                                          <i id="subscribe_send" class="fas fa-paper-plane"></i>
+                                        </button>
+                                      </div>
+                                    </div>
+                                  </form>
+                               </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             
+            </div>   
+            <div class="col-lg-5 text-center mt-3">                
+                <img class="" src="{% static 'img/clip-not-found.png' %}" width="340px">
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+</body>
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/0b5e6aae1f.js" crossorigin="anonymous"></script>
+
+
+</html>

@@ -1,0 +1,137 @@
+{% extends 'ecad_app/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %} 
+
+
+
+{% block title %} {{author.name.get_full_name}} | ECAD {% endblock %}
+
+
+
+{% block author_detail %}
+
+<div class="container">
+    <div class="mt-3 py-5">
+        <div class="card col-lg-12">
+        
+            <div class="card-header grad-6 my-3">
+                <div class="container">
+                    <div class="row my-3 mx-1 text-center text-lg-left">
+        
+                        <div class="col-lg-3 py-2 author-d-profile" >
+                            <div class="row text-center">
+                                <div class="col py-1">
+                                    <img class="mt-2 rounded-circle" src="{{ author.image.url }}" width="165" height="165">
+                                </div>   
+                            </div>  
+                            <div class="row py-2 d-flex justify-content-center">
+                                <ul class="list-inline mb-0 pb-0">
+                                    {% if author.email%}
+                                    <li class="list-inline-item">
+                                        <a href="mailto:{{author.email}}" target="_blank"> <i class="fas fa-envelope fa-2x"></i> </a>
+                                    </li>
+                                    {% endif %}
+                                    
+                                    {% if author.facebook_URL%}
+                                    <li class="list-inline-item">
+                                        <a href="{{author.facebook_URL}}" target="_blank" class="mr-2"> <i class="fab fa-facebook-square fa-2x"></i> </a>
+                                    </li>
+                                    {% endif %}
+                                    
+                                    {% if author.twitter_URL%}
+                                    <li class="list-inline-item">
+                                        <a href="{{author.twitter_URL}}" target="_blank" class="mr-2"> <i class="fab fa-twitter-square fa-2x"></i> </a>
+                                    </li>
+                                    {% endif %}
+                                    
+                                    {% if author.linkedin_URL%}
+                                    <li class="list-inline-item">
+                                        <a href="{{author.linkedin_URL}}" target="_blank"> <i class="fab fa-linkedin fa-2x"></i> </a>
+                                    </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                    
+                        <div class="col-lg-9 mt-4 mt-lg-3">
+                            <div class="ml-0 ml-lg-3">
+                                <h3 class="author-d-name text-uppercase"> {{ author.name.get_full_name }} </h3>
+                                <h4 class="text-uppercase"> {{ author.title }}  </h4>
+                                <h6 class="mt-3 mx-3 mx-lg-0 mr-0 mr-lg-4 "> {{ author.bio }} </h6>
+                            </div>
+                        </div>
+        
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body">
+                {% if post_list %}
+
+                <h3 class="text-center text-lg-left py-5"> {% trans 'str_author_detail_AllPostsBy' %}&nbsp<b style="word-wrap:initial;">{{ author.name.get_full_name }}:</b></h3>
+                   
+                <div class="row my-3">  
+                    {% for post in post_list %}
+                    <div class="col-md-4 my-4">
+                        <div class="card h-100 detail">
+                            <div class="img-post img-zoom">    
+                                <a href="{% url 'post_detail' post.category post.slug %}">
+                                    <img class="card-img-top" src="{{ post.image.url }}" alt="{{ post.title }}">
+                                </a>
+                            </div>
+
+                            <div class="post-category p-3">
+                                <a href="{% url 'categories_detail' post.category.slug %}" class="stretched-link reset-anchor-inherit">
+                                    {{post.category|truncatechars:20}}
+                                </a>
+                            </div>
+                
+                            <div class="card-body">
+                                <h5 class="post-title"><a href=" {% url 'post_detail' post.category post.slug %} "> {{ post.title }} </a></h5>         
+                                <h6 class="mt-3 mb-3"> {{ post.subtitle }} </h6>
+                                <hr>
+                                <div style="max-height: 200px;">
+                                    <p class="card-text">{{ post.post_body|safe|truncatewords:25 }}</p>
+                                </div> 
+                            </div>
+                            <div class="card-footer">
+                                <p class="mt-1 mb-1 card-subtitle text-muted "> {% trans 'str_publishedDate' %}: {{ post.published_date }} </p>
+                            </div>
+                        </div> 
+                    </div>  
+                    {% endfor %}
+                </div>
+        
+                {% else %}
+                    <h3 class="text-center text-lg-left py-5"> {% trans 'str_author_NoPostsYet' %} </h3>
+                {% endif %}
+        
+            </div>
+        
+        </div>
+    </div>
+</div>
+
+{% if post_list %}
+<div class="col d-flex justify-content-center">
+    <div class="pt-2 mb-5">
+        {% if post_list.has_other_pages %}
+        <ul class="pagination pagination-lg justify-content-center">
+            {% if post_list.has_previous %}
+            <li><a href="?page={{ post_list.previous_page_number }}" class="page-link">&laquo; ANTERIOR</a></li>
+            {% endif %}
+            {% if post_list.has_next %}
+            <li><a href="?page={{ post_list.next_page_number }}" class="page-link">SIGUIENTE &raquo;</a></li>
+            {% endif %}
+        </ul>
+        {% endif %}
+        <span class="row d-flex- justify-content-center lead text-muted"> {% trans 'str_page' %} {{ post_list.number }} {% trans 'str_of' %} {{ post_list.paginator.num_pages }}</span>
+    </div>
+</div>
+{% endif %}
+
+
+
+
+{% endblock %}

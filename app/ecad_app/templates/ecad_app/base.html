@@ -1,0 +1,269 @@
+
+{% load i18n %}
+{% load crispy_forms_tags %} 
+{% get_current_language as LANGUAGE_CODE %}
+
+
+<!doctype html>
+<html lang="{{LANGUAGE_CODE}}" prefix="og: http://ogp.me/ns#">
+{% load pwa %}
+{% load static %}
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{% trans 'str_metaDescription' %}">
+  <meta name="theme-color" content="#009CEE"/>
+  <meta property="og:locale" content="{{LANGUAGE_CODE}}">
+  <meta property="og:type" content="{% block og_type %}{% endblock %}">
+  <meta property="og:site_name" content="ECAD">
+  <meta property="og:url" content="{% block og_url %}{% endblock %}">
+  <meta property="og:title" content="{% block og_title %}{% endblock %}">
+  <meta property="og:description" content="{% block og_desc %}{% endblock %}">
+  <meta property="og:image" content="{% block og_image %}{% endblock %}">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="720">
+  <meta property="og:image:alt" content="{% block og_image_alt %}{% endblock %}">
+  <title>{% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap-select.css' %}">  
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="shortcut icon" href="{% static 'favicon/ecad.ico' %}"/>
+  <!-- <link rel="apple-touch-icon" href="{% static 'img/r-icon-apple.png' %}"> -->
+  {% progressive_web_app_meta %}
+  <link rel="manifest" href="{% static 'manifest.json' %}">
+</head>
+
+
+<body>
+  <header>
+  {% include 'ecad_app/base_nav.html' %}
+  </header>
+  
+
+  <!-- Content imported from "index.html" with the block of code "show_posts" -->
+   <div class="container"> 
+    {% block show_posts %} 
+    {% endblock %} 
+  </div>
+
+  <div class="container" id="offlinedata">
+  <!-- the news will get displayed here from indexedDB in offline mode -->
+  </div>
+
+
+  <!-- Content imported from "about.html" with the block of code "about" -->
+  {% block about %}
+  {% endblock %}
+  
+  
+  <!-- Content imported from "about.html" with the block of code "about" -->
+  {% block search %}
+  {% endblock %}
+
+
+  <!-- Content imported from "authors.html" with the block of code "authors" --> 
+  {% block authors %}
+  {% endblock %}
+
+
+  <!-- Content imported from "author_detail.html" with the block of code "author_detail" -->
+  {% block author_detail %}
+  {% endblock %}
+
+         
+  <!-- Content imported from "post_detail.html" with the block of code "post_content" -->
+  {% block post_content %}
+  {% endblock %}
+
+  
+  <!-- Content imported from "tags.html" with the block of code "tags" -->
+  {% block tags %}
+  {% endblock %}
+
+
+  <!-- Content imported from "tag_detail.html" with the block of code "tag_detail" -->
+  {% block tag_detail %}
+  {% endblock %}
+
+
+  <!-- Content imported from "categories.html" with the block of code "categories" -->  
+  {% block categories %}
+  {% endblock %}
+  
+
+  <!-- Content imported from "tag_detail.html" with the block of code "categories_detail" -->
+  {% block categories_detail %}
+  {% endblock %}
+
+
+  <!-- Content imported from "400.html" with the block of code "bad_request" -->
+  {% block bad_request %}
+  {% endblock %}
+  
+  <!-- Content imported from "403.html" with the block of code "perm_denied" -->
+  {% block perm_denied %}
+  {% endblock %}
+  
+  <!-- Content imported from "404.html" with the block of code "page_not_found" -->
+  {% block page_not_found %}
+  {% endblock %}
+  
+  <!-- Content imported from "500.html" with the block of code "internal_error" -->
+  {% block internal_error %}
+  {% endblock %}
+  
+
+
+  <div class="alert text-center cookiealert h6" role="alert">
+    <b>{% trans 'str_CookiesTitle' %}</b> &#x1F36A; {% trans 'str_CookiesExplanaition' %} <a href="" target="_blank"> {% trans 'str_CookiesPolicy' %}</a>.
+    <button type="button" class="btn btn-primary btn-sm acceptcookies my-1 my-sm-1 my-md-1 my-md-1 my-xl-1 ">{% trans 'str_accept' %}</button>
+  </div>
+
+
+  <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header px-lg-5">
+          <h5 class="modal-title" id="contact_Label">{% trans 'str_ContactWithUs' %} <b>ECAD</b></h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        </div>
+        <div class="modal-body px-lg-5">
+          <form id="contact_frm" method="POST">
+            {% csrf_token %}
+            <div class="row">
+              <div class="form-group col-lg-6">
+                <label for="contact_fullName">{{contactForm.name.label}}</label>
+                <!-- <span class="small h6 font-weight-bold text-danger float-right mr-1"> <i class="fas fa-exclamation-circle"></i> Este campo es obligatorio</span> -->
+                {{contactForm.name}}
+              </div>
+              
+              <div class="form-group col-lg-6">
+                <label for="contact_email">{{contactForm.email.label}}</label>
+                {{contactForm.email}}
+              </div>
+              
+              <div class="form-group col-lg-12">
+                <label for="contact_subject">{{contactForm.subject.label}}</label>
+                {{contactForm.subject}}
+              </div>
+              
+              <div class="form-group col-lg-12">
+                <label for="contact_message">{{contactForm.msg.label}}</label>
+                {{contactForm.msg}}
+              </div>
+              
+              <div class="form-group col">
+                <div id="recaptcha_ctct" class="g-recaptcha"></div>
+                <p id="ctct_form_errorCaptcha" style="display: none;" class="ml-1 mt-2 small h6 font-weight-bold text-danger"> <i class="fas fa-exclamation-circle"></i> Captcha incorrecto, intenta de nuevo</p>
+              </div>
+            </div>
+            
+            <div class="modal-footer justify-content-end px-sm-0 px-md-0 px-lg-0">
+              <p id="ctct_form_success" style="display:none" class="mt-2 mr-2 small h6 font-weight-bold text-success"> <i class="fas fa-check mr-1"></i>{% trans 'str_msgSent' %}</p>
+              <p id="ctct_form_error" style="display:none" class="mt-2 mr-2 small h6 font-weight-bold text-danger"> <i class="fas fa-exclamation-circle mr-1"></i>Ocurrió un error al enviar el mensaje</p>
+              <button class="btn btn-outline-secondary" type="button" data-dismiss="modal">{% trans 'str_cancel' %}</button>
+              <button id="ctct_form_send" type="submit" class="btn btn-primary">{% trans 'str_send' %}</button>
+              <button id="contact_frm_sending" class="btn btn-primary px-3" style="display: none;">
+                <div class="sp-pb spinner-grow spinner-grow-sm" role="status"><span class="sr-only"></span></div>
+                {% trans 'str_sending' %}...
+              </button> 
+            </div>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/0b5e6aae1f.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+  <script type="application/javascript" src="{% static 'js/bootstrap-select.js' %}"></script>
+  <script src="https://www.google.com/recaptcha/api.js?onload=CaptchaCallback&render=explicit" async defer></script>
+  <script type="application/javascript" src="{% static 'js/pwa/idb.js' %}"></script>
+  <script type="application/javascript" src="{% static 'js/pwa/idbop.js' %}"></script>
+  <script type="application/javascript" src="{% static 'js/front.js' %}"></script>
+  <script>$(window).on('load',function(){$('[data-toggle="tooltip"]').tooltip();});</script>
+  <!-- <script type="application/javascript" src="{% static 'js/cookies.js' %}"></script> -->
+</body>
+
+
+
+
+
+
+<footer class="pt-3 bg-gray-900">
+  <div class="container">
+    <div class="row d-flex my-4 py-2 justify-content-between">
+      <div class="col-12 col-md-3 col-lg-4 d-flex align-items-center text-center">
+        <div class="footer-logo mx-auto mx-lg-0 mb-4 mb-md-0 mb-lg-0">
+          <img src="{% static 'img/ecad-footer.png' %}" alt="ECAD logo" width="200" class="img-fluid">
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-5 text-white text-center my-auto">     
+        <div class="col mx-auto">
+          <form id="subscribe_frm" method="POST" class="form-group">
+            {% csrf_token %}
+            <label class="h4 pt-2 font-weight-bold" for="sub_email">{{subscribeForm.s_email.label}}</label>
+            <p class="small">{% trans 'str_subNewsletter_explanaition' %}</p>
+            <h5 id="subscribe_success" style="display:none" class="my-3 h5 font-weight-bold text-success"> <i class="fas fa-check mr-2"></i>{% trans 'str_subNewsletter_done' %}</h5> 
+            <h5 id="subscribe_error" style="display: none;" class="my-3 h5 font-weight-bold text-danger"> <i class="fas fa-exclamation-circle mr-1"></i>{% trans 'str_subNewsletter_error' %}</h5>
+            <h5 id="subscribe_already_error" style="display: none;" class="my-3 h5 font-weight-bold text-danger"> <i class="fas fa-exclamation-circle mr-1"></i>{% trans 'str_subNewsletter_emailAlreadyInUse' %}</h5>
+
+            <div class="input-group pt-2 align-items-center px-1">
+              {{subscribeForm.s_email}}
+              <div class="input-group-append">
+                <button class="btn btn-light" type="submit" aria-label="{% trans 'str_subNewsletter_title' %}">
+                  <div id="subscribe_sending" class="sp-pb-bgr spinner-grow spinner-grow-sm" style="display: none;" role="status"><span class="sr-only"></span></div>
+                  <i id="subscribe_send" class="fas fa-paper-plane"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <hr class="mb-lg-3 mb-md-3 mb-sm-4">  
+
+    <div class="row px-3 py-2 d-flex justify-content-center justify-content-md-between justify-content-lg-between align-items-center text-white">
+      <div class="text-center">
+        <a class="h6 small mx-1" href="{% url 'rules' %}">{% trans 'str_ServiceTerms' %}</a> |
+        <a class="h6 small ml-1" href="{% url 'login' %}">{% trans 'str_StaffAuthors' %}</a>
+      </div>
+       
+       <div class="py-3 mt-2 mt-md-0 mt-lg-0 d-flex d-inline">
+        <label class="lead mr-3" for="changeLang">{% trans 'str_language' %}:</label>
+        
+        <form action="{% url 'set_language' %}" method="post">
+          {% csrf_token %}
+          <input name="next" type="hidden" value="{{ request.get_full_path }}"/>
+          <select name="language" class="selectpicker" data-style=" btn-light bg-white px-2 mr-1" data-width="fit" id="changeLang" style="max-width: 110px; height: 30px;" onchange="this.form.submit()">
+            {% get_language_info_list for LANGUAGES as languages %}
+            {% for language in languages %}
+            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>
+              {{ language.name_local }} ({{ language.code }})
+            </option>
+            {% endfor %}
+          </select>
+        </form>  
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-gray-1000 footer-copyright text-center text-white-secondary pt-3 pb-2">
+    ECAD {% now 'Y' %}
+    <div class="my-2"> &#60 / &#62 {% trans 'str_with' %} ❤️ {% trans 'str_in' %} <b>IPN</b></div>
+  </div>
+</footer>
+
+
+
+
+</html>

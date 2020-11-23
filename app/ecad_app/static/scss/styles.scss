@@ -1,0 +1,19 @@
+// Este será el archivo principal que va a importar a los otros archivos SCSS y será la unión principal entre ellos.
+
+// Con este archivo como input, el pre-procesador de SASS va a buscar a través de los imports (y gracias a la ayuda de los packages de NPM) 
+// va a buscar las configuraciones, relaciones entre archivos y estilos necesarios para generar un único archivo como output, este archivo único 
+// de salida se llamará igual que este: "styles", pero no con extensión SCSS, si no con extensión CSS para poder ser leído por el navegador
+
+@import "variables";
+
+@import "listings-style";
+
+//Global styles, para ambas admin & blog pages
+@import "global";
+
+// Admin styles
+@import './admin/admin-styles';
+
+// Blog styles
+@import './blog/blog-styles'
+

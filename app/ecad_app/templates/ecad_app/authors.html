@@ -1,0 +1,94 @@
+{% extends 'ecad_app/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %} 
+
+
+
+{% block title %} Autores | ECAD{% endblock %}
+
+
+
+{% block authors %}
+
+<div class="container">
+    <div class="mt-3 py-5">
+        <div class="card col-lg-12">
+            <div class="card-body px-2">
+                <div class="mx-0 mx-sm-2 mx-lg-3">
+                    <div class="row d-flex justify-content-center justify-content-md-start justify-content-lg-start">
+                        <div class="col text-center text-lg-left my-5">
+                            <div class="row d-flex justify-content-center justify-content-lg-between">
+                                <div class="col-12 col-lg-8">
+                                    <h3 class="font-weight-bold text-uppercase">Gracias a ellos, este blog<b> es posible</b> </h1> 
+                                </div>    
+                                {% if request.user.is_superuser %}
+                                <div class="col-12 col-lg-4 text-center mt-4 mt-lg-0">
+                                    <a href="{% url 'signup' %}" class="float-lg-right"> <span> <button type="button" class="btn btn-dark"> <i class="material-icons align-top">add_box</i> {% trans 'str_newAuthor' %} </button> </span></a> 
+                                </div>
+                                {% endif %}
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row justify-content-center align-items-center">
+                    {% for item in authors_list %}
+                    <div class="col-6 col-md-4 col-lg-4 py-3 ">
+                        {% for k, v in item.items %}
+                        <div class="author-list text-center">
+                            {% if k == 'author' %}
+                            <div class="row justify-content-center align-items-center">
+                                <a href="{% url 'author_detail' v.slug %}"> 
+                                    <img class="d-none d-sm-block rounded-circle" src="{{ v.image.url }}" width="155" height="155">
+                                    <img class="d-block d-sm-none rounded-circle" src="{{ v.image.url }}" width="100" height="100">
+                                </a>
+                            </div>
+                            <div class="row mt-2 py-2">
+                                <div class="col">
+                                    <h4> <a href=" {% url 'author_detail' v.slug %} "> {{ v.name.get_full_name }} </a> </h4>
+                                    <h5> {{ v.title }} </h5>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% if k == 'posts' %}
+                            <div class="row">
+                                <div class="col">
+                                    {% if v %}
+                                    <h6> {% trans 'str_author_PublishedPosts' %}: {{ v }} </h6>
+                                    {% else %}
+                                    <h6> {% trans 'str_author_NoPostsYet' %} </h6>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>                      
+                        {% endfor %}
+                    </div>
+                    {% endfor %}
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col d-flex justify-content-center">
+    <div class="pt-2 pb-5 mb-5">
+        {% if authors_list.has_other_pages %}
+        <ul class="pagination pagination-lg justify-content-center">
+            {% if authors_list.has_previous %}
+            <li><a href="?page={{ post_list.previous_page_number }}" class="page-link">&laquo; ANTERIOR</a></li>
+            {% endif %}
+            {% if authors_list.has_next %}
+            <li><a href="?page={{ authors_list.next_page_number }}" class="page-link">SIGUIENTE &raquo;</a></li>
+            {% endif %}
+        </ul>
+        {% endif %}
+        <span class="row d-flex- justify-content-center lead text-muted"> {% trans 'str_page' %} {{ authors_list.number }} {% trans 'str_of' %} {{ authors_list.paginator.num_pages }}</span>
+    </div>
+</div>
+
+{% endblock %}

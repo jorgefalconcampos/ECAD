@@ -13,6 +13,8 @@ __pycache__
 #Docker
 docker-compose.prod.yml
 docker-compose.yml
+Dockerfile
+Dockerfile.prod
 
 
 # Virtual Env
@@ -32,3 +34,7 @@ db.sqlite3
 .vscode
 .idea
 nginx/
+entrypoint.prod.sh
+entrypoint.sh
+staticfiles/
+migrations/

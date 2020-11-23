@@ -1,0 +1,116 @@
+{% extends 'ecad_app/user/base.html' %}
+{% load static %}
+{% load i18n %}
+
+
+{% block moderate_posts %}
+
+
+
+
+<div class="container-fluid">
+    <h1 class="mt-4">{% trans 'str_moderatePosts' %}</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active"> 
+            <a href="{% url 'dashboard' %}"> {% trans 'str_dashboard' %}</a>&nbsp/&nbsp{% trans 'str_moderatePosts' %} 
+        </li>
+    </ol>
+
+    <section>
+        {% if post_list %}
+        <div class="table-responsive">
+            <table class="table table-bordered bg-gray-100" id="dataTable" width="100%" cellspacing="0">
+                <thead class="bg-dark text-white">
+                    <tr class="text-center">
+                        <!-- <th><i class="material-icons align-middle md-22">fact_check</i></th> -->
+                        <th>{% trans 'str_dashboard_tableTitle_postDetail' %}</th>
+                        <th>{% trans 'str_dashboard_tableTitle_postTitle' %}</th>
+                        <th>{% trans 'str_dashboard_tableTitle_postImage' %}</th>
+                        <th>{% trans 'str_createdDate' %}</th>
+                        <th>{% trans 'str_dashboard_tableTitle_postActions' %}</th>
+                    </tr>
+                </thead>
+                {% if all_post_list >= 10 %}
+                <tfoot class="bg-dark text-white">
+                    <th>{% trans 'str_dashboard_tableTitle_postDetail' %}</th>
+                    <th>{% trans 'str_dashboard_tableTitle_postTitle' %}</th>
+                    <th>{% trans 'str_dashboard_tableTitle_postImage' %}</th>
+                    <th>{% trans 'str_createdDate' %}</th>
+                    <th>{% trans 'str_dashboard_tableTitle_postActions' %}</th>
+                </tfoot>
+                {% endif %}
+                <tbody>
+                    {% for post in post_list %}
+                    
+                    <tr id="{{post.pk}}">
+                        <td class="text-center"> <a href="{% url 'post_detail' post.category post.slug %}" target="_blank"> <i class="material-icons align-top md-inactive">open_in_new</i> </a> </td>
+                        <td style="max-width: 350px;"> {{ post.title }} </td>
+                        <td class="text-center"> 
+                            <div data-toggle="tooltip" data-html="true" data-placement='bottom' title="{{ post.image.url}}">
+                                <a href="{{ post.image.url }}" target="_blank"> <i class="material-icons align-top md-inactive">image</i> </a> 
+                            </div>
+                        </td>
+                        <td class="text-center">{{ post.created_date }}</td>
+                        <td class="text-center">
+                            <button id="approveBtn_in_moderate_{{post.pk}}" class="btn btn-sm btn-outline-success mx-1" type="button" data-postid="{{post.pk}}" data-posttitle="{{post.title}}" data-toggle="modal" data-target="#postActionsModal">
+                                <i class="material-icons align-top">check</i>                                 
+                            </button>
+
+                            <div class="py-2">
+                                <button id="approveSendNewsletter_Btn_in_moderate_{{post.pk}}" class="btn btn-sm btn-outline-success px-1" type="button" data-postid="{{post.pk}}" data-posttitle="{{post.title}}" data-toggle="modal" data-target="#postActionsModal">
+                                    <i class="material-icons align-top">check</i> <sup><i class="small material-icons align-middle md-18">email</i></sup>
+                                </button>
+                            </div>
+
+                            <button id="rejectBtn_in_moderate_{{post.pk}}" class="btn btn-sm btn-outline-danger mx-1" type="button" data-postid="{{post.pk}}" data-posttitle="{{post.title}}" data-toggle="modal" data-target="#postActionsModal">
+                                <i class="material-icons align-top">close</i>                                 
+                            </button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>              
+        
+        {% else %}
+        <div class="container mt-1 py-lg-2">
+            <h3 class="mt-5 text-center">{% trans 'str_itSeems_anyArticle' %}</h3>            
+            <div class="row d-flex justify-content-center py-1 py-sm-5 py-md-3 py-lg-1">
+                <div class="col-lg-xs-12 col-lg-sm-12 col-lg-md-8 col-lg-5 col-lg-xl-6">
+                    <div class="col text-center mt-3"> 
+                        <div class="d-none d-sm-block">
+                            <img class="" src="{% static 'img/clip-no-posts.png' %}" alt="" width="370">
+                        </div>
+                        <div class="d-block d-sm-none">
+                            <img class="" src="{% static 'img/clip-no-posts.png' %}" alt="" width="300">
+                        </div>                    
+                    </div>
+                </div>
+            </div>
+        </div> 
+        {% endif %}                      
+    </section>
+
+
+    {% if post_list %}
+    <div class="row container d-flex justify-content-center align-items-center mt-3 py-3 bottom-pagination">
+        <div class="pt-4 pb-5 mb-5">
+            {% if post_list.has_other_pages %}
+            <ul class="pagination pagination-lg justify-content-center">
+                {% if post_list.has_previous %}
+                <li><a href="?page={{ post_list.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+                {% endif %}
+                {% if post_list.has_next %}
+                <li><a href="?page={{ post_list.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+                {% endif %}
+            </ul>
+            {% endif %}
+            <span class="row d-flex- justify-content-center lead text-muted"> {% trans 'str_page' %} {{ post_list.number }} {% trans 'str_of' %} {{ post_list.paginator.num_pages }}</span>
+        </div>
+    </div>
+    {% endif %}
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'ecad_app/base.html' %}
+{% load static %}
+{% load i18n %}
+
+
+{% block internal_error %}
+
+<div class="container">
+    <div class="jumbotron py-5 mt-4 text-center">
+        <div class="mx-xs-1 mx-sm-3 mx-md-1 mx-lg-3">
+            <h1 class="font-weight-bold py-1"> {% trans 'page500_title' %} </h1>
+            <h2> {% trans 'page500_subtitle' %} </h2>
+            <a href="{% url 'index' %}" class="btn btn-secondary btn-xl text-uppercase my-3 "> <i class="material-icons align-top">home</i> {% trans 'str_goHome' %} </a>
+            <div class="row mx-auto">
+                <img src="{% static 'img/500.png' %}" alt="Internal error" width="500" class="mx-auto">
+            </div>
+          </div>    
+    </div>
+</div>
+
+{% endblock %}

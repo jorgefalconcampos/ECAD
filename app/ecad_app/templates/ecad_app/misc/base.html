@@ -1,0 +1,90 @@
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %} 
+{% get_current_language as LANGUAGE_CODE %}
+
+
+<!doctype html>
+<html lang="{{LANGUAGE_CODE}}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#009CEE"/>
+  <meta name="description" content="{% block description %} {% endblock %}">
+  <title> {% block title %}{% endblock %} </title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'ecad_app/css/styles.css' %}">  
+  <link rel="shortcut icon" type="image/png" href="{% static 'favicon/ecad.ico' %}"/>
+  <link rel="apple-touch-icon" href="{% static 'img/r-icon-apple.png' %}">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg static-top text-uppercase shadow">
+      <div class="container">
+        <a href="{% url 'index' %}" class="navbar-brand text-gray">
+          <img src="{% static 'img/ecad.png' %}" width="95" alt="ECAD logo" class="d-inline-block align-middle mr-2">
+        </a>
+        
+        <ul class="navbar-nav ml-auto"> 
+          <li id="actionBtn" class="nav-item"> <a class="btn btn-secondary text-white"> <i id="aikon"></i></a> </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  
+  <!-- Content imported from "misc/comments_terms.html" with the block of code "comments_terms" -->
+  {% block comments_terms %} 
+  {% endblock %} 
+  
+  
+  <!-- Content imported from "misc/service_terms.html" with the block of code "service_terms" -->
+  {% block service_terms %} 
+  {% endblock %} 
+  
+  
+  <!-- Content imported from "misc/cookies.html" with the block of code "cookies" -->
+  {% block cookies %}
+  {% endblock %}
+  
+  
+  <!-- Content imported from "misc/privacy_policy.html" with the block of code "privacy_policy" -->
+  {% block privacy_policy %}
+  {% endblock %}
+  
+  
+  <!-- Content imported from "misc/rules.html" with the block of code "rules" -->
+  {% block rules %}
+  {% endblock %}
+
+
+  <!-- Content imported from "misc/rules.html" with the block of code "rules" -->
+  {% block tuto %}
+  {% endblock %}
+  
+</body>
+
+
+<footer>
+  <div class="bg-gray-1000 footer-copyright text-center text-white-secondary pt-3 pb-2">
+    ECAD, {% now 'Y' %}
+    <div class="my-2"> &#60 / &#62 con ❤️ en el <b>IPN</b></div>
+  </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/0b5e6aae1f.js" crossorigin="anonymous"></script>
+<script> $(document).ready(function(){ $('[data-toggle="tooltip"]').tooltip(); }); </script>
+<script>
+  $(window).on('load',function(){
+    if(1 < history.length) { $("#aikon").addClass('fas fa-arrow-left'); $('#actionBtn').attr('onclick', 'history.back()'); }
+    else { $("#aikon").addClass('fas fa-home'); $('#actionBtn').attr('onclick', "window.location.href='/'"); }
+  });
+</script>
+
+</html>

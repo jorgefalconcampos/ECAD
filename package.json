@@ -1,20 +1,26 @@
 {
-    "name": "dev",
-    "version": "1.0.0",
-    "description": "**REQUIERE**: Python == 3.6.6, Django == 3.0.7 y otros packages especificados en 'requirements.txt'",
-    "main": "index.js",
-    "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1",
-      "watch": "onchange \"LeVeloRouge/LVR/static/LVR/assets/scss/**/*.scss\" -- npm run compile",
-      "compile": "node-sass --watch LeVeloRouge/LVR/static/LVR/assets/scss/ -o LeVeloRouge/LVR/static/LVR/assets/css"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "dependencies": {},
-    "devDependencies": {
-      "node-sass": "^4.14.1",
-      "onchange": "^7.0.2"
-    }
+  "name": "ECADev",
+  "version": "1.0.0",
+  "description": "<h1 align=\"center\">\r   <a href=\"http://github.com\"><img src=\"https://i.ibb.co/W5qWsf8/ECAD-psd.png\" alt=\"ECAD logo\" width=\"200\"></a>\r   <br>\r   ECAD - Enseñanza Continua A Distancia\r </h1>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "onchange \"app/ecad_app/static/scss/**/*.scss\" -- npm run compile",
+    "compile": "node-sass --watch app/ecad_app/static/scss/ -o app/ecad_app/static/css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jorgefalconcampos/ECAD.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jorgefalconcampos/ECAD/issues"
+  },
+  "homepage": "https://github.com/jorgefalconcampos/ECAD#readme",
+  "dependencies": {
+    "node-sass": "^5.0.0",
+    "onchange": "^7.1.0"
   }
-  
+}

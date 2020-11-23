@@ -1,0 +1,203 @@
+{% extends 'ecad_app/user/base.html' %}
+{% load static %}
+{% load i18n %}
+
+
+{% block post_list %}
+
+
+
+
+<div class="container-fluid">
+    <h1 class="mt-4">{% trans 'str_dashboard_allMyPosts' %}</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active"> 
+            <a href="{% url 'dashboard' %}"> {% trans 'str_dashboard' %}</a>&nbsp/ {% trans 'str_dashboard_allMyPosts' %} 
+        </li>
+    </ol>
+
+    <!-- <div class="row mb-4">
+        <div class="col">
+            <div class="float-right">
+                <a href="" class="btn btn-secondary rounded mr-2 px-2">
+                    <i class="material-icons align-top md-22">add_box</i> Filtrar aprobados
+                </a>
+                <a href="{% url 'post_new' %}" class="btn btn-primary btn-lg rounded">
+                    <i class="material-icons align-top md-30 mr-2">add_box</i> {% trans 'str_NewPost'  %}
+                </a>
+            </div>
+        </div>
+    </div> -->
+
+    <section>
+        {% if post_list %}
+        
+        <div class="table-responsive">
+            <table class="table table-bordered bg-gray-100" id="dataTable" width="100%" cellspacing="0">
+                <thead class="bg-dark text-white">
+                    <tr>
+                        <th> {% trans 'str_dashboard_tableTitle_postDetail' %} </th>
+                        <th> {% trans 'str_dashboard_tableTitle_postTitle' %} </th>
+                        <th> {% trans 'str_dashboard_tableTitle_postSubtitle' %} </th>
+                        <th> {% trans 'str_dashboard_tableTitle_postImage' %} </th>
+                        <th> {% trans 'str_dashboard_tableTitle_postCreatedOrPublishedDate' %} </th>
+                        <th> {% trans 'str_dashboard_tableTitle_postCommentss' %} </th>
+                        <th> {% trans 'str_dashboard_tableTitle_postStatus' %} </th>
+                        <th> {% trans 'str_dashboard_tableTitle_postActions' %} </th>
+                    </tr>
+                </thead>
+                <tfoot class="bg-dark text-white">
+                    <tr>
+                        <th> {% trans 'str_dashboard_tableTitle_postDetail' %} </th>
+                        <th> {% trans 'str_dashboard_tableTitle_postTitle' %} </th>
+                        <th> {% trans 'str_dashboard_tableTitle_postSubtitle' %} </th>
+                        <th> {% trans 'str_dashboard_tableTitle_postImage' %} </th>
+                        <th> {% trans 'str_dashboard_tableTitle_postCreatedOrPublishedDate' %} </th>
+                        <th> {% trans 'str_dashboard_tableTitle_postCommentss' %} </th>
+                        <th> {% trans 'str_dashboard_tableTitle_postStatus' %} </th>
+                        <th> {% trans 'str_dashboard_tableTitle_postActions' %} </th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    {% for post in post_list %}
+                    
+                    <tr id="{{post.pk}}">
+                        <td class="text-center"> <a href="{% url 'post_detail' post.category post.slug %}" target="_blank"> <i class="material-icons align-top md-inactive">open_in_new</i> </a> </td>
+                        <td style="max-width: 350px;"> {{ post.title }} </td>
+                        <td> {{ post.subtitle }} </td>
+                        <td class="text-center"> 
+                            <div data-toggle="tooltip" data-html="true" data-placement='bottom' title="{{ post.image.url}}">
+                                <a href="{{ post.image.url }}" target="_blank"> <i class="material-icons align-top md-inactive">image</i> </a> 
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                {% trans 'str_createdDate' %}: {{ post.created_date }}
+                                <hr>
+                                {% if post.status == 1 %}
+                                {% trans 'str_publishedDate' %}: {{ post.published_date }}
+                                {% else %}
+                                <b> {% trans 'str_notApprovedYet' %} </b>
+                                {% endif %}
+                            </div>
+                        </td>
+                        <td>
+                            {% if post.all_cmts %}
+                            <span class="d-flex d-inline justify-content-left"> <h6 class="font-weight-bold mr-1"> {{ post.all_cmts }} </h6> 
+                                {% trans 'str_dashboard_table_TotalComments' %} </span>
+                                <hr class=" mt-0 mb-2" style="margin:0px; max-width: 70px;"> 
+                                {% trans 'str_approvedComments' %}: {{ post.approved_cmts }} <br>
+                                {% trans 'str_nonApprovedComments' %}: {{ post.non_approved_cmts }}
+                            </span>
+                            {% else %}
+                            <p> {% trans 'str_noComments' %} </p>
+                            {% endif %}
+                        </td>
+                        
+                        <td class="text-center"> 
+                            
+                            {% if post.status == 0 %}
+                            <div class="" data-toggle="tooltip" data-html="true" data-placement='bottom' title="{% trans 'str_status_draft_desc' %}">
+                                <i class="px-0 material-icons align-top md-inactive">access_time</i>  
+                            </div>
+                            {% endif %}
+                            
+                            {% if post.status == 1 %}
+                            <div class="" data-toggle="tooltip" data-html="true" data-placement='bottom' title="{% trans 'str_status_approved_desc' %}">
+                                <i class="px-0 material-icons align-top md-inactive">done</i>  
+                            </div>
+                            {% endif %}
+                            
+                            {% if post.status == 2 %}
+                            <div class="" data-toggle="tooltip" data-html="true" data-placement='bottom' title="{% trans 'str_status_rejected_desc' %}">
+                                <i class="px-0 material-icons align-top md-inactive">clear</i>
+                            </div>
+                            {% endif %}
+                            
+                            {% if post.status == 3 %}
+                            <div class="" data-toggle="tooltip" data-html="true" data-placement='bottom' title="{% trans 'str_status_archived_desc' %}">
+                                <i class="px-0 material-icons-outlined align-top md-inactive">archive</i>
+                            </div>
+                            {% endif %}
+                            
+                        </td>
+                        
+                        
+                        <td class="text-center">
+                            <div> 
+                                <a class="btn btn-sm btn-outline-info" href="{% url 'post_edit' post.slug %}" target="_blank"> 
+                                    <i class="material-icons align-top">edit</i> 
+                                </a> 
+                            </div>
+                            
+                            <div class="py-2"> 
+                                {% if post.status == 3 %}
+                                <button id="unarchiveBtn_in_post_list" class="btn btn-sm btn-outline-secondary" type="button" data-postid="{{post.pk}}" data-posttitle="{{post.title}}" data-toggle="modal" data-target="#postActionsModal">
+                                    <i class="material-icons align-top">unarchive</i>
+                                </button> 
+                                {% else %}
+                                <button id="archiveBtn_in_post_list" class="btn btn-sm btn-outline-secondary" type="button" data-postid="{{post.pk}}" data-posttitle="{{post.title}}" data-toggle="modal" data-target="#postActionsModal">
+                                    <i class="material-icons align-top">archive</i> 
+                                </button> 
+                                {% endif %}
+                            </div>
+                            
+                            <div> 
+                                <button id="deleteBtn_in_post_list" class="btn btn-sm btn-outline-danger" type="button" data-postid="{{post.pk}}" data-posttitle="{{post.title}}" data-toggle="modal" data-target="#postActionsModal">                             
+                                    <i class="material-icons align-top">delete</i> 
+                                </button> 
+                            </div>
+                            
+                        </td>
+                    </tr>
+                                        
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>              
+        
+        {% else %}
+        
+        <div class="container py-5 my-5">
+            <div class="row my-5">
+                <div class="col-lg-6 text-center mb-5 mb-lg-0">
+                    <h3>{% trans 'str_itSeems_wAnyArticle' %}</h3>
+                    <a href="{% url 'post_new' %}" class="h3 font-weight-bold">{% trans 'str_whyNot_writeArticle' %}</a>
+                    <div class="row pt-3 pt-lg-5">
+                        <div class="col">
+                            <a href="{% url 'post_new' %}" class="btn btn-primary rounded mt-2"> <i class="material-icons align-top mr-1">add_box</i>{% trans 'str_NewPost'  %}</a>
+                        </div>
+                    </div>
+                </div>   
+                <div class="col-lg-6 text-center mt-50 mt-lg-0">                
+                    <img class="" src="{% static 'img/clip-no-wposts.png' %}" alt="" height="300px">
+                </div>
+            </div>
+        </div>
+        
+        {% endif %}                      
+    </section>
+
+
+    {% if post_list %}
+    <div class="row container d-flex justify-content-center align-items-center mt-3 py-3 bottom-pagination">
+        <div class="pt-4 pb-3 mb-3">
+            {% if post_list.has_other_pages %}
+            <ul class="pagination pagination-lg justify-content-center">
+                {% if post_list.has_previous %}
+                <li><a href="?page={{ post_list.previous_page_number }}" class="page-link">&laquo; ANTERIOR</a></li>
+                {% endif %}
+                {% if post_list.has_next %}
+                <li><a href="?page={{ post_list.next_page_number }}" class="page-link">SIGUIENTE &raquo;</a></li>
+                {% endif %}
+            </ul>
+            {% endif %}
+            <span class="row d-flex- justify-content-center lead text-muted"> {% trans 'str_page' %} {{ post_list.number }} {% trans 'str_of' %} {{ post_list.paginator.num_pages }}</span>
+        </div>
+    </div>
+    {% endif %}
+
+</div>
+
+
+{% endblock %}

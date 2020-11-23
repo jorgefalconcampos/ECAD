@@ -1,0 +1,33 @@
+
+{% extends 'ecad_app/base.html' %}
+{% load static %}
+{% load i18n %} 
+
+
+
+{% block title %} Tags | ECAD{% endblock %}
+
+
+
+{% block tags %}
+
+<div class="container mt-5 py-3">
+    <h3 class="text-center text-lg-left font-weight-bold text-uppercase ml-0 ml-lg-2">{% trans 'str_allTags_title' %}</h3>
+    <hr class="my-3 py-2">
+    
+    <div class="row mt-2 mb-5 py-3">
+        <div class="col-12 col-lg-7">
+            <div class="card text-align-center">
+                <div class="card-body d-inline-block">
+                    {% for tag in all_tags %}
+                    <a class="my-2 mx-2 d-inline-block" href="{% url 'tags_detail' tag.slug %}"> <h1> <span class="badge badge-secondary"> {{ tag }} </span></h1> </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+{% endblock %}
+

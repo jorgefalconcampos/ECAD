@@ -1,0 +1,266 @@
+{% extends 'ecad_app/user/base.html' %}
+{% load static %}
+{% load i18n %} 
+{% load crispy_forms_tags %} 
+
+
+{% block dashboard %}
+
+
+<div class="container-fluid">
+
+    <h1 class="mt-4"> {% trans 'str_dashboard' %} </h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active"> {% trans 'str_dashboard' %} </li>
+    </ol>
+    <div class="row mb-4">
+
+        {% if request.user.is_superuser %}
+        <div class="col-xl-3 col-md-6 py-1 pb-3">
+            <div class="card border-2 categories-item shadow-sm border-secondary-light bg-gray-200">
+              <div class="card-body px-4 py-4">
+                  <div class="d-flex d-inline justify-content-center text-shadow-light">
+                      <i class="material-icons mr-2 text-primary">person_add_alt_1</i> 
+                      <h2 class="h5"> <a class="stretched-link reset-anchor-inherit" href="{% url 'signup' %}"> {% trans 'str_AddUserAuthor' %}</a></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 py-1 pb-3">
+            <div class="card border-1 categories-item shadow-sm border-secondary-light bg-gray-200">
+              <div class="card-body px-4 py-4">
+                  <div class="d-flex d-inline justify-content-center text-shadow-light">
+                      <i class="material-icons mr-2 text-primary">fact_check</i> 
+                      <h2 class="h5"> <a class="stretched-link reset-anchor-inherit" href="{% url 'moderate' %}">{% trans 'str_moderatePosts' %}</a></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 py-1 pb-3">
+            <div class="card border-1 categories-item shadow-sm border-secondary-light bg-gray-200">
+              <div class="card-body px-4 py-4">
+                  <div class="d-flex d-inline justify-content-center text-shadow-light">
+                      <i class="material-icons mr-2 text-primary">mark_chat_read</i> 
+                      <h2 class="h5"> <a class="stretched-link reset-anchor-inherit" href="{% url 'moderate_comments' %}">{% trans 'str_dashboard_moderateComments' %}</a></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 py-1 pb-3">
+            <div class="card border-1 categories-item shadow-sm border-secondary-light bg-gray-200">
+              <div class="card-body px-4 py-4">
+                  <div class="d-flex d-inline justify-content-center text-shadow-light">
+                      <i class="material-icons mr-2 text-primary">email</i> 
+                      <h2 class="h5"> <a class="stretched-link reset-anchor-inherit" href=""> {% trans 'str_sendNewMail' %}</a></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 py-1 pb-3">
+            <div class="card border-1 categories-item shadow-sm border-secondary-light bg-gray-200">
+              <div class="card-body px-4 py-4">
+                  <div class="d-flex d-inline justify-content-center text-shadow-light">
+                      <i class="material-icons mr-2 text-primary">category</i> 
+                      <h2 class="h5"> <a class="stretched-link reset-anchor-inherit" href="{% url 'new_category' %}"> {% trans 'str_addCatego_CTA' %}</a></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 py-1 pb-3">
+            <div class="card border-1 categories-item shadow-sm border-secondary-light bg-gray-200">
+              <div class="card-body px-4 py-4">
+                  <div class="d-flex d-inline justify-content-center text-shadow-light">
+                      <i class="material-icons mr-2 text-primary">admin_panel_settings</i> 
+                      <h2 class="h5"> <a class="stretched-link reset-anchor-inherit" href="{{ HTTP_HOST }}/admin""> {% trans 'str_dashboard_DjangoAdmin' %}</a></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="col-xl-3 col-md-6 py-1 pb-3">
+            <div class="card border-1 categories-item shadow-sm border-secondary-light">
+              <div class="card-body px-4 py-4">
+                  <div class="d-flex d-inline justify-content-center text-shadow-light">
+                      <i class="material-icons mr-2 text-primary">add_box</i> 
+                      <h2 class="h5"> <a class="stretched-link reset-anchor-inherit" href="{% url 'post_new' %}">{% trans 'str_NewPost'  %}</a></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 py-1 pb-3">
+            <div class="card border-1 categories-item shadow-sm border-secondary-light">
+              <div class="card-body px-4 py-4">
+                  <div class="d-flex d-inline justify-content-center text-shadow-light">
+                      <i class="material-icons mr-2 text-primary">person</i> 
+                      <h2 class="h5"> <a class="stretched-link reset-anchor-inherit" href="{% url 'profile' %}">  {% trans 'str_dashboard_profile' %} </a></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if not request.user.is_superuser %}
+    <div class="card mb-4">
+        <div class="card-header">
+            <div class="row d-flex d-inline justify-content-between mx-1" >
+                <span class="d-flex d-inline">
+                    <i class="material-icons align-top mr-2">view_compact</i> 
+                    <h6 class="my-auto"> {% trans 'str_dashboard_myLatestPosts' %} </h6>
+                </span>
+                <a href="{% url 'post_list' %}" class="h6 my-auto"> {% trans 'str_dashboard_seeAllMyPosts' %} </a>
+            </div>
+        </div> 
+
+        <div class="card-body">
+            {% if posts_by_author %}
+            <div class="table-responsive">
+                <table class="table table-bordered bg-gray-100" id="dataTable" width="100%" cellspacing="0">
+                    <thead class="bg-dark text-white">
+                        <tr>
+                            <th> {% trans 'str_dashboard_tableTitle_postDetail' %} </th>
+                            <th> {% trans 'str_dashboard_tableTitle_postTitle' %} </th>
+                            <th> {% trans 'str_dashboard_tableTitle_postSubtitle' %} </th>
+                            <th> {% trans 'str_dashboard_tableTitle_postImage' %} </th>
+                            <th> {% trans 'str_dashboard_tableTitle_postCreatedOrPublishedDate' %} </th>
+                            <th> {% trans 'str_dashboard_tableTitle_postCommentss' %} </th>
+                            <th> {% trans 'str_dashboard_tableTitle_postStatus' %} </th>
+                            <th> {% trans 'str_dashboard_tableTitle_postActions' %} </th>
+                        </tr>
+                    </thead>
+                   
+                    <tbody>
+                        <tr id="post_list_empty" style="display: none;">
+                            <td colspan="8">
+                                <div class="text-center">
+                                    <button class="btn btn-primary my-5" type="button" onclick='window.location.reload(true);'> 
+                                        <i class="material-icons align-top">replay</i> Recarga la página para mostrar más posts 
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                    
+                        
+                        {% for post in posts_by_author %}
+
+                        <tr id="{{post.pk}}">
+                            <td class="text-center"> <a href="{% url 'post_detail' post.category post.slug %}" target="_blank"> <i class="material-icons align-top md-inactive">open_in_new</i> </a> </td>
+                            
+                            <td style="max-width: 350px;"> {{ post.title }} </td>
+                            <td> {{ post.subtitle }} </td>
+                           
+                            <td class="text-center"> 
+                                <div data-toggle="tooltip" data-html="true" data-placement='bottom' title="{{ post.image.url}}">
+                                    <a href="{{ post.image.url }}" target="_blank"> <i class="material-icons align-top md-inactive">image</i> </a> 
+                               </div>
+                            </td>
+
+                            <td> 
+                                <div>
+                                    {% trans 'str_createdDate' %}: {{ post.created_date }}
+                                    <hr>
+                                    {% if post.status == 1 %}
+                                    {% trans 'str_publishedDate' %}: {{ post.published_date }}
+                                    {% else %}
+                                    <b> {% trans 'str_notApprovedYet' %} </b>
+                                    {% endif %}
+                                </div>
+                            </td>
+                            
+                            <td>
+                                {% if post.all_cmts %}
+                                <span class="d-flex d-inline justify-content-left"> <h6 class="font-weight-bold mr-1"> {{ post.all_cmts }} </h6> 
+                                    {% trans 'str_dashboard_table_TotalComments' %} </span>
+                                    <hr class=" mt-0 mb-2" style="margin:0px; max-width: 70px;"> 
+                                    {% trans 'str_approvedComments' %}: {{ post.approved_cmts }} <br>
+                                    {% trans 'str_nonApprovedComments' %}: {{ post.non_approved_cmts }}
+                                </span>
+                                {% else %}
+                                <p> {% trans 'str_noComments' %} </p>
+                                {% endif %}
+                            </td>
+                           
+                           
+                            <td class="text-center"> 
+                                {% if post.status == 0 %}
+                                <div class="" data-toggle="tooltip" data-html="true" data-placement='bottom' title="{% trans 'str_status_draft_desc' %}">
+                                    <i class="px-0 material-icons align-top md-inactive">access_time</i>  
+                                </div>
+                                {% endif %}
+
+                                {% if post.status == 1 %}
+                                <div class="" data-toggle="tooltip" data-html="true" data-placement='bottom' title="{% trans 'str_status_approved_desc' %}">
+                                    <i class="px-0 material-icons align-top md-inactive">done</i>  
+                                </div>
+                                {% endif %}
+
+                                {% if post.status == 2 %}
+                                <div class="" data-toggle="tooltip" data-html="true" data-placement='bottom' title="{% trans 'str_status_rejected_desc' %}">
+                                    <i class="px-0 material-icons align-top md-inactive">clear</i>
+                                </div>
+                                {% endif %}
+
+                                {% if post.status == 3 %}
+                                <div class="" data-toggle="tooltip" data-html="true" data-placement='bottom' title="{% trans 'str_status_archived_desc' %}">
+                                    <i class="px-0 material-icons-outlined align-top md-inactive">archive</i>
+                                </div>
+                                {% endif %}
+
+                            </td>
+
+
+                            <td class="text-center">
+                                <div class="pb-1"> 
+                                    <a class="btn btn-sm btn-outline-info" href="{% url 'post_edit' post.slug %}" target="_blank"> 
+                                         <i class="material-icons align-top">edit</i> 
+                                    </a> 
+                                </div>
+
+                                <div class="pt-1">
+                                    <button id="deleteBtn_in_dshbrd" class="btn btn-sm btn-outline-danger" type="button" data-postid="{{post.pk}}" data-posttitle="{{post.title}}" data-toggle="modal" data-target="#postActionsModal"> 
+                                        <i class="material-icons align-top">delete</i> 
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        {% endfor %}
+                        
+                        
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="container py-2 my-1 pb-1">
+                <div class="row my-3">
+                    <div class="col-12 text-center mb-2 mb-lg-0">
+                        <h3>{% trans 'str_itSeems_wAnyArticle' %}</h3>
+                        <a href="{% url 'post_new' %}" class="h3 font-weight-bold">{% trans 'str_whyNot_writeArticle' %}</a>
+                        <div class="row py-4">
+                            <div class="col">
+                                <a href="{% url 'post_new' %}" class="btn btn-primary rounded mt-2"> <i class="material-icons align-top mr-1">add_box</i>{% trans 'str_NewPost'  %}</a>
+                            </div>
+                        </div>
+                    </div>   
+                </div>
+                <div class="row my-2 pt-2">
+                    <div class="col-12 text-center mt-2 mt-lg-0">                
+                        <img class="" src="{% static 'img/clip-no-wposts.png' %}" alt="" height="300px">
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+
+{% endblock %}

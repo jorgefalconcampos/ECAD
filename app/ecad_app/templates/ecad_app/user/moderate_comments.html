@@ -1,0 +1,158 @@
+{% extends 'ecad_app/user/base.html' %}
+{% load static %}
+{% load i18n %}
+
+
+{% block moderate_comments %}
+
+
+
+
+
+<div class="modal fade pt-5 mt-5" id="commentActionsModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-gray-400">
+                <span class="d-flex d-inline">
+                    <i style="font-size: 30px;" class="material-icons">error</i>
+                    <h4 class="ml-3 modal-title">{% trans 'str_dashboard_confirmActionSurComment' %}</h4>
+                </span>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            
+            <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 pt-2">
+                                <div class="container"> 
+                                    <h6 id="cmt_action_label" class="ml-1"> </h6>
+                                 </div> 
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            
+            <div class="modal-footer mr-2">
+                <button data-dismiss="modal" class="btn border-secondary" type="button"> Cancelar </button> 
+                <form id="comment_action_frm"> 
+                    <button id="modal_comment_action_confirm" type="submit"> </button> 
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <h1 class="mt-4">{% trans 'str_dashboard_moderateComments' %}</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active"> 
+            <a href="{% url 'dashboard' %}"> {% trans 'str_dashboard' %}</a>&nbsp/&nbsp{% trans 'str_dashboard_moderateComments' %} 
+        </li>
+    </ol>
+
+    <section class="pb-4">
+        {% if all_comments %}
+
+        <h3 class="text-center text-lg-left"><b id="general_cmt_counter">{{ all_comments.count }}</b> {% trans 'CommentsWithNoModeration' %}</h3>
+        <hr>
+
+        {% for post, v in all_posts.items %}
+        <div class="mt-3 mt-lg-4">
+            <div id="accordion_{{post.pk}}">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="container">
+                            <div class="row d-flex justify-content-between" data-toggle="collapse" data-target="#collapse_cmts_{{post.pk}}" style="cursor: pointer;">
+                                <span class="h4 my-auto font-weight-bold text-center text-lg-left">
+                                    <i class="material-icons align-middle md-26">chat_bubble</i> 
+                                    <p id="cmt_counter_{{post.pk}}" class="d-inline">{{post.non_approved_cmts}}</p>
+                                    <button class="btn btn-link pl-2" data-toggle="collapse" data-target="#collapse_cmts_{{post.pk}}" aria-expanded="true"> 
+                                        <i class="material-icons align-top">keyboard_arrow_down</i>
+                                        {% if request.user.is_superuser %}
+                                            <div class="d-inline" data-toggle="tooltip" data-html="true" data-placement='top' title="{{post.author.name.get_full_name|default:post.author.name}}">
+                                                {{post|truncatechars:80}}
+                                            </div>
+                                            {% else%}
+                                            <div class="d-inline">{{post|truncatechars:80}}</div>                                                                     
+                                        {% endif %}
+                                    </button>
+                                </span>
+                                
+                                <div class="col text-center text-lg-right">
+                                    <a href="{% url 'post_detail' post.category post.slug %}" target="_blank" class="btn btn-secondary">{% trans 'str_seePost' %}</a>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="collapse_cmts_{{post.pk}}" class="collapse" data-parent="#accordion_{{post.pk}}">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered bg-gray-100" id="dataTable" width="100%" cellspacing="0">
+                                    <thead class="bg-dark text-white rounded-top">
+                                        <tr class="text-center">
+                                            <th>{% trans 'str_author' %}</th>
+                                            <th>{% trans 'str_comment' %}</th>
+                                            <th>{% trans 'str_createdDate' %}</th>
+                                            <th>{% trans 'str_dashboard_tableTitle_postActions' %}</th>
+                                        </tr>
+                                    </thead>
+                                
+                                    <tbody>
+                                        {% for cmt in v %}    
+                                        <tr id="{{cmt.pk}}">
+                                            <td class="text-center">
+                                                <div data-toggle="tooltip" data-html="true" data-placement='bottom' title="{{cmt.author_email}}">
+                                                    {{cmt.author}} - (<b>{{cmt.pk}}</b>)                                              
+                                                </div>
+                                            </td>
+                                            <td class="text-center">{{cmt.body}}</td>
+                                            <td class="text-center" style="max-width: 350px;">{{cmt.created}}</td>
+                                            <td class="text-center">
+                                                <button id="approveCommentBtn_in_moderate_{{cmt.pk}}" class="btn btn-sm btn-outline-success mx-1" type="button" data-postcmtid="{{post.pk}}" data-cmtid="{{cmt.pk}}" data-cmtauthor="{{cmt.author}}" data-cmtbody="{{cmt.body}}" data-toggle="modal" data-target="#commentActionsModal">
+                                                    <i class="material-icons align-top">check</i>
+                                                </button>
+                                        
+                                                <button id="rejectCommentBtn_in_moderate_{{cmt.pk}}" class="btn btn-sm btn-outline-danger mx-1" type="button" data-postcmtid="{{post.pk}}" data-cmtid="{{cmt.pk}}" data-cmtauthor="{{cmt.author}}" data-cmtbody="{{cmt.body}}" data-toggle="modal" data-target="#commentActionsModal">
+                                                    <i class="material-icons align-top">close</i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+        {% else %}
+        <div class="container mt-3 py-lg-2">
+            <h3 class="mt-5 text-center">{% trans 'str_itSeems_anyComment' %}</h3>            
+            <div class="row d-flex justify-content-center py-1 py-sm-5 py-md-3 py-lg-1">
+                <div class="col-lg-xs-12 col-lg-sm-12 col-lg-md-8 col-lg-5 col-lg-xl-6">
+                    <div class="col text-center mt-3"> 
+                        <div class="d-none d-sm-block">
+                            <img class="" src="{% static 'img/clip-no-comments.png' %}" alt="" width="370">
+                        </div>
+                        <div class="d-block d-sm-none">
+                            <img class="" src="{% static 'img/clip-no-comments.png' %}" alt="" width="300">
+                        </div>                    
+                    </div>
+                </div>
+            </div>
+        </div> 
+        {% endif %}                      
+    </section>
+
+
+
+
+</div>
+
+
+{% endblock %}
