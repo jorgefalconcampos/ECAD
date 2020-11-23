@@ -1,5 +1,6 @@
+
+
 $(window).on('load',function(){
-    $('#inProgressModal').modal('show');
     $('#noCategoModal').modal('show');
     $('[data-toggle="tooltip"]').tooltip(); 
     // alert(window.location.origin); //http://localhost:9000
@@ -11,14 +12,49 @@ $(window).on('load',function(){
         post_details[post_id] = parseInt($(this).html()); 
         // console.log(JSON.stringify(post_details));
     });
+
+
+    var active = sessionStorage.getItem('active');
+
+    switch (active) {
+        case "sel_item_nav_settings":
+            $("#settings_account").click();
+        break;  
+
+        case "sel_item_nav_password":
+            $("#settings_password").click();
+        break;   
+
+        default: $("#settings_profile").click(); break;
+      }
 });
 
 
 
+
+$('[id^="sel_item_nav_"]').on('click', function(){
+    var selected = $(this).attr('id');
+    sessionStorage.setItem('active', selected);
+});
+
+
+
+// $("#sel_item_nav_password").on('click', function(){
+
+
+
+//     // $('[id^="cmt_counter"]').each(function() {
+
+
+//     sessionStorage.setItem('active', 'password');
+//     var data = sessionStorage.getItem('active');
+//     // alert(data);
+//   });
+
+
+
+
 var post_details = {}
-
-
-
 
 
 // START TOAST MESSAGES SECTION //

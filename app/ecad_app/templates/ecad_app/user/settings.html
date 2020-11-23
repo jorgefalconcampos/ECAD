@@ -37,7 +37,7 @@
                     <div class="list-group list-group-flush" role="tablist">
 
                         {% if not request.user.is_superuser %}
-                        <a id="settings_profile" class="list-group-item list-group-item-action active" data-toggle="list" href="#profile" role="tab">
+                        <a id="settings_profile" class="list-group-item list-group-item-action" data-toggle="list" href="#profile" role="tab">
                           <div class="h6"> {% trans 'str_dashboard_profile' %}  </div>
                         </a>
                         {% endif %}
@@ -46,7 +46,7 @@
                             <div class="h6"> {% trans 'str_dashboard_Settings_accountSettings' %} </div>
                         </a>
 
-                        <a class="list-group-item list-group-item-action" data-toggle="list" href="#password" role="tab">
+                        <a id="settings_password" class="list-group-item list-group-item-action" data-toggle="list" href="#password" role="tab">
                             <div class="h6"> {% trans 'str_dashboard_Settings_securityPass' %} </div>
                         </a>
                                                 
@@ -77,7 +77,7 @@
                 <div class="tab-content mt-3 mt-lg-0">
                     <!-- Profile -->
                     {% if not request.user.is_superuser %}
-                    <div class="tab-pane fade show active" id="profile" role="tabpanel">
+                    <div class="tab-pane fade" id="profile" role="tabpanel">
                         <div class="card">
                             <div class="card-header d-flex justify-content-between">    
                                 <h5 class="card-title my-auto">{% trans 'str_publicInfo' %}</h5> 
@@ -243,7 +243,6 @@
                                 </div>                               
                             </div>
                         </div>
-
                     </div>
 
                     <!-- Password -->

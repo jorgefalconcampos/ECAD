@@ -121,8 +121,8 @@ class ProfileEditAuthorForm(f.ModelForm):
     tw_attrs = {'class':'form-control', 'id':'profile_twitter', 'name':'twitter_url', 'type':'url', 'placeholder':'https://www.twitter.com/myprofile' }
     li_attrs = {'class':'form-control', 'id':'profile_linkedin', 'name':'linkedin_url', 'type':'url', 'placeholder':'https://www.linkedin.com/myprofile' }
 
-    title = f.CharField(label=_('str_profileForm_title_label'), max_length=32, widget=f.TextInput(attrs=title_attrs))
-    bio = f.CharField(label=_('str_profileForm_bio_label'), max_length=128, widget=f.Textarea(attrs=bio_attrs))
+    title = f.CharField(label=_('str_profileForm_title_label'), max_length=32, widget=f.TextInput(attrs=title_attrs), required=False)
+    bio = f.CharField(label=_('str_profileForm_bio_label'), max_length=128, widget=f.Textarea(attrs=bio_attrs), required=False)
     email = f.EmailField(label=fl('{} {}', _('str_email'), _('str_public')), max_length=32, widget=f.EmailInput(attrs=email_attrs), required=False)
     image = f.ImageField(widget=f.FileInput(attrs=image_attrs), required=False, help_text=_('str_profileForm_image_helpText'))
     facebook_URL = f.URLField(max_length=256, widget=f.TextInput(attrs=fb_attrs), required=False)

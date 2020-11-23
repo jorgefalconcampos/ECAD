@@ -21,9 +21,9 @@ urlpatterns = [
     path('contact', views.contact, name='contact'),
     path('getdata', views.getdata, name='getdata'),
     #subscriber
-    path('suscribirse', views.subscribe, name='subscribe'),
-    path('confirmar', views.confirm_subscribe, name='confirm'),
-    path('desuscribirse', views.unsubscribe, name='unsubscribe'),
+    path('subscribe', views.subscribe, name='subscribe'),
+    path('confirm', views.confirm_subscribe, name='confirm'),
+    path('unsubscribe', views.unsubscribe, name='unsubscribe'),
     #blog
     path('acerca', views.about, name='about'),  
     path('post/<slug:category_text>/<slug:slug_text>/', views.post_detail, name='post_detail'),
