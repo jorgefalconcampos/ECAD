@@ -48,6 +48,7 @@ Entre otras, las características que posee ECAD, son:
 * El autor de un apunte puede aprobar o rechazar comentarios hechos sobre sus apuntes
 * Integración de contacto con los autores para mejor retroalimentación
 * Suscripción al boletín de noticias cuando se publique sobre temas relevantes
+* Soporte multilenguaje
 * Optimización para SEO
 
 ## Beneficios
