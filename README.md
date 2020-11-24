@@ -13,7 +13,7 @@
 </p>
 
 <p align="center">
-  <a href="https://www.python.org/" target="_blank"><img src="https://img.shields.io/badge/python-3.6.6-F7CB3F.svg" alt="version"></a>
+  <a href="https://www.python.org/" target="_blank"><img src="https://img.shields.io/badge/python-3.8.3-F7CB3F.svg" alt="version"></a>
   <a href="https://www.djangoproject.com/" target="_blank"><img src="https://img.shields.io/badge/django-3.0.7-09541F.svg" alt="version"></a>
   <a href="https://www.nginx.com/" target="_blank"><img src="https://img.shields.io/badge/nginx-009639.svg" alt="nginx"></a>
   <a href="https://www.postgresql.org/" target="_blank"><img src="https://img.shields.io/badge/PostgreSQL-336690" alt="postgresql"></a>
@@ -38,16 +38,17 @@
 ECAD es una plataforma online donde el conocimiento converge. Es un libro abierto donde se pueden consultar los apuntes publicados y mejorar competencias académicas, aprender algo nuevo, repasar temas o simplemente realizar preguntas.
 Entre otras, las características que posee ECAD, son:
 
-* Publicación de apuntes (también llamados artículos) por parte del profesor, los cuales pueden ser consultados por los interesadados en cualquier momento
-* Organización de apuntes por medio de etiquetas y categorías
+* Publicación de apuntes (también llamados artículos, posts, publicaciones, etc) por parte del profesor, los cuales pueden ser consultados por los interesadados en cualquier momento
+* Organización de posts por medio de etiquetas y categorías
 * Posibilidad de agregar comentarios a los apuntes y puntuarlos con el objetivo de mejorar el contenido
 * Responsividad, el contenido se ajusta al tamaño del dispositivo utilizado
 * Sistema de administración completo: permite crear, editar y eliminar usuarios (profesores)
-* El usuario puede crear tantos apuntes como desee, una vez aprobados podrán ser vistos por los lectores
+* El usuario puede crear tantas pulicaciones como desee, una vez aprobados podrán ser vistos por los lectores
 * El usuario puede crear, editar, archivar o eliminar apuntes creados por él
-* El autor de un apunte puede aprobar o rechazar comentarios hechos sobre sus apuntes
+* El autor de un apunte puede aprobar o rechazar comentarios hechos sobre sus publicaciones
 * Integración de contacto con los autores para mejor retroalimentación
 * Suscripción al boletín de noticias cuando se publique sobre temas relevantes
+* Sistema de administración interno
 * Soporte multilenguaje
 * Optimización para SEO
 
@@ -59,22 +60,28 @@ Uno de los principales beneficios que tiene ECAD es la enseñanza a distancia co
 
 ## Cómo se utiliza
 
-Para ejecutar ECAD, solo es necesario ir a la dirección IP del servidor donde se instale. Para ejecutar localmente, es necesario instalar [Docker](https://www.docker.com/) en el sistema y proceder como se indica en los manuales técnicos y de instalación. Se necesitarán, al menos, [Python](https://www.python.org/downloads/) y [Django](https://www.djangoproject.com/) en las versiones indicadas, cuyas imagenes de instalación se encuentran en el archivo docker-compose-x, donde **x** es la versión de desarrollo o de producción.  
+Para ejecutar ECAD, solo es necesario ejecutar el contenedor Docker
+en la máquina o servidor donde se instalará la paltaforma y asignarle una dirección IP. Para ejecutar localmente, también es necesario instalar [Docker](https://www.docker.com/) en el sistema y proceder como se indica en los manuales técnicos y de instalación. Se necesitarán, al menos, [Python](https://www.python.org/downloads/) y [Django](https://www.djangoproject.com/) en las versiones indicadas, cuyas imagenes de instalación se encuentran en el archivo docker-compose-x, donde **x** es la versión de desarrollo o de producción. 
+
+Para la versión de desarrollo, se recomienda instalar en el equipo utilizado para desarrollar; al menos Python y Django, además de Docker.
 
 Para más información sobre las versiones de producción y desarrollo, favor de leer los manuales.
 
 
-Para hacerlo desde la consola (con docker-compose) ejecutar los siguiente comandos:
+Para ejecutar desde la consola (con docker-compose y en modo desarrollo) ejecutar los siguiente comandos:
 
 ```bash
-# Paso 1 - comment
-$ aaa
+# Paso 1 - Crear el contenedor Docker, montarlo y correrlo en segundo plano
+$ docker-compose up -d --build
 
-# Paso 2 - comment
-$ aaa
+# Paso 2 - Verificar la creación de la BDD Postgres dentro del servicio "db"
+$ docker-compose exec db psql --username=USUARIO_DE_DESARROLLO --dbname=NOMBRE_BDD_DESARROLLO
 
-# Paso 3 - comment
-$ aaa
+# (Ejecutar este paso solo si los archivos estáticos [CSS, JS, PNG's, JPG's, etc] han cambiado)
+$ docker-compose exec web python manage.py collectstatic --no-input --clear
+
+# Paso 3 - Ejecutar la creación del superusuario dentro del servicio "web"
+$ docker-compose exec web python manage.py createsuperuser
 ```
 
 ## Créditos

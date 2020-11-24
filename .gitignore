@@ -37,4 +37,5 @@ nginx/
 entrypoint.prod.sh
 entrypoint.sh
 staticfiles/
+app/mediafiles/categories/*
 migrations/
