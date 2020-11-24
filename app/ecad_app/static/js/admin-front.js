@@ -17,6 +17,7 @@ $(window).on('load',function(){
     var active = sessionStorage.getItem('active');
 
     switch (active) {
+
         case "sel_item_nav_settings":
             $("#settings_account").click();
         break;  
@@ -27,15 +28,27 @@ $(window).on('load',function(){
 
         default: $("#settings_profile").click(); break;
       }
+
+
 });
 
 
 
 
-$('[id^="sel_item_nav_"]').on('click', function(){
-    var selected = $(this).attr('id');
-    sessionStorage.setItem('active', selected);
+$("#settings_account").on('click', function(){
+    sessionStorage.setItem('active', "sel_item_nav_settings");
 });
+
+$("#settings_password").on('click', function(){
+    sessionStorage.setItem('active', "sel_item_nav_password");
+});
+
+$("#settings_profile").on('click', function(){
+    sessionStorage.setItem('active', "sel_item_nav_profile");
+});
+
+
+
 
 
 
