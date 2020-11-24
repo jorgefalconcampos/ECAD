@@ -48,9 +48,8 @@
 <div class="my-3 my-5 pt-4">
 
     <div class="card">
-
         
-
+        {% if not request.user.is_superuser %}
         <div class="card-body">
             <div class="container">
                 <div class="row">
@@ -230,14 +229,21 @@
                     </div>
                 </div>
             </div>
-
-
-
             {% endif %}
-
-
         </div>
-
+        {% else %}
+        
+        <div class="card-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-left my-4">
+                        <h3 class="section-heading font-weight-bold text-uppercase">No es posible escribir un post</h3>
+                        <h4 class="section-subheading text-muted">El rol de superusuario está destinado a moderación. Si desea crear una nueva publicación, cree un nuevo usuario con sus datos reales.</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
 
     </div>
 </div>

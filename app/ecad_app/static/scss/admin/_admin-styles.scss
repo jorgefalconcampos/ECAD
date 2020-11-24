@@ -80,19 +80,6 @@
     height: 25px;
 }
 
-.last-sidebar-separator {
-    background-color: #333;
-    position: relative;
-    height: 450px;
-    top: 75px;
-}
-
-.logo-separator {
-    // margin-top: 100px;
-    background-color: rgb(184, 33, 33);    
-    height: 75px;
-}
-
 /* Closed submenu icon */
 #sidebar-container .list-group .list-group-item[aria-expanded="false"] .submenu-icon::after {
   content: " \f0d7";

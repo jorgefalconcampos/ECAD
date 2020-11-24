@@ -31,8 +31,9 @@
         <div class="collapse navbar-collapse text-center" id="navbar">
             <ul class="navbar-nav ml-auto topnav">
                 <li class="nav-item py-1 py-lg-1"> <a href="{% url 'index' %}" target="_blank" class="mx-1"> <span> <button type="button" class="btn btn-light"> <i class="material-icons align-top">web</i> {% trans 'str_dashboard_goToPage' %} </button> </span> </a> </li>
+                {% if not request.user.is_superuser %}
                 <li class="nav-item py-1 py-lg-1"> <a href="{% url 'post_new' %}" class="mx-1"> <span> <button type="button" class="btn btn-light px-4 px-lg-3"> <i class="material-icons align-top">add_box</i> {% trans 'str_NewPost'  %} </button> </span> </a> </li>
-                
+                {% endif %}
                 <li class="nav-item dropdown my-1 px-0 px-lg-1 pt-1">
                     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="material-icons align-top">person</i>
@@ -140,10 +141,9 @@
                                     </div>
                                     <div id="collapse_perms" class="collapse" aria-labelledby="show_permissions" data-parent="#accordion">
                                         <div class="py-2 px-2 container">
-                                            <button type="button" class="btn btn-secondary btn-block"><i class="material-icons align-top">warning</i> Ayuda 1</button>
-                                            <button type="button" class="btn btn-secondary btn-block"><i class="material-icons align-top">warning</i> Ayuda 2</button>
-                                            <button type="button" class="btn btn-secondary btn-block"><i class="material-icons align-top">warning</i> Ayuda 3</button>
-                                            <button type="button" class="btn btn-secondary btn-block"><i class="material-icons align-top">warning</i> Ayuda 4</button>
+                                            <button type="button" class="btn btn-secondary btn-block"><i class="material-icons align-top mr-2">menu_book</i>Manual de uso</button>
+                                            <button type="button" class="btn btn-secondary btn-block"><i class="material-icons align-top mr-2">menu_book</i>Manual técnico</button>
+                                            <button type="button" class="btn btn-secondary btn-block"><i class="material-icons align-top mr-2">menu_book</i>Manual de instalación</button>
                                         </div>
                                     </div>
                                 </div>
@@ -155,7 +155,6 @@
                 <div class="col-4 pt-1">
                     <a href="{% url 'rules' %}" target="_blank" class="py-2 btn btn-secondary btn-block"><i class="material-icons align-top mr-1">rule</i>{% trans 'str_RedactionRules' %}</a>
                     <a href="{% url 'tutorial' %}" target="_blank" class="py-2 btn btn-secondary btn-block"><i class="material-icons align-top mr-1">extension</i>Tutorial</a>
-                    <a href="" target="_blank" class="py-2 btn btn-secondary btn-block"><i class="material-icons align-top mr-1">privacy_tip</i>{% trans 'str_PrivacyPolicy' %}</a>
                     <a href="" class="py-2 btn btn-danger btn-block"  data-dismiss="modal" data-toggle="modal" data-target="#problemModal"><i class="material-icons align-top mr-1">warning</i>{% trans 'str_dashboard_reportProblem' %}</a>
                 </div>
             </div>
@@ -243,15 +242,14 @@
                 </a>
                 <!-- Submenu content -->
                 <div id='submenu1' class="collapse sidebar-submenu">
-                    
                     <a href="{% url 'dashboard' %}" class="list-group-item list-group-item-action bg-dark text-white">
                         <span class="menu-collapsed"> {% trans 'str_Home'  %} </span>
                     </a>
-                    
+                    {% if not request.user.is_superuser %}
                     <a href="{% url 'post_new' %}" class="list-group-item list-group-item-action bg-dark text-white">
                         <span class="menu-collapsed"> {% trans 'str_NewPost'  %} </span>
                     </a>
-
+                    {% endif %}
                 </div>
                 <a href="#submenu2" data-toggle="collapse" aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
                     <div class="d-flex w-100 justify-content-start align-items-center">
@@ -307,16 +305,7 @@
                         <span id="collapse-icon" class="fa fa-2x mr-3"></span>
                         <span id="collapse-text" class="menu-collapsed"> {% trans 'str_dashboard_sidenavHide' %} </span>
                     </div>
-                </a>
-                <!-- Logo -->
-                
-                <div class="last-sidebar-separator">
-                    
-                </div>
-                
-                <li class=" list-group-item logo-separator d-flex justify-content-center">
-                    <img src="{% static 'Blog/assets/img/isoK_squared.png' %}" width="50" height="50" alt="">
-                </li>
+                </a>              
             </ul><!-- List Group END-->
         </div><!-- sidebar-container END -->
         

@@ -517,7 +517,7 @@ msgstr "Últimas entradas"
 #: .\templates\ecad_app\user\base.html:41
 #: .\templates\ecad_app\user\post_edit.html:26
 msgid "str_Hello"
-msgstr "¡Hola!"
+msgstr "¡Hola"
 
 #: .\templates\ecad_app\mails\blog\avg-mail.html:87
 msgid "str_mails_newAvgMail_title"
