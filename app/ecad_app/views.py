@@ -884,7 +884,7 @@ def post_new(request):
             newpost.save()
             form.save_m2m()
             # messages.success(request, _('PostCreated_Ok'))
-            return redirect('post_detail', category_text=newpost.category, slug_text=newpost.slug)
+            return redirect('post_detail', category_text=slugify(newpost.category), slug_text=newpost.slug)
         else:
             messages.error(request, _('EmptyFields'))
     else:
