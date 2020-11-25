@@ -130,11 +130,11 @@ msgstr "Apellido"
 
 #: .\forms.py:116
 msgid "str_profileForm_title_placeholder"
-msgstr "Redactor, ingeniero, padre de familia, maestro Jedi..."
+msgstr "Profesor, Autor, Ingeniero, Maestro, etc..."
 
 #: .\forms.py:117
 msgid "str_profileForm_bio_placeholder"
-msgstr "Cuéntale a los lectores un poco de ti y de tu vida :)"
+msgstr "Cuéntale al mundo un poco de ti, de tu labor y de tu vida :)"
 
 #: .\forms.py:118 .\forms.py:126 .\templates\ecad_app\user\settings.html:127
 msgid "str_public"
@@ -192,7 +192,7 @@ msgstr "Confirma tu email - ECAD"
 
 #: .\mailer.py:174
 msgid "str_mails_activationMail4"
-msgstr "Email de activación para "
+msgstr "Email de activación para"
 
 #: .\mailer.py:191
 msgid "str_mails_newMail"
@@ -232,7 +232,7 @@ msgstr "Conoce al equipo"
 
 #: .\templates\LVR\about.html:31
 msgid "str_about_MTTeam_subtitle"
-msgstr "Su trabajo hace posible "
+msgstr "Su trabajo en conjunto hace posible a"
 
 #: .\templates\ecad_app\about.html:35
 msgid "str_about_meetEditors"
@@ -334,7 +334,7 @@ msgstr "Parece que este email ya está registrado en el newsletter"
 
 #: .\templates\ecad_app\base.html:230
 msgid "str_ServiceTerms"
-msgstr "Términos del Servicio"
+msgstr "Términos del Uso"
 
 #: .\templates\ecad_app\base.html:231
 msgid "str_StaffAuthors"
@@ -369,7 +369,7 @@ msgstr "Contacto"
 
 #: .\templates\ecad_app\base_nav.html:42
 msgid "str_searchInBlog"
-msgstr "Busca en el ECAD"
+msgstr "Busca en ECAD"
 
 #: .\templates\ecad_app\base_nav.html:51
 #: .\templates\ecad_app\post_detail.html:214
@@ -884,19 +884,19 @@ msgstr "Restablecer contraseña"
 
 #: .\templates\ecad_app\mails\user\wrong-link.html:28
 msgid "EmailActivationFailed_title"
-msgstr ""
+msgstr "Ocurrió un error al tratar de activar la cuenta"
 
 #: .\templates\ecad_app\mails\user\wrong-link.html:35
 msgid "EmailActivationFailed_msg"
-msgstr ""
+msgstr "Parece que tenemos problemas para activar tu cuenta en estos momentos..."
 
 #: .\templates\ecad_app\mails\user\wrong-link.html:44
 msgid "Account_AlreadyActivated"
-msgstr ""
+msgstr "Puede que la cuenta ya esté activada"
 
 #: .\templates\ecad_app\mails\user\wrong-link.html:46
 msgid "EmailActivationFailed_newLink"
-msgstr ""
+msgstr "Intenta enviando un nuevo link"
 
 #: .\templates\ecad_app\misc\comment_terms.html:19
 #: .\templates\ecad_app\misc\rules.html:19
@@ -906,27 +906,27 @@ msgstr "Última actualización"
 #: .\templates\ecad_app\post_detail.html:42
 #: .\templates\ecad_app\post_detail.html:45
 msgid "post_draftStatus"
-msgstr ""
+msgstr "Este post está esperando ser moderado, mientras tanto solo tú lo puedes ver"
 
 #: .\templates\ecad_app\post_detail.html:43
 msgid "post_approvedStatus"
-msgstr ""
+msgstr "Esta post está publicado, lo que significa que todos lo pueden ver, ¡hurra!"
 
 #: .\templates\ecad_app\post_detail.html:44
 msgid "post_rejectedStatus"
-msgstr ""
+msgstr "Este post no fue aprobado"
 
 #: .\templates\ecad_app\post_detail.html:46
 msgid "post_archivedStatus"
-msgstr ""
+msgstr "Este post está archivado, por lo que solo tú lo puedes ver"
 
 #: .\templates\ecad_app\post_detail.html:55
 msgid "post_alreadyApprovedMsg"
-msgstr ""
+msgstr "Este post ya está publicado, si lo editas cambiará su contenido"
 
 #: .\templates\ecad_app\post_detail.html:94
 msgid "post_reaction_added"
-msgstr ""
+msgstr "Gracias por tu feedback"
 
 #: .\templates\ecad_app\post_detail.html:98
 #: .\templates\ecad_app\user\profile.html:138
@@ -1129,7 +1129,7 @@ msgstr "Reglas de Redacción"
 
 #: .\templates\ecad_app\user\base.html:166
 msgid "Close"
-msgstr ""
+msgstr "Cerrar"
 
 #: .\templates\ecad_app\user\base.html:181
 msgid "str_dashboard_confirmAction"

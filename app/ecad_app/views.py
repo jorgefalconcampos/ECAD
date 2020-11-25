@@ -237,6 +237,7 @@ def index(request):
 
     all_categories = Category.objects.all()
 
+
     try:
         avg = math.ceil(all_posts.count()/all_categories.count()) #Getting the average between all posts divided by number of categories
         popular_categories = Category.objects.annotate(post_count=Count('catego')).filter(post_count__gte=avg)

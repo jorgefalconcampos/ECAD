@@ -61,21 +61,21 @@ section {
     height: 25rem; } }
 
 .tooltip-inner {
-  background-color: #855446;
+  background-color: #467185;
   font-family: "Work Sans", sans-serif;
   padding: 0.2rem 0.5rem; }
 
 .tooltip.bs-tooltip-right .arrow:before {
-  border-right-color: #855446 !important; }
+  border-right-color: #467185 !important; }
 
 .tooltip.bs-tooltip-left .arrow:before {
-  border-left-color: #855446 !important; }
+  border-left-color: #467185 !important; }
 
 .tooltip.bs-tooltip-bottom .arrow:before {
-  border-bottom-color: #855446 !important; }
+  border-bottom-color: #467185 !important; }
 
 .tooltip.bs-tooltip-top .arrow:before {
-  border-top-color: #855446 !important; }
+  border-top-color: #467185 !important; }
 
 .modal-backdrop.show {
   opacity: 0.8; }

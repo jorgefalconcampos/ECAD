@@ -1,38 +1,25 @@
-
-
 $(window).on('load',function(){
     $('#noCategoModal').modal('show');
     $('[data-toggle="tooltip"]').tooltip(); 
     // alert(window.location.origin); //http://localhost:9000
 
     $('[id^="cmt_counter"]').each(function() {
-        //getting only the numeric part
-        var post_id = $(this).attr('id').replace(/[^\d]+/, ''); 
-        //adding to a JSON object the post_id with the number of comments inside that post
-        post_details[post_id] = parseInt($(this).html()); 
-        // console.log(JSON.stringify(post_details));
+        var post_id = $(this).attr('id').replace(/[^\d]+/, ''); //getting only the numeric part
+        post_details[post_id] = parseInt($(this).html());  //adding to a JSON object the post_id with the number of comments inside that post
     });
-
 
     var active = sessionStorage.getItem('active');
 
     switch (active) {
-
         case "sel_item_nav_settings":
             $("#settings_account").click();
-        break;  
-
+        break;
         case "sel_item_nav_password":
             $("#settings_password").click();
         break;   
-
         default: $("#settings_profile").click(); break;
       }
-
-
 });
-
-
 
 
 $("#settings_account").on('click', function(){
@@ -47,28 +34,7 @@ $("#settings_profile").on('click', function(){
     sessionStorage.setItem('active', "sel_item_nav_profile");
 });
 
-
-
-
-
-
-// $("#sel_item_nav_password").on('click', function(){
-
-
-
-//     // $('[id^="cmt_counter"]').each(function() {
-
-
-//     sessionStorage.setItem('active', 'password');
-//     var data = sessionStorage.getItem('active');
-//     // alert(data);
-//   });
-
-
-
-
 var post_details = {}
-
 
 // START TOAST MESSAGES SECTION //
 var success_title = 'Cambios guardados con éxito', success_text = 'Los cambios fueron guardados. ', success_reloading = ' Recargando...';
@@ -343,7 +309,7 @@ function cmts_action_config(val){
         case 1: 
             comment_action = 'approve'; 
             frm.attr('method', 'POST');
-            label.html(`¿Aprobar el comentario de <b>${cmt_author}</b>? (ID: ${cmtID})<br><br><b>"</b>${cmt_body}</div><b>"</b>`)
+            label.html(`¿Aprobar el comentario de <b>${cmt_author}</b>?<br><br><b>"</b>${cmt_body}</div><b>"</b>`)
             button.attr('class', 'btn btn-success px-3'); button.html(`${icon} Si, aprobar`);
         break;
 
@@ -367,7 +333,7 @@ $(document).on('submit ', '#commentActionsModal',function(e){
     }
     e.preventDefault();
     $.ajax({
-        url: `/user/comment/perform-action/${comment_action}/${cmtID}`,
+        url: `/usuario/comment/perform-action/${comment_action}/${cmtID}`,
         type: $(this).attr('method'),
         dataType: 'json',
         beforeSend: function (xhr) { xhr.setRequestHeader("X-CSRFToken", csrftoken);},
@@ -510,9 +476,8 @@ $(document).on('submit', '#postActionsModal',function(e){
     }
 
     e.preventDefault();
-    // alert(`post/perform-action/${post_action}/${postID}`);    
     $.ajax({
-        url: `/user/post/perform-action/${post_action}/${postID}`,
+        url: `/usuario/post/perform-action/${post_action}/${postID}`,
         type: $(this).attr('method'),
         dataType: 'json',
         beforeSend: function (xhr) {
@@ -590,5 +555,3 @@ $.ajaxSetup({
         }
     }
 });
-
-

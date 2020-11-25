@@ -45,7 +45,6 @@
                                                         {% if post.status == 3 %}{% trans 'post_draftStatus' %}{% endif %}
                                                         {% if post.status == 4 %}{% trans 'post_archivedStatus' %}{% endif %}
                                                     </b>
-                                                    <!-- <b> Este post esta publicado y acetparo, lo que significa que todos lo pueden ver, hurra!</b>🎉 -->
                                                 </div>
                                             </div>
                                             
@@ -366,7 +365,7 @@
                 
                                     <div class="form-group col-12">
                                         <label class="ml-1" for="comment_body">{{commntForm.comment_body.label}}</label>
-                                        <small class="float-left float-sm-right float-md-right float-lg-right mx-2"> (Asegúrate que tu comentario siga las <a href="{% url 'comments_terms' %}" target="_blank">{% trans 'str_comment_terms' %}</a>).</small>
+                                        <small class="float-left float-sm-right float-md-right float-lg-right mx-2"> (Asegúrate que tu comentario siga las <a href="" target="_blank">{% trans 'str_comment_terms' %}</a>).</small>
                                         {{commntForm.comment_body}}
                                     </div>
             
