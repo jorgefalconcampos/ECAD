@@ -75,7 +75,7 @@ Para ejecutar desde la consola (con docker-compose y en modo desarrollo) ejecuta
 $ docker-compose up -d --build
 
 # Paso 2 - Verificar la creación de la BDD Postgres dentro del servicio "db"
-$ docker-compose exec db psql --username=USUARIO_DE_DESARROLLO --dbname=NOMBRE_BDD_DESARROLLO
+$ docker-compose exec db psql --username=USUARIO --dbname=NOMBRE_BDD
 
 # (Ejecutar este paso solo si los archivos estáticos [CSS, JS, PNG's, JPG's, etc] han cambiado)
 $ docker-compose exec web python manage.py collectstatic --no-input --clear
