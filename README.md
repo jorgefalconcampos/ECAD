@@ -31,7 +31,7 @@
   <a href="#licencia">Licencia</a>
 </p>
 
-![screenshot](https://raw.githubusercontent.com/amitmerchant1990/electron-madownify/master/app/img/markdownify.gif)
+<!-- ![screenshot](https://raw.githubusercontent.com/amitmerchant1990/electron-madownify/master/app/img/markdownify.gif) -->
 
 ## ¿Qué es **ECAD**?
 
@@ -61,14 +61,9 @@ Uno de los principales beneficios que tiene ECAD es la enseñanza a distancia co
 ## Cómo se utiliza
 
 Para ejecutar ECAD, solo es necesario ejecutar el contenedor Docker
-en la máquina o servidor donde se instalará la paltaforma y asignarle una dirección IP. Para ejecutar localmente, también es necesario instalar [Docker](https://www.docker.com/) en el sistema y proceder como se indica en los manuales técnicos y de instalación. Se necesitarán, al menos, [Python](https://www.python.org/downloads/) y [Django](https://www.djangoproject.com/) en las versiones indicadas, cuyas imagenes de instalación se encuentran en el archivo docker-compose-x, donde **x** es la versión de desarrollo o de producción. 
+en la máquina o servidor donde se instalará la paltaforma y asignarle una dirección IP. Para ejecutar localmente, también es necesario instalar [Docker](https://www.docker.com/) en el sistema y proceder como se indica en los manuales técnicos y de instalación. Se necesitarán, al menos, [Python](https://www.python.org/downloads/) y [Django](https://www.djangoproject.com/) en las versiones indicadas, cuyas imagenes de instalación se encuentran en el archivo docker-compose. Para más información, favor de leer los manuales.
 
-Para la versión de desarrollo, se recomienda instalar en el equipo utilizado para desarrollar; al menos Python y Django, además de Docker.
-
-Para más información sobre las versiones de producción y desarrollo, favor de leer los manuales.
-
-
-Para ejecutar desde la consola (con docker-compose y en modo desarrollo) ejecutar los siguiente comandos:
+Para ejecutar desde la consola (con docker-compose) ejecutar los siguiente comandos:
 
 ```bash
 # Paso 1 - Crear el contenedor Docker, montarlo y correrlo en segundo plano
