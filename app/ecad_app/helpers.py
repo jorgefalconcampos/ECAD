@@ -71,7 +71,7 @@ def send_contact_message(context, subject):
 def send_newsletter_mail(post, request):
     # getting all the subs and its conf_number, the conf_number must be sent to allow users unsubscribe
     abs_url = request.build_absolute_uri('/')[:-1] # absolute_url
-    post_url = '{}{}/{}'.format(f"{abs_url}/post/", post.category, post.slug)
+    post_url = '{}{}/{}'.format(f"{abs_url}/post/", post.category.slug, post.slug)
     post_preview = post.post_body
     post_bg_img = '{}{}'.format(abs_url, post.image.url)
     privacy_url = f"{abs_url}/privacy-policy"

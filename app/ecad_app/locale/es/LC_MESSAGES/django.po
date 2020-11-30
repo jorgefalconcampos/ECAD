@@ -2,13 +2,13 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-23 18:20-0600\n"
+"POT-Creation-Date: 2020-11-28 21:09-0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,8 +28,8 @@ msgstr "Escribe el subtítulo del post"
 
 #: .\forms.py:20 .\templates\ecad_app\misc\comment_terms.html:21
 #: .\templates\ecad_app\misc\rules.html:21
-#: .\templates\ecad_app\post_detail.html:83
-#: .\templates\ecad_app\post_detail.html:85
+#: .\templates\ecad_app\post_detail.html:82
+#: .\templates\ecad_app\post_detail.html:84
 msgid "str_photo"
 msgstr "foto"
 
@@ -86,7 +86,7 @@ msgid "str_firstName"
 msgstr "Nombre"
 
 #: .\forms.py:58 .\forms.py:92 .\forms.py:126 .\forms.py:164
-#: .\templates\LVR\user\settings.html:138
+#: .\templates\ecad_app\user\settings.html:127
 msgid "str_email"
 msgstr "Email"
 
@@ -110,7 +110,7 @@ msgstr "Escribe un nombre de usuario"
 msgid "str_private"
 msgstr "privado"
 
-#: .\forms.py:91 .\templates\ecad_app\user\base.html:73
+#: .\forms.py:91 .\templates\ecad_app\user\base.html:74
 #: .\templates\ecad_app\user\login.html:62
 #: .\templates\ecad_app\user\login.html:67
 msgid "str_user"
@@ -212,25 +212,31 @@ msgstr "Acerca de"
 
 #: .\templates\ecad_app\about.html:19
 msgid "str_about_pitch"
-msgstr "ECAD nació con la idea de seguir transmitiendo el conocimiento en tiempos donde la distancia física no es posible. En ECAD no hay fronteras y se busca transmitir el conocimiento a cualquier persona en cualquier lugar."
+msgstr ""
+"ECAD nació con la idea de seguir transmitiendo el conocimiento en tiempos "
+"donde la distancia física no es posible. En ECAD no hay fronteras y se busca "
+"transmitir el conocimiento a cualquier persona en cualquier lugar."
 
 #: .\templates\ecad_app\about.html:19
 msgid "str_about_pitch2"
-msgstr "Mientras volvemos a la normalidad, siéntete libre de explorar la plataforma, revisar los apuntes y los posts, deja un comentario, interactúa con el sitio y no olvides suscribirte al Newsletter."
+msgstr ""
+"Mientras volvemos a la normalidad, siéntete libre de explorar la plataforma, "
+"revisar los apuntes y los posts, deja un comentario, interactúa con el sitio "
+"y no olvides suscribirte al Newsletter."
 
-#: .\templates\LVR\about.html:23
+#: .\templates\ecad_app\about.html:23
 msgid "str_exploreTags"
 msgstr "Explora los tags"
 
-#: .\templates\LVR\about.html:24
+#: .\templates\ecad_app\about.html:24
 msgid "str_exploreCategories "
 msgstr "Explora las categorías"
 
-#: .\templates\LVR\about.html:30
+#: .\templates\ecad_app\about.html:30
 msgid "str_about_MTTeam_title"
 msgstr "Conoce al equipo"
 
-#: .\templates\LVR\about.html:31
+#: .\templates\ecad_app\about.html:31
 msgid "str_about_MTTeam_subtitle"
 msgstr "Su trabajo en conjunto hace posible a"
 
@@ -245,12 +251,12 @@ msgstr "Todos los posts publicados por"
 #: .\templates\ecad_app\author_detail.html:99
 #: .\templates\ecad_app\categories_detail.html:34
 #: .\templates\ecad_app\index.html:125
-#: .\templates\ecad_app\post_detail.html:142
-#: .\templates\ecad_app\post_detail.html:256
-#: .\templates\ecad_app\post_detail.html:304
+#: .\templates\ecad_app\post_detail.html:141
+#: .\templates\ecad_app\post_detail.html:255
+#: .\templates\ecad_app\post_detail.html:303
 #: .\templates\ecad_app\search.html:126
 #: .\templates\ecad_app\tags_detail.html:35
-#: .\templates\ecad_app\user\dashboard.html:170
+#: .\templates\ecad_app\user\dashboard.html:172
 #: .\templates\ecad_app\user\post_list.html:78
 msgid "str_publishedDate"
 msgstr "Publicado"
@@ -266,7 +272,7 @@ msgstr "Este autor aún no escribe ningún post"
 #: .\templates\ecad_app\index.html:188
 #: .\templates\ecad_app\tags_detail.html:73
 #: .\templates\ecad_app\user\moderate_posts.html:108
-#: .\templates\ecad_app\user\post_list.html:195
+#: .\templates\ecad_app\user\post_list.html:197
 msgid "str_page"
 msgstr "Página"
 
@@ -276,7 +282,7 @@ msgstr "Página"
 #: .\templates\ecad_app\index.html:188
 #: .\templates\ecad_app\tags_detail.html:73
 #: .\templates\ecad_app\user\moderate_posts.html:108
-#: .\templates\ecad_app\user\post_list.html:195
+#: .\templates\ecad_app\user\post_list.html:197
 msgid "str_of"
 msgstr "de"
 
@@ -290,29 +296,31 @@ msgstr "Posts publicados"
 
 #: .\templates\ecad_app\base.html:15
 msgid "str_metaDescription"
-msgstr "ECAD es una plataforma online que busca llevar la educación y el aprendizaje al siguiente nivel."
+msgstr ""
+"ECAD es una plataforma online que busca llevar la educación y el aprendizaje "
+"al siguiente nivel."
 
-#: .\templates\ecad_app\base.html:122 .\templates\ecad_app\user\base.html:63
+#: .\templates\ecad_app\base.html:122 .\templates\ecad_app\user\base.html:64
 msgid "str_ContactWithUs"
 msgstr "Contacta con"
 
-#: .\templates\ecad_app\base.html:157 .\templates\ecad_app\user\base.html:101
+#: .\templates\ecad_app\base.html:157 .\templates\ecad_app\user\base.html:102
 msgid "str_msgSent"
 msgstr "Mensaje enviado"
 
-#: .\templates\ecad_app\base.html:159 .\templates\ecad_app\user\base.html:103
-#: .\templates\ecad_app\user\base.html:199
-#: .\templates\ecad_app\user\post_edit.html:142
+#: .\templates\ecad_app\base.html:159 .\templates\ecad_app\user\base.html:104
+#: .\templates\ecad_app\user\base.html:198
+#: .\templates\ecad_app\user\post_edit.html:141
 msgid "str_cancel"
 msgstr "Cancelar"
 
-#: .\templates\ecad_app\base.html:160 .\templates\ecad_app\user\base.html:104
+#: .\templates\ecad_app\base.html:160 .\templates\ecad_app\user\base.html:105
 #: .\templates\ecad_app\user\pswd\password-reset.html:58
 msgid "str_send"
 msgstr "Enviar"
 
-#: .\templates\ecad_app\base.html:163 .\templates\ecad_app\user\base.html:107
-#: .\templates\ecad_app\user\base.html:204
+#: .\templates\ecad_app\base.html:163 .\templates\ecad_app\user\base.html:108
+#: .\templates\ecad_app\user\base.html:203
 msgid "str_sending"
 msgstr "Enviando"
 
@@ -322,7 +330,8 @@ msgstr "Recibe un mensaje a tu email cuando se suba un nuevo post."
 
 #: .\templates\ecad_app\base.html:208
 msgid "str_subNewsletter_done"
-msgstr "Listo, enviamos un mensaje a tu email para que verifiques tu suscripción"
+msgstr ""
+"Listo, enviamos un mensaje a tu email para que verifiques tu suscripción"
 
 #: .\templates\ecad_app\base.html:209
 msgid "str_subNewsletter_error"
@@ -340,22 +349,22 @@ msgstr "Términos del Uso"
 msgid "str_StaffAuthors"
 msgstr "Autores"
 
-#: .\templates\ecad_app\base.html:235
+#: .\templates\ecad_app\base.html:234
 #: .\templates\ecad_app\user\settings.html:58
 msgid "str_language"
 msgstr "Idioma"
 
-#: .\templates\ecad_app\base.html:255
+#: .\templates\ecad_app\base.html:254
 msgid "str_with"
 msgstr "con"
 
-#: .\templates\ecad_app\base.html:255
+#: .\templates\ecad_app\base.html:254
 #: .\templates\ecad_app\mails\user\pswd\reset-pass-mail.html:139
 msgid "str_in"
 msgstr "en"
 
 #: .\templates\ecad_app\base_nav.html:24
-#: .\templates\ecad_app\user\base.html:248
+#: .\templates\ecad_app\user\base.html:246
 msgid "str_Home"
 msgstr "Inicio"
 
@@ -372,7 +381,7 @@ msgid "str_searchInBlog"
 msgstr "Busca en ECAD"
 
 #: .\templates\ecad_app\base_nav.html:51
-#: .\templates\ecad_app\post_detail.html:214
+#: .\templates\ecad_app\post_detail.html:213
 #: .\templates\ecad_app\search.html:65 .\templates\ecad_app\search.html:145
 msgid "str_search"
 msgstr "Buscar"
@@ -387,22 +396,22 @@ msgid "str_loggedInAs"
 msgstr "Sesión:"
 
 #: .\templates\ecad_app\base_nav.html:73
-#: .\templates\ecad_app\user\base.html:240
+#: .\templates\ecad_app\user\base.html:239
 msgid "str_Dashboard"
 msgstr "Panel de Control"
 
-#: .\templates\ecad_app\base_nav.html:74
-#: .\templates\ecad_app\user\base.html:34
-#: .\templates\ecad_app\user\base.html:252
-#: .\templates\ecad_app\user\dashboard.html:91
-#: .\templates\ecad_app\user\dashboard.html:248
+#: .\templates\ecad_app\base_nav.html:75
+#: .\templates\ecad_app\user\base.html:35
+#: .\templates\ecad_app\user\base.html:250
+#: .\templates\ecad_app\user\dashboard.html:92
+#: .\templates\ecad_app\user\dashboard.html:251
 #: .\templates\ecad_app\user\post_list.html:26
-#: .\templates\ecad_app\user\post_list.html:168
+#: .\templates\ecad_app\user\post_list.html:169
 msgid "str_NewPost"
 msgstr "Nuevo post"
 
-#: .\templates\ecad_app\base_nav.html:76
-#: .\templates\ecad_app\user\base.html:50
+#: .\templates\ecad_app\base_nav.html:78
+#: .\templates\ecad_app\user\base.html:51
 msgid "str_dashboard_logout"
 msgstr "Cerrar sesión"
 
@@ -416,7 +425,7 @@ msgstr "No hay posts en esta categoría"
 
 #: .\templates\ecad_app\categories.html:46
 msgid "str_posts_in_this_category"
-msgstr "No hay publicaciones en esta categoría"
+msgstr "Publicaciones en esta categoría"
 
 #: .\templates\ecad_app\categories.html:61
 #: .\templates\ecad_app\user\new_category.html:14
@@ -432,9 +441,9 @@ msgstr "Agregar categoría"
 #: .\templates\ecad_app\categories_detail.html:35
 #: .\templates\ecad_app\index.html:86 .\templates\ecad_app\index.html:126
 #: .\templates\ecad_app\index.html:167
-#: .\templates\ecad_app\post_detail.html:156
-#: .\templates\ecad_app\post_detail.html:305
-#: .\templates\ecad_app\post_detail.html:330
+#: .\templates\ecad_app\post_detail.html:155
+#: .\templates\ecad_app\post_detail.html:304
+#: .\templates\ecad_app\post_detail.html:329
 #: .\templates\ecad_app\tags_detail.html:36
 msgid "str_postBy"
 msgstr "Por"
@@ -461,7 +470,7 @@ msgstr "Algo ha ido mal en la petición"
 #: .\templates\ecad_app\mails\blog\verify.html:186
 #: .\templates\ecad_app\user\pswd\password-reset-done.html:26
 msgid "str_goHome"
-msgstr "Ir a nicio"
+msgstr "Ir a Inicio"
 
 #: .\templates\ecad_app\http_states\403.html:11
 msgid "page403_title"
@@ -493,11 +502,16 @@ msgstr "¡Hola mundo!"
 
 #: .\templates\ecad_app\index.html:24
 msgid "str_index_greeting_subtitle1"
-msgstr "Esto es ECAD, una plataforma online para fomentar el aprendizaje desarrollada en el Instituto Politécnico Nacional. Estamos felices de hacer el proyecto "
+msgstr ""
+"Esto es ECAD, una plataforma online para fomentar el aprendizaje "
+"desarrollada en el Instituto Politécnico Nacional. Estamos felices de hacer "
+"el proyecto "
 
 #: .\templates\ecad_app\index.html:25
 msgid "str_index_greeting_subtitle2"
-msgstr "una realidad y ayudar con el aprendizaje de muchos jóvenes, lee un poco de la información que tenemos para ti!"
+msgstr ""
+"una realidad y ayudar con el aprendizaje de muchos jóvenes, lee un poco de "
+"la información que tenemos para ti!"
 
 #: .\templates\ecad_app\index.html:26
 msgid "str_index_greeting_button"
@@ -514,14 +528,14 @@ msgstr "Últimas entradas"
 #: .\templates\ecad_app\mails\blog\avg-mail.html:86
 #: .\templates\ecad_app\mails\blog\confirm-mail.html:166
 #: .\templates\ecad_app\mails\user\activate-email.html:164
-#: .\templates\ecad_app\user\base.html:41
+#: .\templates\ecad_app\user\base.html:42
 #: .\templates\ecad_app\user\post_edit.html:26
 msgid "str_Hello"
 msgstr "¡Hola"
 
 #: .\templates\ecad_app\mails\blog\avg-mail.html:87
 msgid "str_mails_newAvgMail_title"
-msgstr "Se escribió una nueva publicació en ECAD"
+msgstr "Se escribió una nueva publicación en ECAD"
 
 #: .\templates\ecad_app\mails\blog\avg-mail.html:179
 msgid "str_mails_canReadThisInSite"
@@ -540,13 +554,14 @@ msgid "str_readCompletePost"
 msgstr "Leer post completo"
 
 #: .\templates\ecad_app\mails\blog\avg-mail.html:350
-#: .\templates\ecad_app\user\base.html:158
 msgid "str_PrivacyPolicy"
 msgstr "Política de Privacidad"
 
 #: .\templates\ecad_app\mails\blog\avg-mail.html:470
 msgid "str_mails_footer_whyWatchingThis"
-msgstr "Estás viendo este mensaje porque te suscribiste al Newsletter de ECAD con el email"
+msgstr ""
+"Estás viendo este mensaje porque te suscribiste al Newsletter de ECAD con el "
+"email"
 
 #: .\templates\ecad_app\mails\blog\avg-mail.html:472
 msgid "str_mails_footer_cancelSub"
@@ -571,11 +586,14 @@ msgstr "Estás cerca de recibir en tu email las últimas historias de"
 
 #: .\templates\ecad_app\mails\blog\confirm-mail.html:215
 msgid "str_mails_clickBtnBelow"
-msgstr "Para finalizar, haz clic en el botón de abajo para confirmar tu email y listo!"
+msgstr ""
+"Para finalizar, haz clic en el botón de abajo para confirmar tu email y "
+"listo!"
 
 #: .\templates\ecad_app\mails\blog\confirm-mail.html:222
 msgid "str_mails_btnNotWorksCopyPaste"
-msgstr "Si el botón no funciona, copia y pega el siguiente enlace en tu navegador"
+msgstr ""
+"Si el botón no funciona, copia y pega el siguiente enlace en tu navegador"
 
 #: .\templates\ecad_app\mails\blog\confirm-mail.html:267
 msgid "str_confirm"
@@ -641,7 +659,8 @@ msgstr "Parece que el email"
 
 #: .\templates\ecad_app\mails\blog\verify.html:75
 msgid "str_confirmEmail_already_msg2"
-msgstr "ya está confirmado, así que no hay necesidad de intentar confirmarlo de nuevo"
+msgstr ""
+"ya está confirmado, así que no hay necesidad de intentar confirmarlo de nuevo"
 
 #: .\templates\ecad_app\mails\blog\verify.html:99
 msgid "str_confirmEmail_unexpected"
@@ -678,7 +697,9 @@ msgstr "No encontramos el email proporcionado"
 
 #: .\templates\ecad_app\mails\blog\verify.html:209
 msgid "str_confirmEmail_alreadyDeleted"
-msgstr "Parece que el email que se está tratando de eliminar ya no está registrado en el Newsletter"
+msgstr ""
+"Parece que el email que se está tratando de eliminar ya no está registrado "
+"en el Newsletter"
 
 #: .\templates\ecad_app\mails\user\account-activated.html:11
 msgid "str_accountActivated_success"
@@ -711,8 +732,9 @@ msgstr "Buenas noticias"
 #: .\templates\ecad_app\mails\user\activate-email.html:171
 msgid "str_mails_welcomeHeader"
 msgstr ""
-"Ahora eres parte de la comunidad de autores, redactores, profesores y escritores de ECAD. Lo único que debes "
-"hacer es activar tu cuenta. Hazlo siguiendo estas instrucciones"
+"Ahora eres parte de la comunidad de autores, redactores, profesores y "
+"escritores de ECAD. Lo único que debes hacer es activar tu cuenta. Hazlo "
+"siguiendo estas instrucciones"
 
 #: .\templates\ecad_app\mails\user\activate-email.html:214
 msgid "str_mails_welcome_step1"
@@ -730,7 +752,6 @@ msgstr ""
 #: .\templates\ecad_app\mails\user\activate-email.html:230
 msgid "str_mails_welcome_step3_p1"
 msgstr "¡Listo, es todo! Te recordamos que tu nombre de usuario es: "
-
 
 #: .\templates\ecad_app\mails\user\activate-email.html:230
 msgid "str_mails_welcome_step3_p2"
@@ -781,7 +802,7 @@ msgstr "Agregar otro autor"
 #: .\templates\ecad_app\mails\user\email-sent.html:55
 #: .\templates\ecad_app\mails\user\email-sent.html:98
 #: .\templates\ecad_app\user\base.html:33
-#: .\templates\ecad_app\user\base.html:410
+#: .\templates\ecad_app\user\base.html:399
 msgid "str_dashboard_goToPage"
 msgstr "Ir al sitio"
 
@@ -801,7 +822,6 @@ msgstr "Intenta lo siguiente"
 #: .\templates\ecad_app\mails\user\email-sent.html:85
 msgid "str_emailFailed_Step1"
 msgstr "Verifica que tu equipo esté conectado o verifica la conexión Wi-Fi"
-
 
 #: .\templates\ecad_app\mails\user\email-sent.html:86
 msgid "str_emailFailed_Step2"
@@ -839,7 +859,6 @@ msgid "str_resetPass_title1"
 msgstr ""
 "A veces olvidamos cosas... pero no te preocupes, que estamos aquí para "
 "ayudar. Sigue los siguientes pasos para restablecer tu contraseña"
-
 
 #: .\templates\ecad_app\mails\user\pswd\reset-pass-mail.html:172
 msgid "str_makeClic"
@@ -888,7 +907,8 @@ msgstr "Ocurrió un error al tratar de activar la cuenta"
 
 #: .\templates\ecad_app\mails\user\wrong-link.html:35
 msgid "EmailActivationFailed_msg"
-msgstr "Parece que tenemos problemas para activar tu cuenta en estos momentos..."
+msgstr ""
+"Parece que tenemos problemas para activar tu cuenta en estos momentos..."
 
 #: .\templates\ecad_app\mails\user\wrong-link.html:44
 msgid "Account_AlreadyActivated"
@@ -906,11 +926,13 @@ msgstr "Última actualización"
 #: .\templates\ecad_app\post_detail.html:42
 #: .\templates\ecad_app\post_detail.html:45
 msgid "post_draftStatus"
-msgstr "Este post está esperando ser moderado, mientras tanto solo tú lo puedes ver"
+msgstr ""
+"Este post está esperando ser moderado, mientras tanto solo tú lo puedes ver"
 
 #: .\templates\ecad_app\post_detail.html:43
 msgid "post_approvedStatus"
-msgstr "Esta post está publicado, lo que significa que todos lo pueden ver, ¡hurra!"
+msgstr ""
+"Esta post está publicado, lo que significa que todos lo pueden ver, ¡hurra!"
 
 #: .\templates\ecad_app\post_detail.html:44
 msgid "post_rejectedStatus"
@@ -920,81 +942,81 @@ msgstr "Este post no fue aprobado"
 msgid "post_archivedStatus"
 msgstr "Este post está archivado, por lo que solo tú lo puedes ver"
 
-#: .\templates\ecad_app\post_detail.html:55
+#: .\templates\ecad_app\post_detail.html:54
 msgid "post_alreadyApprovedMsg"
 msgstr "Este post ya está publicado, si lo editas cambiará su contenido"
 
-#: .\templates\ecad_app\post_detail.html:94
+#: .\templates\ecad_app\post_detail.html:93
 msgid "post_reaction_added"
 msgstr "Gracias por tu feedback"
 
-#: .\templates\ecad_app\post_detail.html:98
+#: .\templates\ecad_app\post_detail.html:97
 #: .\templates\ecad_app\user\profile.html:138
 msgid "str_favReaction"
 msgstr "Favorito"
 
-#: .\templates\ecad_app\post_detail.html:99
+#: .\templates\ecad_app\post_detail.html:98
 #: .\templates\ecad_app\user\profile.html:144
 msgid "str_utilReaction"
 msgstr "Fue útil"
 
-#: .\templates\ecad_app\post_detail.html:100
+#: .\templates\ecad_app\post_detail.html:99
 #: .\templates\ecad_app\user\profile.html:150
 msgid "str_goodReaction"
 msgstr "Enhorabuena"
 
-#: .\templates\ecad_app\post_detail.html:101
+#: .\templates\ecad_app\post_detail.html:100
 #: .\templates\ecad_app\user\profile.html:156
 msgid "str_badReaction"
 msgstr "Podría mejorar"
 
-#: .\templates\ecad_app\post_detail.html:111
+#: .\templates\ecad_app\post_detail.html:110
 msgid "str_topics"
 msgstr "Temas"
 
-#: .\templates\ecad_app\post_detail.html:171
+#: .\templates\ecad_app\post_detail.html:170
 msgid "str_saveOrshare"
 msgstr "Comparte o guarda esta publicación"
 
-#: .\templates\ecad_app\post_detail.html:242
+#: .\templates\ecad_app\post_detail.html:241
 msgid "str_post_detail_moreFrom"
 msgstr "Más de"
 
-#: .\templates\ecad_app\post_detail.html:281
-#: .\templates\ecad_app\post_detail.html:284
+#: .\templates\ecad_app\post_detail.html:280
+#: .\templates\ecad_app\post_detail.html:283
 msgid "str_mayInterested"
 msgstr "Te podría interesar..."
 
-#: .\templates\ecad_app\post_detail.html:348
+#: .\templates\ecad_app\post_detail.html:347
 msgid "str_post_detail_CountingComments"
 msgstr "comentarios en este post"
 
-#: .\templates\ecad_app\post_detail.html:349
+#: .\templates\ecad_app\post_detail.html:348
 msgid "str_write_a_comment"
 msgstr "Escribe un comentario"
 
-#: .\templates\ecad_app\post_detail.html:350
+#: .\templates\ecad_app\post_detail.html:349
 msgid "post_detail_AwaitingModeration"
-msgstr "comentario esperando moderación"
+msgstr "Comentario esperando moderación"
 
-#: .\templates\ecad_app\post_detail.html:369
+#: .\templates\ecad_app\post_detail.html:368
 msgid "str_comment_terms"
 msgstr "reglas de participación"
 
-#: .\templates\ecad_app\post_detail.html:376
+#: .\templates\ecad_app\post_detail.html:375
 msgid "str_comment_CTA"
 msgstr "Comentar"
 
-#: .\templates\ecad_app\post_detail.html:414
+#: .\templates\ecad_app\post_detail.html:413
 msgid "str_reportComment"
 msgstr "Reportar comentario"
 
-#: .\templates\ecad_app\post_detail.html:418
+#: .\templates\ecad_app\post_detail.html:417
 msgid "str_reportedComment"
 msgstr "Este comentario ha sido reportado"
 
-#: .\templates\ecad_app\post_detail.html:432
-#: .\templates\ecad_app\user\base.html:137
+#: .\templates\ecad_app\post_detail.html:431
+#: .\templates\ecad_app\user\base.html:138
 #: .\templates\ecad_app\user\settings.html:227
 msgid "str_show"
 msgstr "Mostrar"
@@ -1076,50 +1098,50 @@ msgstr "Conoce de lo que se está hablando"
 msgid "str_dashboard"
 msgstr "Panel de Control"
 
-#: .\templates\ecad_app\user\base.html:43
-#: .\templates\ecad_app\user\base.html:259
-#: .\templates\ecad_app\user\dashboard.html:102
+#: .\templates\ecad_app\user\base.html:44
+#: .\templates\ecad_app\user\base.html:257
+#: .\templates\ecad_app\user\dashboard.html:104
 #: .\templates\ecad_app\user\settings.html:41
 msgid "str_dashboard_profile"
 msgstr "Mi perfil"
 
-#: .\templates\ecad_app\user\base.html:44
-#: .\templates\ecad_app\user\base.html:266
+#: .\templates\ecad_app\user\base.html:45
+#: .\templates\ecad_app\user\base.html:264
 #: .\templates\ecad_app\user\settings.html:28
 msgid "str_dashboard_settings"
 msgstr "Ajustes"
 
-#: .\templates\ecad_app\user\base.html:45
-#: .\templates\ecad_app\user\base.html:159
+#: .\templates\ecad_app\user\base.html:46
+#: .\templates\ecad_app\user\base.html:158
 msgid "str_dashboard_reportProblem"
 msgstr "Reportar problema"
 
-#: .\templates\ecad_app\user\base.html:47
+#: .\templates\ecad_app\user\base.html:48
 #: .\templates\ecad_app\user\dashboard.html:79
 msgid "str_dashboard_DjangoAdmin"
 msgstr "Administración de Django"
 
-#: .\templates\ecad_app\user\base.html:63
+#: .\templates\ecad_app\user\base.html:64
 msgid "str_techSupport"
 msgstr "Soporte Técnico"
 
-#: .\templates\ecad_app\user\base.html:83
+#: .\templates\ecad_app\user\base.html:84
 msgid "str_dashboard_reportProblem_date"
 msgstr "Fecha y hora del incidente"
 
-#: .\templates\ecad_app\user\base.html:93
+#: .\templates\ecad_app\user\base.html:94
 msgid "str_dashboard_reportProblem_label"
 msgstr "Descripción del problema"
 
-#: .\templates\ecad_app\user\base.html:95
+#: .\templates\ecad_app\user\base.html:96
 msgid "str_dashboard_DescribeProblem_placeholder"
 msgstr "Escribe una breve descripción del problema (máx. 500 caracteres)"
 
-#: .\templates\ecad_app\user\base.html:102
+#: .\templates\ecad_app\user\base.html:103
 msgid "str_sendProblem_error"
 msgstr "Ocurrió un error al enviar el mensaje, intenta de nuevo más tarde"
 
-#: .\templates\ecad_app\user\base.html:122
+#: .\templates\ecad_app\user\base.html:123
 msgid "str_ECAD_Help"
 msgstr "Hola"
 
@@ -1127,46 +1149,46 @@ msgstr "Hola"
 msgid "str_RedactionRules"
 msgstr "Reglas de Redacción"
 
-#: .\templates\ecad_app\user\base.html:166
+#: .\templates\ecad_app\user\base.html:165
 msgid "Close"
 msgstr "Cerrar"
 
-#: .\templates\ecad_app\user\base.html:181
+#: .\templates\ecad_app\user\base.html:180
 msgid "str_dashboard_confirmAction"
 msgstr "Confirmar acción"
 
-#: .\templates\ecad_app\user\base.html:233
+#: .\templates\ecad_app\user\base.html:232
 msgid "str_dashboard_QuickActions"
 msgstr "Acciones rápidas"
 
-#: .\templates\ecad_app\user\base.html:269
+#: .\templates\ecad_app\user\base.html:267
 #: .\templates\ecad_app\user\login.html:74
 msgid "str_pass"
 msgstr "Contraseña"
 
-#: .\templates\ecad_app\user\base.html:275
+#: .\templates\ecad_app\user\base.html:273
 msgid "str_dashboard_Addons"
 msgstr "Complementos"
 
-#: .\templates\ecad_app\user\base.html:283
+#: .\templates\ecad_app\user\base.html:281
 #: .\templates\ecad_app\user\dashboard.html:35
 #: .\templates\ecad_app\user\moderate_posts.html:12
 #: .\templates\ecad_app\user\moderate_posts.html:15
 msgid "str_moderatePosts"
 msgstr "Moderar posts"
 
-#: .\templates\ecad_app\user\base.html:291
+#: .\templates\ecad_app\user\base.html:289
 #: .\templates\ecad_app\user\dashboard.html:46
 #: .\templates\ecad_app\user\moderate_comments.html:47
 #: .\templates\ecad_app\user\moderate_comments.html:50
 msgid "str_dashboard_moderateComments"
 msgstr "Moderar comentarios"
 
-#: .\templates\ecad_app\user\base.html:302
+#: .\templates\ecad_app\user\base.html:300
 msgid "str_dashboard_help"
 msgstr "Ayuda"
 
-#: .\templates\ecad_app\user\base.html:308
+#: .\templates\ecad_app\user\base.html:306
 msgid "str_dashboard_sidenavHide"
 msgstr "Ocultar"
 
@@ -1178,15 +1200,15 @@ msgstr "Agregar autor"
 msgid "str_sendNewMail"
 msgstr "Enviar email"
 
-#: .\templates\ecad_app\user\dashboard.html:115
+#: .\templates\ecad_app\user\dashboard.html:117
 msgid "str_dashboard_myLatestPosts"
 msgstr "Mis últimos posts"
 
-#: .\templates\ecad_app\user\dashboard.html:117
+#: .\templates\ecad_app\user\dashboard.html:119
 msgid "str_dashboard_seeAllMyPosts"
 msgstr "Ver todos mis posts"
 
-#: .\templates\ecad_app\user\dashboard.html:127
+#: .\templates\ecad_app\user\dashboard.html:129
 #: .\templates\ecad_app\user\moderate_posts.html:26
 #: .\templates\ecad_app\user\moderate_posts.html:35
 #: .\templates\ecad_app\user\post_list.html:39
@@ -1194,7 +1216,7 @@ msgstr "Ver todos mis posts"
 msgid "str_dashboard_tableTitle_postDetail"
 msgstr "Ver a detalle"
 
-#: .\templates\ecad_app\user\dashboard.html:128
+#: .\templates\ecad_app\user\dashboard.html:130
 #: .\templates\ecad_app\user\moderate_posts.html:27
 #: .\templates\ecad_app\user\moderate_posts.html:36
 #: .\templates\ecad_app\user\post_list.html:40
@@ -1202,13 +1224,13 @@ msgstr "Ver a detalle"
 msgid "str_dashboard_tableTitle_postTitle"
 msgstr "Título"
 
-#: .\templates\ecad_app\user\dashboard.html:129
+#: .\templates\ecad_app\user\dashboard.html:131
 #: .\templates\ecad_app\user\post_list.html:41
 #: .\templates\ecad_app\user\post_list.html:53
 msgid "str_dashboard_tableTitle_postSubtitle"
 msgstr "Subtítulo"
 
-#: .\templates\ecad_app\user\dashboard.html:130
+#: .\templates\ecad_app\user\dashboard.html:132
 #: .\templates\ecad_app\user\moderate_posts.html:28
 #: .\templates\ecad_app\user\moderate_posts.html:37
 #: .\templates\ecad_app\user\post_list.html:42
@@ -1216,25 +1238,25 @@ msgstr "Subtítulo"
 msgid "str_dashboard_tableTitle_postImage"
 msgstr "Imagen"
 
-#: .\templates\ecad_app\user\dashboard.html:131
+#: .\templates\ecad_app\user\dashboard.html:133
 #: .\templates\ecad_app\user\post_list.html:43
 #: .\templates\ecad_app\user\post_list.html:55
 msgid "str_dashboard_tableTitle_postCreatedOrPublishedDate"
 msgstr "Fecha de creación/publicación"
 
-#: .\templates\ecad_app\user\dashboard.html:132
+#: .\templates\ecad_app\user\dashboard.html:134
 #: .\templates\ecad_app\user\post_list.html:44
 #: .\templates\ecad_app\user\post_list.html:56
 msgid "str_dashboard_tableTitle_postCommentss"
 msgstr "Comentarios"
 
-#: .\templates\ecad_app\user\dashboard.html:133
+#: .\templates\ecad_app\user\dashboard.html:135
 #: .\templates\ecad_app\user\post_list.html:45
 #: .\templates\ecad_app\user\post_list.html:57
 msgid "str_dashboard_tableTitle_postStatus"
 msgstr "Status"
 
-#: .\templates\ecad_app\user\dashboard.html:134
+#: .\templates\ecad_app\user\dashboard.html:136
 #: .\templates\ecad_app\user\moderate_comments.html:98
 #: .\templates\ecad_app\user\moderate_posts.html:30
 #: .\templates\ecad_app\user\moderate_posts.html:39
@@ -1243,7 +1265,7 @@ msgstr "Status"
 msgid "str_dashboard_tableTitle_postActions"
 msgstr "Acciones"
 
-#: .\templates\ecad_app\user\dashboard.html:167
+#: .\templates\ecad_app\user\dashboard.html:169
 #: .\templates\ecad_app\user\moderate_comments.html:97
 #: .\templates\ecad_app\user\moderate_posts.html:29
 #: .\templates\ecad_app\user\moderate_posts.html:38
@@ -1251,61 +1273,61 @@ msgstr "Acciones"
 msgid "str_createdDate"
 msgstr "Creado"
 
-#: .\templates\ecad_app\user\dashboard.html:172
+#: .\templates\ecad_app\user\dashboard.html:174
 #: .\templates\ecad_app\user\post_list.html:80
 msgid "str_notApprovedYet"
 msgstr "No aprobado aún"
 
-#: .\templates\ecad_app\user\dashboard.html:180
+#: .\templates\ecad_app\user\dashboard.html:182
 #: .\templates\ecad_app\user\post_list.html:87
 msgid "str_dashboard_table_TotalComments"
 msgstr "en total"
 
-#: .\templates\ecad_app\user\dashboard.html:182
+#: .\templates\ecad_app\user\dashboard.html:184
 #: .\templates\ecad_app\user\post_list.html:89
 msgid "str_approvedComments"
 msgstr "Aprobados"
 
-#: .\templates\ecad_app\user\dashboard.html:183
+#: .\templates\ecad_app\user\dashboard.html:185
 #: .\templates\ecad_app\user\post_list.html:90
 msgid "str_nonApprovedComments"
 msgstr "Por aprobar"
 
-#: .\templates\ecad_app\user\dashboard.html:186
+#: .\templates\ecad_app\user\dashboard.html:188
 #: .\templates\ecad_app\user\post_list.html:93
 msgid "str_noComments"
 msgstr "Sin comentarios"
 
-#: .\templates\ecad_app\user\dashboard.html:193
-#: .\templates\ecad_app\user\post_edit.html:182
+#: .\templates\ecad_app\user\dashboard.html:195
+#: .\templates\ecad_app\user\post_edit.html:181
 #: .\templates\ecad_app\user\post_list.html:100
 msgid "str_status_draft_desc"
 msgstr "En espera"
 
-#: .\templates\ecad_app\user\dashboard.html:199
-#: .\templates\ecad_app\user\post_edit.html:189
+#: .\templates\ecad_app\user\dashboard.html:201
+#: .\templates\ecad_app\user\post_edit.html:188
 #: .\templates\ecad_app\user\post_list.html:106
 msgid "str_status_approved_desc"
 msgstr "Esta publicación ha sido aprobada"
 
-#: .\templates\ecad_app\user\dashboard.html:205
-#: .\templates\ecad_app\user\post_edit.html:196
+#: .\templates\ecad_app\user\dashboard.html:207
+#: .\templates\ecad_app\user\post_edit.html:195
 #: .\templates\ecad_app\user\post_list.html:112
 msgid "str_status_rejected_desc"
 msgstr "Esta publicación no fue aprobada"
 
-#: .\templates\ecad_app\user\dashboard.html:211
-#: .\templates\ecad_app\user\post_edit.html:203
+#: .\templates\ecad_app\user\dashboard.html:213
+#: .\templates\ecad_app\user\post_edit.html:202
 #: .\templates\ecad_app\user\post_list.html:118
 msgid "str_status_archived_desc"
 msgstr "Esta publicación fue archivada"
 
-#: .\templates\ecad_app\user\dashboard.html:244
+#: .\templates\ecad_app\user\dashboard.html:246
 #: .\templates\ecad_app\user\post_list.html:164
 msgid "str_itSeems_wAnyArticle"
 msgstr "Parece que aún no has escrito ninguna publicación"
 
-#: .\templates\ecad_app\user\dashboard.html:245
+#: .\templates\ecad_app\user\dashboard.html:247
 #: .\templates\ecad_app\user\post_list.html:165
 msgid "str_whyNot_writeArticle"
 msgstr "¿Porqué no escribes una ahora?"
@@ -1335,14 +1357,14 @@ msgstr "Confirmar acción sobre comentario"
 
 #: .\templates\ecad_app\user\moderate_comments.html:57
 msgid "CommentsWithNoModeration"
-msgstr ""
+msgstr "comentarios sin moderar"
 
 #: .\templates\ecad_app\user\moderate_comments.html:83
 msgid "str_seePost"
 msgstr "Ver post"
 
 #: .\templates\ecad_app\user\moderate_comments.html:95
-#: .\templates\ecad_app\user\post_edit.html:72
+#: .\templates\ecad_app\user\post_edit.html:71
 msgid "str_author"
 msgstr "Autor"
 
@@ -1373,9 +1395,9 @@ msgstr "La forma en la que está creado la plataforma "
 #: .\templates\ecad_app\user\post_edit.html:27
 msgid "str_noCategosExplanaition_2"
 msgstr ""
-"es muy especial ya que los posts o artículos están organizados dentro de categorías. De "
-"esta manera es mucho más fácil ubicarlos o saber de qué tema se está "
-"hablando."
+"es muy especial ya que los posts o artículos están organizados dentro de "
+"categorías. De esta manera es mucho más fácil ubicarlos o saber de qué tema "
+"se está hablando."
 
 #: .\templates\ecad_app\user\post_edit.html:29
 msgid "str_noCategosExplanaition_3"
@@ -1389,58 +1411,58 @@ msgstr ""
 msgid "str_goBack2Dashboard"
 msgstr "Regresar al Panel de Control"
 
-#: .\templates\ecad_app\user\post_edit.html:58
+#: .\templates\ecad_app\user\post_edit.html:57
 msgid "str_postEdit_title"
 msgstr "Crear o editar un artículo"
 
-#: .\templates\ecad_app\user\post_edit.html:59
+#: .\templates\ecad_app\user\post_edit.html:58
 msgid "str_postEdit_subtitle"
 msgstr "Escribe algo que los demás amen leer"
 
-#: .\templates\ecad_app\user\post_edit.html:131
-#: .\templates\ecad_app\user\post_edit.html:133
+#: .\templates\ecad_app\user\post_edit.html:130
+#: .\templates\ecad_app\user\post_edit.html:132
 msgid "str_preview"
 msgstr "Previsualizar"
 
-#: .\templates\ecad_app\user\post_edit.html:144
-#: .\templates\ecad_app\user\post_edit.html:148
-#: .\templates\ecad_app\user\post_edit.html:151
+#: .\templates\ecad_app\user\post_edit.html:143
+#: .\templates\ecad_app\user\post_edit.html:147
+#: .\templates\ecad_app\user\post_edit.html:150
 msgid "str_save"
 msgstr "Guardar"
 
-#: .\templates\ecad_app\user\post_edit.html:179
+#: .\templates\ecad_app\user\post_edit.html:178
 msgid "str_postStatus"
 msgstr "Status del post"
 
-#: .\templates\ecad_app\user\post_edit.html:184
+#: .\templates\ecad_app\user\post_edit.html:183
 msgid "str_status_draft"
 msgstr "En espera"
 
-#: .\templates\ecad_app\user\post_edit.html:191
+#: .\templates\ecad_app\user\post_edit.html:190
 msgid "str_status_approved"
 msgstr "Aprobado"
 
-#: .\templates\ecad_app\user\post_edit.html:198
+#: .\templates\ecad_app\user\post_edit.html:197
 msgid "str_status_rejected"
 msgstr "No aprobado"
 
-#: .\templates\ecad_app\user\post_edit.html:205
+#: .\templates\ecad_app\user\post_edit.html:204
 msgid "str_status_archived"
 msgstr "Archivado"
 
-#: .\templates\ecad_app\user\post_edit.html:207
+#: .\templates\ecad_app\user\post_edit.html:206
 msgid "str_unarchive"
 msgstr "Desarchivar"
 
-#: .\templates\ecad_app\user\post_edit.html:217
+#: .\templates\ecad_app\user\post_edit.html:216
 msgid "str_post_DangerZone"
 msgstr "Zona de peligro"
 
-#: .\templates\ecad_app\user\post_edit.html:222
+#: .\templates\ecad_app\user\post_edit.html:221
 msgid "str_deletePost"
 msgstr "Eliminar artículo"
 
-#: .\templates\ecad_app\user\post_edit.html:227
+#: .\templates\ecad_app\user\post_edit.html:226
 msgid "str_archivePost"
 msgstr "Archivar post"
 
@@ -1543,7 +1565,7 @@ msgstr ""
 
 #: .\templates\ecad_app\user\pswd\password-reset-done.html:35
 msgid "str_resetPass_step2"
-msgstr "El email solo tiene validez únicamente para tu email"
+msgstr "El mensaje únicamente tiene validez para tu email"
 
 #: .\templates\ecad_app\user\pswd\password-reset.html:35
 msgid "str_resetPass_thingsHappen"
@@ -1586,8 +1608,8 @@ msgid "str_dashboard_settings_emailsExplanaition_p1"
 msgstr ""
 "Al crear la cuenta, tu email privado (al que llegó el email de activación) "
 "se asocia a tu perfil para realizar actividades importantes con él. Por otro "
-"lado, el email público pretende ser un medio de contacto entre el autor y los "
-"lectores y se asocia a"
+"lado, el email público pretende ser un medio de contacto entre el autor y "
+"los lectores y se asocia a"
 
 #: .\templates\ecad_app\user\settings.html:133
 msgid "str_yourublicProfile"
@@ -1640,7 +1662,8 @@ msgstr "Modifica tu contraseña actual a una diferente o a una más segura"
 #: .\templates\ecad_app\user\settings.html:262
 msgid "str_resetPass_explanaition"
 msgstr ""
-"Recibe en tu email un enlace para resetear tu contraseña en caso de olvidadarla"
+"Recibe en tu email un enlace para resetear tu contraseña en caso de "
+"olvidadarla"
 
 #: .\templates\ecad_app\user\sign_up.html:15
 msgid "str_signup_Title"
@@ -1650,10 +1673,10 @@ msgstr "Agregar nuevo autor"
 msgid "str_signup_CTA"
 msgstr "Agregar autor"
 
-#: .\views.py:682
+#: .\views.py:684
 msgid "ErrorCreatingUser"
-msgstr ""
+msgstr "Error al crear usuario"
 
-#: .\views.py:888
+#: .\views.py:892
 msgid "EmptyFields"
-msgstr ""
+msgstr "Error: campos vacíos"

@@ -118,10 +118,10 @@
                                 <div class="col-8">
                                     <div class="card">
                                         <div class="img-post img-zoom">    
-                                            <a href="{% url 'post_detail' post.category post.slug %}"> <img class="card-img-top" src="{{ post.image.url }}" alt="{{ post.title }}"></a>
+                                            <a href="{% url 'post_detail' post.category.slug post.slug %}"> <img class="card-img-top" src="{{ post.image.url }}" alt="{{ post.title }}"></a>
                                         </div>
                                         <div class="card-body position-relative">
-                                            <h5  class="post-title"> <a href=" {% url 'post_detail' post.category post.slug %}" class="stretched-link"> {{ post.title|highlight:query }} </a> </h5>
+                                            <h5  class="post-title"> <a href=" {% url 'post_detail' post.category.slug post.slug %}" class="stretched-link"> {{ post.title|highlight:query }} </a> </h5>
                                             <h6 class="post-subtitle mt-3 mb-3">{{ post.subtitle|highlight:query }}</h6>
                                             <p class="mt-2 card-subtitle text-muted">{% trans 'str_publishedDate' %}: {{ post.published_date }}</p>
                                         </div>

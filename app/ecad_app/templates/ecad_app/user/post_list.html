@@ -62,7 +62,7 @@
                     {% for post in post_list %}
                     
                     <tr id="{{post.pk}}">
-                        <td class="text-center"> <a href="{% url 'post_detail' post.category post.slug %}" target="_blank"> <i class="material-icons align-top md-inactive">open_in_new</i> </a> </td>
+                        <td class="text-center"> <a href="{% url 'post_detail' post.category.slug post.slug %}" target="_blank"> <i class="material-icons align-top md-inactive">open_in_new</i> </a> </td>
                         <td style="max-width: 350px;"> {{ post.title }} </td>
                         <td> {{ post.subtitle }} </td>
                         <td class="text-center"> 

@@ -38,5 +38,6 @@ entrypoint.prod.sh
 entrypoint.sh
 staticfiles/
 app/mediafiles/categories/*
+app/mediafiles/author/*
 app/mediafiles/img/*
 migrations/

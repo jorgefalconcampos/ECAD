@@ -80,7 +80,7 @@
                                 </span>
                                 
                                 <div class="col text-center text-lg-right">
-                                    <a href="{% url 'post_detail' post.category post.slug %}" target="_blank" class="btn btn-secondary">{% trans 'str_seePost' %}</a>
+                                    <a href="{% url 'post_detail' post.category.slug post.slug %}" target="_blank" class="btn btn-secondary">{% trans 'str_seePost' %}</a>
                                 </div> 
                             </div>
                         </div>

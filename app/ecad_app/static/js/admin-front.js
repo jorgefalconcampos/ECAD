@@ -316,7 +316,7 @@ function cmts_action_config(val){
         case 2: 
             comment_action = 'delete'; 
             frm.attr('method', 'DELETE');
-            label.html(`¿Eliminar el comentario de <b>${cmt_author}</b>? (ID: ${cmtID})<br><br><b>"</b>${cmt_body}<b>"</b>`)
+            label.html(`¿Eliminar el comentario de <b>${cmt_author}</b>? <br><br><b>"</b>${cmt_body}<b>"</b>`)
             button.attr('class', 'btn btn-danger px-3'); button.html(`${icon} Si, eliminar`);
         break;
 
@@ -400,42 +400,42 @@ function post_action_config(val, where_f){
         case 1: 
             post_action = 'delete'; 
             frm.attr('method', 'DELETE');
-            label.html(`¿Realmente deseas eliminar el post <b>${posttitle}</b>? (ID: ${postID})<br><br>Esta acción no se puede deshacer.`)
+            label.html(`¿Realmente deseas eliminar el post <b>${posttitle}</b>? <br><br>Esta acción no se puede deshacer.`)
             button.attr('class', 'btn btn-danger px-3'); button.html(`${icon} Si, eliminar`);
         break;
 
         case 2: 
             post_action = 'archive'; 
             frm.attr('method', 'POST');
-            label.html(`¿Realmente deseas archivar el post <b>${posttitle}</b>? (ID: ${postID})`)
+            label.html(`¿Realmente deseas archivar el post <b>${posttitle}</b>? `)
             button.attr('class', 'btn btn-warning-light px-3'); button.html(`${icon} Si, archivar`);
         break;
 
         case 3: 
             post_action = 'unarchive'; 
             frm.attr('method', 'POST');
-            label.html(`¿Sacar del archivo el post <b>${posttitle}</b>? (ID: ${postID})`)
+            label.html(`¿Sacar del archivo el post <b>${posttitle}</b>? `)
             button.attr('class', 'btn btn-warning-light px-3'); button.html(`${icon} Si, desarchivar`);
         break;
 
         case 4: 
             post_action = 'reject'; 
             frm.attr('method', 'POST');
-            label.html(`¿Rechazar el post <b>${posttitle}</b>? (ID: ${postID})`)
+            label.html(`¿Rechazar el post <b>${posttitle}</b>? `)
             button.attr('class', 'btn btn-danger px-3'); button.html(`${icon} Si, rechazar`);
         break;
 
         case 5: 
             post_action = 'approve'; 
             frm.attr('method', 'POST');
-            label.html(`¿Aprobar el post <b>${posttitle}</b>? (ID: ${postID})`)
+            label.html(`¿Aprobar el post <b>${posttitle}</b>? `)
             button.attr('class', 'btn btn-success px-3'); button.html(`${icon} Si, aprobar`);
         break;
 
         case 6: 
             post_action = 'approve_n_send'; 
             frm.attr('method', 'POST');
-            label.html(`¿Aprobar y enviar por Newsletter el post <b>${posttitle}</b>? (ID: ${postID})`)
+            label.html(`¿Aprobar y enviar por Newsletter el post <b>${posttitle}</b>? `)
             button.attr('class', 'btn btn-success px-3'); button.html(`${icon} Si, aprobar y enviar`);
         break;
       

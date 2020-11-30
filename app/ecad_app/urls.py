@@ -68,6 +68,8 @@ urlpatterns = [
     path('usuario/password-reset/complete', auth_views.PasswordResetCompleteView.as_view(template_name='ecad_app/user/pswd/password-reset-complete.html'),name='password_reset_complete'),
     path('usuario/password-change/', auth_views.PasswordChangeView.as_view(template_name='ecad_app/user/pswd/password-change.html',),name='password_change'),
     path('usuario/password-change/complete', auth_views.PasswordChangeDoneView.as_view(template_name='ecad_app/user/pswd/password-change-done.html'),name='password_change_done'),
+
+
 ]
 
 handler404 = 'ecad_app.views.page_not_found_404'

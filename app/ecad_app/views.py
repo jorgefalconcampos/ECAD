@@ -659,28 +659,31 @@ def sign_up(request):
     template = 'ecad_app/user/sign_up.html'
     form = CreateUserForm()
     if request.method == 'POST':
-        form = CreateUserForm(request.POST)
-        if form.is_valid():
-            user = form.save(commit=False)
-            user.is_active = False #To prevent login to non-confirmed users
-            user.save()
+        try:
+            form = CreateUserForm(request.POST)
+            if form.is_valid():
+                user = form.save(commit=False)
+                user.is_active = False #To prevent login to non-confirmed users
+                user.save()
 
-            sent_successfully = False
-            template = 'ecad_app/mails/user/email-sent.html'
+                sent_successfully = False
+                template = 'ecad_app/mails/user/email-sent.html'
 
-            # context passed to the HttpResponse
-            context = {'email': user.email, 'first_name': user.first_name, 'sent_successfully': sent_successfully }
-            
-            if send_activation_linkv2(user, request):
-                context['sent_successfully'] = True 
-                rendered = render_to_string(template, context)
-                return HttpResponse(rendered)
+                # context passed to the HttpResponse
+                context = {'email': user.email, 'first_name': user.first_name, 'sent_successfully': sent_successfully }
+                
+                if send_activation_linkv2(user, request):
+                    context['sent_successfully'] = True 
+                    rendered = render_to_string(template, context)
+                    return HttpResponse(rendered)
+                else:
+                    rendered = render_to_string(template, context)
+                    user.delete()
+                    return HttpResponse(rendered)
             else:
-                rendered = render_to_string(template, context)
-                user.delete()
-                return HttpResponse(rendered)
-        else:
-            messages.error(request, _('ErrorCreatingUser') )
+                messages.error(request, _('ErrorCreatingUser') )
+        except Exception as e:
+            messages.error(request, e)
     context = {'form': form}
     return render (request, template, context)
 
@@ -884,7 +887,7 @@ def post_new(request):
             newpost.save()
             form.save_m2m()
             # messages.success(request, _('PostCreated_Ok'))
-            return redirect('post_detail', category_text=slugify(newpost.category), slug_text=newpost.slug)
+            return redirect('post_detail', category_text=newpost.category.slug, slug_text=slugify(newpost.slug))
         else:
             messages.error(request, _('EmptyFields'))
     else:
@@ -914,7 +917,7 @@ def post_edit(request, slug_text):
             post.status = 0
             post.save()
             form.save_m2m()
-            return redirect('post_detail', category_text=post.category, slug_text=post.slug)
+            return redirect('post_detail', category_text=post.category.slug, slug_text=slug)
     else:
         form = PostForm(instance=post)
     context = {'postForm': form, 'is_edit': True, 'post':post }

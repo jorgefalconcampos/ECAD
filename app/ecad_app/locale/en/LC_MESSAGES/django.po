@@ -188,7 +188,7 @@ msgstr "Subscribe to our Newsletter"
 
 #: .\mailer.py:157
 msgid "str_confirmYourEmail"
-msgstr "Confirm your email - LVR"
+msgstr "Confirm your email - ECAD"
 
 #: .\mailer.py:174
 msgid "str_mails_activationMail4"
@@ -200,7 +200,7 @@ msgstr "New email"
 
 #: .\mailer.py:210
 msgid "str_mails_newsletterNewMail"
-msgstr "New post in LVR"
+msgstr "New post in ECAD"
 
 #: .\templates\ecad_app\about.html:6 .\templates\ecad_app\base_nav.html:30
 msgid "str_About"

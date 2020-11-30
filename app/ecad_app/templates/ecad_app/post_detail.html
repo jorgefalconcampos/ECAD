@@ -23,7 +23,6 @@
 {% block post_content %}
 
 
-<!-- <div class="px-2 px-md-3 px-lg-5 mx-2 mx-md-3 mx-lg-5"> -->
 <div class="container-fluid px-lg-5 pb-5">
     <div class="px-lg-5">
         <div itemscope itemtype="https://schema.org/BlogPosting">
@@ -248,10 +247,10 @@
                                         <div class="py-2 mx-1">
                                             <div class="card">
                                                 <div class="img-post-small img-zoom">    
-                                                    <a href="{% url 'post_detail' rpost.category rpost.slug %}"> <img class="card-img-top" src="{{ rpost.image.url }}" alt="{{ rpost.title }}"> </a>
+                                                    <a href="{% url 'post_detail' rpost.category.slug rpost.slug %}"> <img class="card-img-top" src="{{ rpost.image.url }}" alt="{{ rpost.title }}"> </a>
                                                 </div>
                                                 <div class="card-body">
-                                                    <h6 class="post-subtitle"><a href=" {% url 'post_detail' rpost.category rpost.slug %} "> {{ rpost.title }} </a></h6>         
+                                                    <h6 class="post-subtitle"><a href=" {% url 'post_detail' rpost.category.slug rpost.slug %} "> {{ rpost.title }} </a></h6>         
                                                     <p class="mt-2 card-subtitle text-muted ">{% trans 'str_publishedDate' %}: {{ rpost.published_date }} </p>
                                                 </div>
                                             </div>  
@@ -289,13 +288,13 @@
                         <div class="py-2 mx-1">
                             <div class="card">
                                 <div class="img-post-small-related img-zoom">
-                                    <a href="{% url 'post_detail' post.category post.slug %}">
+                                    <a href="{% url 'post_detail' post.category.slug post.slug %}">
                                         <img itemprop="image" class="card-img-top" src="{{ post.image.url }}" alt="{{ post.title }}">
                                     </a>
                                 </div>
             
                                 <div class="card-body pb-1 position-relative">
-                                    <h5 class="post-title"><a href=" {% url 'post_detail' post.category post.slug %}" class="stretched-link"> {{ post.title }} </a> </h5>
+                                    <h5 class="post-title"><a href=" {% url 'post_detail' post.category.slug post.slug %}" class="stretched-link"> {{ post.title }} </a> </h5>
                                     <h6 class="post-subtitle"> {{ post.subtitle }} </h6>
                                 </div>
             
@@ -306,32 +305,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="col-lg-4 mb-2 pb-4">
-                        <div itemscope itemtype="https://schema.org/BlogPosting">
-                            <div class="card shadow-sm border-0 reset-anchor d-block">
-                                <div class="tool-thumb rounded-circle">
-                                    <a href="{% url 'categories_detail' post.category.slug %}" class="img-zoom">
-                                      <img class="img-fluid rounded-circle" src="{{post.category.image.url}}" alt="{{post.category}}" width="40">
-                                    </a>
-                                </div> 
-                                <a class="d-block dark-overlay card-img-top overflow-hidden tool-trending" href="{% url 'post_detail' post.category post.slug %}">
-                                <div class="watched-badge text-shadow mx-auto" rel="tooltip" data-placement="top" title="Featured"> <i class="fas fa-eye"></i> +100K </div>
-                                <div class="cmts-badge text-shadow mx-auto" rel="tooltip" data-placement="top" title="Featured"> <i class="fas fa-comments"></i> 999 </div>
-                                <div class="overlay-content"><img class="img-fluid" src="{{post.image.url}}" alt="{{post.title}}"></div>
-                                <div class="card-body pt-4 pb-3 px-4">
-                                    <h3 class="h5 post-title"> <a class="stretched-link" href="{% url 'post_detail' post.category post.slug %}">{{post.title}}</a></h3>
-                                    <h6 itemprop="alternativeHeadline" class="post-subtitle mt-1 mb-3"> {{ post.subtitle }} </h6>
-                                    
-                                    <p class="text-preview text-small mb-0"> {{post.post_body|safe|truncatewords:30}}</p>
-                                    <hr>
-                                    <div class="py-0 my-0">
-                                        <p itemprop="dateCreated" class="mt-2 card-subtitle text-muted ">Publicado: {{ post.published_date }} </p>
-                                        <h6 itemprop="creator" class="mt-1 post-author"> {% trans 'str_postBy' %}: <a href="{% url 'author_detail' post.author.slug %}"> {{ post.author.name.get_full_name }} </a> </h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>  -->
                     {% endfor %}
                 </div>
             </div>
