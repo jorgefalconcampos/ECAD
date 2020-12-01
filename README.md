@@ -69,8 +69,11 @@ Para ejecutar desde la consola (con docker-compose) ejecutar los siguiente coman
 # Paso 1 - Crear el contenedor Docker, montarlo y correrlo en segundo plano
 $ docker-compose up -d --build
 
-# Paso 2 - Verificar la creación de la BDD Postgres dentro del servicio "db"
+# OPCIONAL - Verificar la creación de la BDD Postgres dentro del servicio "db"
 $ docker-compose exec db psql --username=USUARIO --dbname=NOMBRE_BDD
+
+# Paso 2 - Crear las migraciones
+$ docker-compose exec web python manage.py migrate --noinput
 
 # (Ejecutar este paso solo si los archivos estáticos [CSS, JS, PNG's, JPG's, etc] han cambiado)
 $ docker-compose exec web python manage.py collectstatic --no-input --clear
