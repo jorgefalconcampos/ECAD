@@ -81,36 +81,7 @@
                     
                     {% else %}
                     {% if results %}              
-                    <!-- <div class="card border-1 categories-item shadow-sm border-secondary-light bg-gray-200 mb-4">
-                        <div class="card-body py-2">
-                            <div class="row text-center text-lg-left mt-1 px-1">               
-                                <div class="col-lg-2 py-1 text-center" >
-                                    <div class="row text-center">
-                                        <div class="col py-1">                            
-                                            <img class="rounded-circle shadow" src="{{ category.image.url }}" alt=" Le velo rouge {{ category }}" width="85">
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-lg-10 mt-xs-1 mt-sm-1 mt-md-2 mt-lg-3">
-                                    <div class="ml-0 ml-lg-3">
-                                        <h3 class="h3 font-weight-bold"> <a href="" class="stretched-link reset-anchor-inherit"> {{ category }} </a></h3>
-                                        <h6 class="h6 lead mt-1 mb-2"> {{ category.description }} vamos a ver que tanto le cabe jaja vermeos ya </h6>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                        <div class="card-footer py-1 bg-gray-300">
-                            <div class="row align-middle d-flex justify-content-center justify-content-sm-center justify-content-md-end justify-content-lg-end mx-1">
-                                <h6 class="small "> 
-                                    {% if posts_number == 0 %} No hay posts en esta categoría
-                                    {% else %} Posts en esta categoría: <b> {{posts_number}} </b> 
-                                    {% endif %}
-                                </h6>
-                            </div>
-                        </div>
-                    </div> -->
+
                     <div class="col">
                         {% for post in results %}
                         <div class="row">

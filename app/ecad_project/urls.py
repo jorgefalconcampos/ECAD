@@ -25,7 +25,7 @@ from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.contrib import admin
-from ecad_app.views import error_404_view
+from ecad_app.views import error_400_view, error_403_view, error_404_view, error_500_view
 from ecad_app import views
 
 

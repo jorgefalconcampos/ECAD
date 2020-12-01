@@ -61,30 +61,6 @@ def base(request):
         return redirect('index')
     return render(request, template, context)
 
-def cm(request):
-    # notify_new(request)
-    # return render(request, 'ecad_app/user/contact-mail.html', {})
-    # context = {'action': 'deleted'}
-    # return render(request, 'ecad_app/mails/blog/confirm-mail.html')
-
-
-    # return redirect('index')
-
-    # return render(request, 'ecad_app/mails/user/email-sent.html')
-    # return render(request, 'ecad_app/mails/user/wrong-link.html')
-    return render(request, 'ecad_app/http_states/404.html')
-    # return render(request, 'ecad_app/user/pswd/password-reset-done.html')
-    # return render(request, 'ecad_app/user/pswd/password-reset-complete.html')
-
-
-    # return render(request, 'ecad_app/mails/user/pswd/reset-pass.html')
-
-    # return render(request, 'ecad_app/mails/user/wrong-link.html')
-
-
-
-    # return render(request, 'ecad_app/mails/blog/verify.html')
-
 
 
 #For searching a Post object
@@ -105,7 +81,7 @@ def search(request):
             bad_query_len = True
         else:
             queryset = []
-            queries = search_term.split(" ") #python install 2019 --> [python, install, 2019]
+            queries = search_term.split(" ")
             for q in queries:
                 posts = Post.objects.filter(
                     Q(title__icontains=q)|
@@ -145,6 +121,7 @@ def contact(request):
         return redirect('index')
 
 
+
 #This method adds a new subscriber and send a confirmation mail
 def subscribe(request):
     response_data = {}
@@ -167,7 +144,6 @@ def subscribe(request):
         subscribe_form = SubscribeForm()
 
 
- 
 
 
 #Method that allows a subscriber confirm its email and receive updates
@@ -177,7 +153,6 @@ def confirm_subscribe(request):
     sub = Subscriber.objects.get(conf_num=conf_numb)
     context = {'email': sub.email}
 
-   
     if sub.conf_num == conf_numb:
         if sub.confirmed:
             context['action'] = 'already_confirmed'
@@ -224,9 +199,6 @@ def index(request):
     template_name = 'ecad_app/index.html'
     all_posts = Post.objects.filter(published_date__lte=timezone.now(), status=1).order_by('-published_date') #creating the 'all posts' variable, inside it we'll pass the result of the Query Set
 
-    # all_osts = str(all_posts.count()) #counting all-time posts
-    # print(f"TODOS LOS POSTS: {all_osts}")
-
     common_tags = Post.tags.most_common()[:3] #Getting the latest n trending tags
     trending = []
     for tag in common_tags:
@@ -251,7 +223,6 @@ def index(request):
     except Exception as e:
         diccionario = {}
 
-    # print(diccionario)
     paginator = Paginator(all_posts, 9) #n posts in each page
     page = request.GET.get('page')
     try:
@@ -340,7 +311,6 @@ def post_detail(request, category_text, slug_text):
 def authors(request):
     template = 'ecad_app/authors.html'
     details = []
-
     all_authors = Author.objects.filter(activated_account=True).order_by('name__first_name', 'name__last_name')
     print(all_authors)
     for author in all_authors:
@@ -363,12 +333,11 @@ def authors(request):
 
 
 
-
 #Author detail
-def author_detail(request, pinchiautor):
+def author_detail(request, profautor):
     template = 'ecad_app/author_detail.html'
-    author = get_object_or_404(Author, slug=pinchiautor)
-    posts_by_author = Post.objects.filter(author__slug=pinchiautor, status=1).order_by('-published_date')  #Getting al posts by the current author
+    author = get_object_or_404(Author, slug=profautor)
+    posts_by_author = Post.objects.filter(author__slug=profautor, status=1).order_by('-published_date')  #Getting al posts by the current author
     paginator = Paginator(posts_by_author, 6)
     page = request.GET.get('page')
     try:
@@ -386,7 +355,6 @@ def author_detail(request, pinchiautor):
 def tags(request):
     template = 'ecad_app/tags.html'
     all_tags = Tag.objects.all()
-    #TO DO: If tag belongs to a non-approved post, hide that tag
     context = { 'all_tags': all_tags }
     return render(request, template, context)
 
@@ -446,13 +414,6 @@ def categories_detail(request, slug):
 def about(request):
     context = {}
     return render (request, 'ecad_app/about.html', context)
-
-
-
-#Custom error 404 http states
-def page_not_found_404(request, exception):
-    return render (request, 'ecad_app/http_states/404.html', {})
-
 
 
 
@@ -623,9 +584,6 @@ def settings(request):
         'ProfileAuthorUserForm': ProfileEditAuthorForm(initial=profile_frm_author_initial),
     }
 
-    print(author.slug)
-
-
     if not request.user.is_superuser:
         avg_user_perms = ['Crear posts en mi nombre', 'Editar posts en mi nombre', 'Archivar posts escritos en mi nombre', 'Eliminar posts escritos en mi nombre', 'Solicitar cambio de contraseña', 'Solicitar restablecimiento de contraseña', 'Crear tags (al crear un post, si el tag no existe)', 'Modificar datos personales públicos', 'Modificar datos personales privados', 'Cambiar imagen de perfil público', 'Login y logout']
         context['permissions'] = avg_user_perms
@@ -635,7 +593,6 @@ def settings(request):
 
 
     return render (request, template, context)
-
 
 
 
@@ -651,6 +608,7 @@ def edit_account_info(request):
         form = EditUserForm(isinstance=request.user)
         context = { 'form':form }
         return render(reques, 'ecad_app/user/settings.html', context)
+
 
 
 @login_required(login_url='login')
@@ -688,6 +646,7 @@ def sign_up(request):
     return render (request, template, context)
 
 
+
 # Allow superuser accepts, rejects, approves posts
 @login_required(login_url='login')
 @user_passes_test(lambda u: u.is_superuser)
@@ -704,6 +663,7 @@ def moderate_posts(request):
         post_list = paginator.page(paginator.num_pages)
     context = {'post_list': post_list, 'all_post_list': all_post_list.count()}
     return render(request, template, context)
+
 
 
 # Allow superuser or post's user/author accepts or rejects comments inside a post
@@ -735,10 +695,9 @@ def moderate_comments(request):
             if k == comment.in_post:
                     all_posts[k].append(comment_detail)
 
-    # print(f"\n\n\nDiccionario final: \n\n{all_posts}")
-
     context = {'all_comments': all_comments, 'all_posts': all_posts}
     return render(request, template, context)
+
 
 
 # This method deletes, archives or rejects a blog post - Only superuser can reject
@@ -781,6 +740,8 @@ def post_actions(request, post_action, pk):
         return redirect('index')
 
 
+
+
 # Given a post pk, this method sents the post to all newsletter susbscribers
 @login_required(login_url='login')
 @user_passes_test(lambda u: u.is_superuser)
@@ -801,7 +762,6 @@ def comment_actions(request, comment_action, pk):
     if request.user.is_authenticated:
         try:
             if ((request.user == comment.in_post.author.name) or (request.user.is_superuser)):
-                print('si es el mismo xd')
                 if comment_action == 'approve':
                     comment.approve()
                     response_data['success'] = True
@@ -835,13 +795,6 @@ def activate(request, uidb64, token):
     if user is not None and account_activation_token.check_token(user, token):
         user.refresh_from_db()
         user.is_active = True
-        # authorrrr = Author.objects.filter(name=user.pk).first()
-        # authorrrr.activated_account = True
-        # user.autor.activated_account = True
-        # toslug = user.first_name + ' ' + user.last_name
-        # user.autor.slug = slugify(toslug)
-        # authorrrr.slug = slugify(toslug)
-        # authorrrr.save()
         user.save()
         user.autor.activate_account()
 
@@ -851,6 +804,7 @@ def activate(request, uidb64, token):
         template = 'ecad_app/mails/user/wrong-link.html'
         rendered = render_to_string(template, {'user': user } )
         return HttpResponse(rendered)
+
 
 
 #This method show all the posts written by user/author
@@ -925,7 +879,6 @@ def post_edit(request, slug_text):
 
 
 
-
 @login_required(login_url='login')
 def post_delete(request, pk):
     response_data = {'success': False}
@@ -957,16 +910,11 @@ def post_archive(request, pk):
     except Exception as e:
         response_data['err'] = str(e)
     finally:
+        print('archive 1')
         return JsonResponse(response_data)
 
 
 
-@login_required(login_url='login')
-def post_archive(request, slug_text):
-    post = get_object_or_404(Post, slug=slug_text)
-    post.status = 3
-    post.save()
-    return redirect('dashboard')
 
 def logout(request):
     do_logout(request)
@@ -996,5 +944,4 @@ def error_404_view(request, exception):
 #Custom error 500 (internal server error)
 def error_500_view(request):
     return render (request, 'ecad_app/http_states/500.html', {})
-
 

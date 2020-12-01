@@ -17,7 +17,6 @@ urlpatterns = [
     path('', views.base, name='base'),
     path('inicio', views.index, name='index'),
     path('buscar', views.search, name='search'),
-    path('cm', views.cm, name='cm'),
     path('contact', views.contact, name='contact'),
     path('getdata', views.getdata, name='getdata'),
     #subscriber
@@ -32,7 +31,7 @@ urlpatterns = [
     path('categorias', views.categories, name='categories'),
     path('categorias/<slug:slug>', views.categories_detail, name='categories_detail'),
     path('autores', views.authors, name='authors'),
-    path('autores/<slug:pinchiautor>', views.author_detail, name='author_detail'),
+    path('autores/<slug:profautor>', views.author_detail, name='author_detail'),
     #misc:
     path('reglas', views.rules, name='rules'),
     path('tutorial', views.tutorial, name='tutorial'),
@@ -72,4 +71,4 @@ urlpatterns = [
 
 ]
 
-handler404 = 'ecad_app.views.page_not_found_404'
+handler404 = 'ecad_app.views.error_404_view'

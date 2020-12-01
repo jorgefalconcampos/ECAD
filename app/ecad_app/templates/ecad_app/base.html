@@ -41,76 +41,47 @@
   {% include 'ecad_app/base_nav.html' %}
   </header>
   
-
-  <!-- Content imported from "index.html" with the block of code "show_posts" -->
    <div class="container"> 
     {% block show_posts %} 
     {% endblock %} 
   </div>
 
-  <div class="container" id="offlinedata">
-  <!-- the news will get displayed here from indexedDB in offline mode -->
-  </div>
-
-
-  <!-- Content imported from "about.html" with the block of code "about" -->
   {% block about %}
   {% endblock %}
   
-  
-  <!-- Content imported from "about.html" with the block of code "about" -->
   {% block search %}
   {% endblock %}
 
-
-  <!-- Content imported from "authors.html" with the block of code "authors" --> 
   {% block authors %}
   {% endblock %}
 
-
-  <!-- Content imported from "author_detail.html" with the block of code "author_detail" -->
   {% block author_detail %}
   {% endblock %}
-
          
-  <!-- Content imported from "post_detail.html" with the block of code "post_content" -->
   {% block post_content %}
   {% endblock %}
 
-  
-  <!-- Content imported from "tags.html" with the block of code "tags" -->
   {% block tags %}
   {% endblock %}
 
-
-  <!-- Content imported from "tag_detail.html" with the block of code "tag_detail" -->
   {% block tag_detail %}
   {% endblock %}
 
-
-  <!-- Content imported from "categories.html" with the block of code "categories" -->  
   {% block categories %}
   {% endblock %}
   
-
-  <!-- Content imported from "tag_detail.html" with the block of code "categories_detail" -->
   {% block categories_detail %}
   {% endblock %}
 
-
-  <!-- Content imported from "400.html" with the block of code "bad_request" -->
   {% block bad_request %}
   {% endblock %}
   
-  <!-- Content imported from "403.html" with the block of code "perm_denied" -->
   {% block perm_denied %}
   {% endblock %}
   
-  <!-- Content imported from "404.html" with the block of code "page_not_found" -->
   {% block page_not_found %}
   {% endblock %}
   
-  <!-- Content imported from "500.html" with the block of code "internal_error" -->
   {% block internal_error %}
   {% endblock %}
   
@@ -128,7 +99,6 @@
             <div class="row">
               <div class="form-group col-lg-6">
                 <label for="contact_fullName">{{contactForm.name.label}}</label>
-                <!-- <span class="small h6 font-weight-bold text-danger float-right mr-1"> <i class="fas fa-exclamation-circle"></i> Este campo es obligatorio</span> -->
                 {{contactForm.name}}
               </div>
               
@@ -175,18 +145,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/0b5e6aae1f.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
   <script type="application/javascript" src="{% static 'js/bootstrap-select.js' %}"></script>
   <script src="https://www.google.com/recaptcha/api.js?onload=CaptchaCallback&render=explicit" async defer></script>
-  <script type="application/javascript" src="{% static 'js/pwa/idb.js' %}"></script>
-  <script type="application/javascript" src="{% static 'js/pwa/idbop.js' %}"></script>
   <script type="application/javascript" src="{% static 'js/front.js' %}"></script>
   <script>$(window).on('load',function(){$('[data-toggle="tooltip"]').tooltip();});</script>
-  <!-- <script type="application/javascript" src="{% static 'js/cookies.js' %}"></script> -->
 </body>
-
-
-
 
 
 

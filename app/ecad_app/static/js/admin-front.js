@@ -57,7 +57,7 @@ function success(title, text, param, rowID, modal_ID){
         case 0: window.setTimeout( function() { $('#postActionsModal').modal('hide'); window.location.reload(true); }, 750);  break;
         case 1: 
             if (sender === 'detail'){
-                window.setTimeout( function() { window.location.href = '/user/dashboard'; }, 750); 
+                window.setTimeout( function() { window.location.href = '/usuario/dashboard'; }, 750); 
             }
             else {
                 $(modal_ID).modal('hide');
