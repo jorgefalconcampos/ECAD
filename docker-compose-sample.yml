@@ -9,11 +9,11 @@ services:
     ports:
       - write_the_port_here
     env_file:
-      - write_here_env_file
+      - write_env_file_name_here
     depends_on:
       - db_service
   db_service:
-    image: image_for_db
+    image: postgres_image_for_db
     volumes:
       - write_here
     environment:
