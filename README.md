@@ -100,7 +100,7 @@ Este proyecto se hizo posible gracias a la utilización de los siguientes softwa
 
 
 ## Licencia
-Este trabajo informático fue desarrollado para el [concurso institucional](https://www.ipn.mx/des/alumnos-egresados/concursos-academicos.html) "Premio al Mejor Software 2020" organizado por el Instituto Politécnico Nacional. Cualquier uso del código no autorizado previamente por parte del autor se reportará como indebido y aplicarán las sanciones correspondientes. En caso de que el proyecto resulte ganador, el repositoro pasará a ser privado y su uso, descarga, utilización y distribución quedará en manos del instituto.
+Este trabajo informático fue desarrollado para el [concurso institucional](https://www.ipn.mx/des/alumnos-egresados/concursos-academicos.html) "Premio al Mejor Software 2020" organizado por el Instituto Politécnico Nacional. Cualquier uso del código no autorizado previamente por parte del autor se reportará como indebido y aplicarán las sanciones correspondientes. En caso de que el proyecto resulte ganador, el repositoro seguirá público pero su uso, descarga, utilización y distribución quedará en manos del Instituto Politécnico Nacional.
 
 ---
 
